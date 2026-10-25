@@ -1,0 +1,3 @@
+# Public Pages and downloadable archives are byte-addressed artifacts.
+# Do not normalize line endings on checkout, index, or push.
+* -text
