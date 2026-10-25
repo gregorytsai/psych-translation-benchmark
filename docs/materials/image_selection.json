@@ -1,0 +1,136 @@
+{
+  "selection_version": "translation-benchmark-image-selection-v1",
+  "selection_status": "frozen",
+  "selection_count": 4,
+  "selection_rule": "Use only existing authoritative PNGs; do not regenerate, edit, or fetch remote media.",
+  "selected_images": [
+    {
+      "image_id": "img-01",
+      "role": "clinicalnote",
+      "layout_stratum": "synthetic_clinical_note_layout",
+      "source_relative_path": "images/img01_synthetic_depression_note.png",
+      "sha256": "6914d103f9fe3ff8dfbc94c49adc620f49b0e1915d68d529ec68494892834e34",
+      "dimensions": {
+        "width": 1600,
+        "height": 900,
+        "color": "RGBA",
+        "format": "PNG"
+      },
+      "image_kind": "synthetic_clinical_note_layout",
+      "synthetic_label": "SYNTHETIC EVALUATION IMAGE — NOT A CLINICAL RECORD",
+      "ground_truth_status": "authored_rendered_text; complete visible English labels; not a clinical record",
+      "ground_truth_text": [
+        "BEHAVIORAL HEALTH NOTE",
+        "SYNTHETIC EVALUATION IMAGE — NOT A CLINICAL RECORD",
+        "Mood: low for most days; interest in hobbies has declined.",
+        "Sleep is disrupted, and energy is reduced.",
+        "Plan: review symptoms with a qualified health professional.",
+        "Source cues: NIMH depression; WHO depressive disorder.",
+        "Synthetic image for translation/OCR evaluation • no real patient data • no endorsement"
+      ],
+      "source_cues": [
+        "nimh_depression",
+        "who_depression"
+      ],
+      "visual_text_inventory_status": "authored_ground_truth_complete",
+      "visual_qa": "All visible header, synthetic warning, body lines, source-cue line, and footer are represented in ground_truth_text; logo/person imagery is layout context, not text."
+    },
+    {
+      "image_id": "img-04",
+      "role": "medicationmockup",
+      "layout_stratum": "synthetic_medication_label_mockup",
+      "source_relative_path": "images/img04_synthetic_medication_label.png",
+      "sha256": "b9edf3e7ba75314b58ba4dc630ac27e8bfa698d201f252378c9f22af2d6c0998",
+      "dimensions": {
+        "width": 1600,
+        "height": 900,
+        "color": "RGBA",
+        "format": "PNG"
+      },
+      "image_kind": "synthetic_medication_label_mockup",
+      "synthetic_label": "SYNTHETIC EVALUATION IMAGE — NOT A PRESCRIPTION",
+      "ground_truth_status": "authored_rendered_text; complete visible English labels; not a prescription",
+      "ground_truth_text": [
+        "MEDICATION LABEL MOCKUP",
+        "SYNTHETIC EVALUATION IMAGE — NOT A PRESCRIPTION",
+        "SERTRALINE — TAKE 50 mg ONCE DAILY",
+        "Do not change the dose or stop suddenly without medical advice.",
+        "Record nausea, sleep changes, and any urgent safety concern.",
+        "Source cue: medication-safety wording is benchmark-authored.",
+        "Synthetic image for translation/OCR evaluation • no real patient data • no endorsement"
+      ],
+      "source_cues": [
+        "nimh_bipolar",
+        "benchmark_authored_medication_safety_wording"
+      ],
+      "visual_text_inventory_status": "authored_ground_truth_complete",
+      "visual_qa": "All visible title, warning, medication/dose/frequency, safety lines, source-cue line, and footer are represented in ground_truth_text; no real patient data."
+    },
+    {
+      "image_id": "img-09",
+      "role": "who_policy_dense_page1",
+      "layout_stratum": "original_pdf_page_render_dense_context",
+      "source_relative_path": "images/img09_original_who_suicide_policy_p1.png",
+      "sha256": "7c51577226a100e72c96c4d649d3b53e7e2e9bfd2457899750d556b2288d2371",
+      "dimensions": {
+        "width": 1241,
+        "height": 1754,
+        "color": "RGB",
+        "format": "PNG"
+      },
+      "image_kind": "original_pdf_page_render",
+      "synthetic_label": null,
+      "ground_truth_status": "machine_extracted; AI_visual_checked; not_human_gold",
+      "provisional_reference_text": "WHO policy brief on\nthe health aspects of\ndecriminalization of suicide\nand suicide attempts\n1. Context\nOne in every 100 deaths globally is by suicide. Each year more than 700 000\npeople take their own life. Furthermore, suicide is the fourth leading cause of\ndeath in 15–29-year-olds (1). Subpopulations particularly affected include, for\ninstance, Indigenous peoples, members of LGBTQI+ communities, persons who are\nincarcerated or in jail, refugees and migrants (2). Not only is this loss of life tragic in\nitself but it also has a profound and devastating effect on families and entire\ncommunities.\nSuicide is linked to multiple, complex and intersecting social, economic, cultural\nand psychological factors and challenges, including the denial of basic human rights\nand access to resources as well as stressful life events such as loss of livelihood, work\nor academic pressure, relationship breakdowns, discrimination and other life crises\n(3). Suicide is not a mental health condition, but some people with mental health\nconditions may be at greater risk of suicide. Reducing the global suicide rate by one\nthird by 2030 is a target of both the United Nations Sustainable Development Goals\n(SDGs) and the World Health Organization (WHO) Comprehensive Mental Health\nAction Plan (4, 5). Urgent action is needed to meet the 2030 goal. By endorsing the\nSDGs and WHO’s action plan, countries have committed to taking concrete measures\nin this direction.\n1",
+      "provisional_reference_text_method": "PDF page-1 text-layer extraction via macOS PDFKit; visual check against the rendered PNG",
+      "source_pdf_id": "who_suicide_policy_pdf",
+      "source_pdf_url": "https://cdn.who.int/media/docs/default-source/mental-health/9789240078796-eng.pdf?download=true",
+      "source_pdf_page": 1,
+      "source_pdf_sha256": "ea95218d769396ba187282be1e7af1472449d0ad7ef8b4de21c4ae121e933092",
+      "license": "CC BY-NC-SA 3.0 IGO as stated on the PDF copyright page (page 16); attribution, non-commercial use, and ShareAlike apply; no webpage-license inference",
+      "visual_text_inventory": [
+        "World Health Organization",
+        "WHO policy brief on the health aspects of decriminalization of suicide and suicide attempts",
+        "1. Context",
+        "page number 1"
+      ],
+      "visual_text_inventory_status": "AI_visual_checked; logo text inventory is supplemental to the machine-extracted reference string and is not human gold",
+      "visual_qa": "Dense page-1 title plus two context paragraphs and page number are retained; WHO logo/chevrons are layout context. Reference text is not human gold."
+    },
+    {
+      "image_id": "img-10",
+      "role": "who_depression_cover",
+      "layout_stratum": "original_pdf_page_render_brochure_cover",
+      "source_relative_path": "images/img10_original_who_depression_brochure_p1.png",
+      "sha256": "f21d424d79b8d9ffa7ea5b250e40bd0b81a040d4443301bfd9d595089e54e742",
+      "dimensions": {
+        "width": 1650,
+        "height": 1275,
+        "color": "RGB",
+        "format": "PNG"
+      },
+      "image_kind": "original_pdf_page_render",
+      "synthetic_label": null,
+      "ground_truth_status": "machine_extracted; AI_visual_checked; not_human_gold",
+      "provisional_reference_text": "Depression:\nWhat you should know? What you can do?\nLet’s talk",
+      "provisional_reference_text_method": "PDF page-1 text-layer extraction via macOS PDFKit; visual check confirms the three visible cover lines in the rendered PNG",
+      "source_pdf_id": "who_depression_pdf",
+      "source_pdf_url": "https://cdn.who.int/media/docs/default-source/searo/mhs/depression-what-you-should-know-what-you-can-do.pdf?sfvrsn=293cb15b_5",
+      "source_pdf_page": 1,
+      "source_pdf_sha256": "70183a0049237bb27ef4a50fc5ff51a31026fd9cefee401308f3e5adc214a5f3",
+      "license": "CC BY-NC-SA 3.0 IGO as stated on the PDF copyright page (page 1/12); attribution, non-commercial use, and ShareAlike apply; no webpage-license inference",
+      "visual_text_inventory": [
+        "Depression:",
+        "What you should know? What you can do?",
+        "Let’s talk",
+        "Depression",
+        "Let’s talk",
+        "World Health Organization",
+        "Regional Office for South-East Asia"
+      ],
+      "visual_text_inventory_status": "AI_visual_checked; machine-extracted reference string contains the three cover lines; supplemental visible logo/attribution inventory is not human gold",
+      "visual_qa": "Short cover title/tagline plus visible WHO Regional Office attribution are retained; reference text contains the three cover lines only and is not human gold. This is a distinct easy cover stratum from dense img-09, not sufficient alone for image QA."
+    }
+  ],
+  "unselected_image_note": "img-02, img-03, img-05, img-06, img-07, and img-08 remain in the authoritative source bundle but are intentionally not in this freeze."
+}

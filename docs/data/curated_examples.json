@@ -1,0 +1,610 @@
+{
+  "translategemma-27b": {
+    "better": {
+      "material_id": "text-01",
+      "track": "text",
+      "panel_mean": 100.0,
+      "panel_scores": {
+        "judge-01": 100.0,
+        "judge-02": 100.0,
+        "judge-03": 100.0,
+        "judge-04": 100.0,
+        "judge-05": 100.0
+      },
+      "source_excerpt": "Everyone feels sad or low sometimes, but these feelings usually pass. ",
+      "translation_excerpt": "每個人有時都會感到悲傷或情緒低落，但這些感覺通常會過去。",
+      "source_excerpt_exact_in_material": true,
+      "translation_excerpt_exact_in_material": true,
+      "selected_error_count": 0,
+      "selected_critical_count": 0,
+      "evidence": [],
+      "judge_review_only_note": null,
+      "interpretation": "comparatively strong proxy example; no selected error annotation was retained, but this is not a human gold proof",
+      "image_ground_truth_status": "not_applicable_text_no_human_gold",
+      "why_zh": "五位文字評審在這個案例給予高分，且未保留錯誤標註。摘錄保留原文的基本語意，但高分不等於經人工確認完全正確。",
+      "why_en": "The five text judges scored this case highly and retained no error annotation. The excerpt preserves the basic source meaning, but this is not a human-certified perfect translation."
+    },
+    "risk": {
+      "material_id": "text-28",
+      "track": "text",
+      "panel_mean": 75.2,
+      "panel_scores": {
+        "judge-01": 88.0,
+        "judge-02": 98.0,
+        "judge-03": 45.0,
+        "judge-04": 85.0,
+        "judge-05": 60.0
+      },
+      "source_excerpt": "Contact the 988 Suicide and Crisis Lifeline if you are experiencing mental health-related distress or are worried about a loved one who may need crisis support. Call or text 988. Chat at 988lifeline.org. Connect with a trained crisis counselor. 988 is confidential, free, and available 24/7/365.",
+      "translation_excerpt": "如果您正經歷與心理健康相關的困擾，或擔心您所愛的人可能需要心理危機支援，請聯絡 988 心理健康危機專線。您可以撥打 988 或發送簡訊。您也可以在 988lifeline.org 網站上進行線上對話。我們會為您提供由受過專業訓練的心理危機輔導員提供的協助。988 專線提供保密、免費且全天候（24 小時、每周 7 天、全年 365 天）的服務。",
+      "source_excerpt_exact_in_material": true,
+      "translation_excerpt_exact_in_material": true,
+      "selected_error_count": 8,
+      "selected_critical_count": 5,
+      "evidence": [
+        {
+          "judge_slot": "judge-03",
+          "severity": "critical",
+          "type": "safety_critical_omission",
+          "confidence": 1.0,
+          "critical_flag": true,
+          "source_span": "988 Suicide and Crisis Lifeline",
+          "target_exact_quote": "988 心理健康危機專線",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "Source names the service as '988 Suicide and Crisis Lifeline'; the term 'Suicide' is a safety-critical element that is entirely omitted in the target"
+        },
+        {
+          "judge_slot": "judge-05",
+          "severity": "critical",
+          "type": "mistranslation",
+          "confidence": 0.95,
+          "critical_flag": true,
+          "source_span": "Suicide  and  Crisis  Lifeline",
+          "target_exact_quote": "心理健康危機專線",
+          "source_span_exact_in_material": false,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "The  English  source  explicitly  names  the  '988  Suicide  and  Crisis  Lifeline',  but  the  candidate  translates  this  as  '988  心理健康危機專線',  omitting  'Suicide'  (自殺).  Omitting  suicide  prevention  terminology  from  a  crisis  lifeline  is  a  safety-critical  error."
+        },
+        {
+          "judge_slot": "judge-04",
+          "severity": "critical",
+          "type": "omission",
+          "confidence": 0.93,
+          "critical_flag": true,
+          "source_span": "Suicide",
+          "target_exact_quote": "",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": false,
+          "source_evidence": "“988 Suicide and Crisis Lifeline” explicitly identifies suicide support; the translated service name omits this safety-relevant purpose."
+        }
+      ],
+      "judge_review_only_note": "此安全／服務名稱判斷可能有語境爭議，僅標為 judge 提出待查，不作嚴重錯誤定論。",
+      "interpretation": "judge提出待查；exact quote checks are reported, but this case is not adjudicated as a severe error or human gold",
+      "image_ground_truth_status": "not_applicable_text_no_human_gold",
+      "why_zh": "評審質疑專線名稱的翻譯省略了原文的 suicide，但譯文仍保留號碼及求助語意。這是待人工確認的命名／語意疑義，不將單一評審的 critical 標籤當成已證實的安全錯誤。",
+      "why_en": "A judge questioned the omission of “suicide” from the service name, while the number and help-seeking meaning remain. This is a naming/meaning concern for review, not an established safety failure solely because one judge marked it critical."
+    }
+  },
+  "translategemma-12b": {
+    "better": {
+      "material_id": "text-22",
+      "track": "text",
+      "panel_mean": 100.0,
+      "panel_scores": {
+        "judge-01": 100.0,
+        "judge-02": 100.0,
+        "judge-03": 100.0,
+        "judge-04": 100.0,
+        "judge-05": 100.0
+      },
+      "source_excerpt": "The symptoms usually start soon after the traumatic event. ",
+      "translation_excerpt": "症狀通常會在創傷事件發生後不久開始出現。",
+      "source_excerpt_exact_in_material": true,
+      "translation_excerpt_exact_in_material": true,
+      "selected_error_count": 0,
+      "selected_critical_count": 0,
+      "evidence": [],
+      "judge_review_only_note": null,
+      "interpretation": "comparatively strong proxy example; no selected error annotation was retained, but this is not a human gold proof",
+      "image_ground_truth_status": "not_applicable_text_no_human_gold",
+      "why_zh": "五位文字評審在這個案例給予高分，且未保留錯誤標註。摘錄保留原文的基本語意，但高分不等於經人工確認完全正確。",
+      "why_en": "The five text judges scored this case highly and retained no error annotation. The excerpt preserves the basic source meaning, but this is not a human-certified perfect translation."
+    },
+    "risk": {
+      "material_id": "text-08",
+      "track": "text",
+      "panel_mean": 88.0,
+      "panel_scores": {
+        "judge-01": 77.0,
+        "judge-02": 96.0,
+        "judge-03": 100.0,
+        "judge-04": 84.0,
+        "judge-05": 83.0
+      },
+      "source_excerpt": "Bipolar depression is often treated with a mood stabilizer or an atypical antipsychotic. For some people experiencing a depressive episode, antidepressants may be added to these medications. However, antidepressants are not used alone because they can trigger a manic episode or rapid cycling in a person with bipolar disorder. Medications that target sleep or anxiety are sometimes added to mood stabilizers as part of a treatment plan.",
+      "translation_excerpt": "雙相情感障礙的憂鬱症通常會使用情緒穩定劑或非典型抗精神病藥物來治療。對於某些正在經歷憂鬱發作的人，醫生可能會在這些藥物之外，額外使用抗憂鬱藥物。然而，抗憂鬱藥物通常不會單獨使用，因為它們可能會引發躁狂發作或快速循環，這對患有雙相情感障礙的人來說是危險的。有時，針對睡眠或焦慮的藥物會被加入到情緒穩定劑的治療方案中。",
+      "source_excerpt_exact_in_material": true,
+      "translation_excerpt_exact_in_material": true,
+      "selected_error_count": 10,
+      "selected_critical_count": 7,
+      "evidence": [
+        {
+          "judge_slot": "judge-04",
+          "severity": "critical",
+          "type": "semantic_safety/qualification",
+          "confidence": 0.94,
+          "critical_flag": true,
+          "source_span": "antidepressants are not used alone",
+          "target_exact_quote": "通常不會單獨使用",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "“antidepressants are not used alone” states an unqualified medication safety restriction. Adding “通常” weakens it to a usual practice and implies exceptions."
+        },
+        {
+          "judge_slot": "judge-01",
+          "severity": "critical",
+          "type": "semantic_safety",
+          "confidence": 0.9,
+          "critical_flag": true,
+          "source_span": "antidepressants are not used alone",
+          "target_exact_quote": "通常不會單獨使用",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "antidepressants are not used alone; the target adds 通常, weakening an absolute medication-use restriction."
+        },
+        {
+          "judge_slot": "judge-04",
+          "severity": "minor",
+          "type": "terminology_locale",
+          "confidence": 0.96,
+          "critical_flag": true,
+          "source_span": "a manic episode",
+          "target_exact_quote": "躁狂發作",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "“a manic episode” is conventionally rendered as “躁症發作” in Taiwan; “躁狂發作” is less consistent with Taiwan clinical usage."
+        }
+      ],
+      "judge_review_only_note": null,
+      "interpretation": "judge-evidence-supported risk example; exact quote checks are reported and the annotation is not treated as human gold",
+      "image_ground_truth_status": "not_applicable_text_no_human_gold",
+      "why_zh": "原文說抗憂鬱劑「不單獨使用」，譯文加入「通常」，使原本的否定變成帶例外的一般敘述。這個限定語差異可由原文與譯文直接對照；此處只檢查忠實度，不提供用藥建議。",
+      "why_en": "The source says antidepressants “are not used alone”; the translation adds “usually,” softening the negation into a general tendency. This checks fidelity to the stimulus, not treatment advice."
+    }
+  },
+  "translategemma-4b": {
+    "better": {
+      "material_id": "text-14",
+      "track": "text",
+      "panel_mean": 100.0,
+      "panel_scores": {
+        "judge-01": 100.0,
+        "judge-02": 100.0,
+        "judge-03": 100.0,
+        "judge-04": 100.0,
+        "judge-05": 100.0
+      },
+      "source_excerpt": "Psychotherapy can be used as an alternative to or alongside medication and other treatment options. ",
+      "translation_excerpt": "心理治療可以作為藥物或其他治療方式的替代或輔助。",
+      "source_excerpt_exact_in_material": true,
+      "translation_excerpt_exact_in_material": true,
+      "selected_error_count": 0,
+      "selected_critical_count": 0,
+      "evidence": [],
+      "judge_review_only_note": null,
+      "interpretation": "comparatively strong proxy example; no selected error annotation was retained, but this is not a human gold proof",
+      "image_ground_truth_status": "not_applicable_text_no_human_gold",
+      "why_zh": "五位文字評審在這個案例給予高分，且未保留錯誤標註。摘錄保留原文的基本語意，但高分不等於經人工確認完全正確。",
+      "why_en": "The five text judges scored this case highly and retained no error annotation. The excerpt preserves the basic source meaning, but this is not a human-certified perfect translation."
+    },
+    "risk": {
+      "material_id": "text-18",
+      "track": "text",
+      "panel_mean": 51.6,
+      "panel_scores": {
+        "judge-01": 50.0,
+        "judge-02": 55.0,
+        "judge-03": 36.0,
+        "judge-04": 68.0,
+        "judge-05": 49.0
+      },
+      "source_excerpt": "Panic disorder is a type of anxiety disorder. It causes repeated panic attacks, which are sudden periods of intense fear, discomfort, or a sense of losing control. These attacks happen even though there is no real danger. They often cause physical symptoms. For example, you may have a rapid or pounding heartbeat and feel like you are having a heart attack.",
+      "translation_excerpt": "焦慮症是一種焦慮障礙的一種。它會導致重複發生的焦慮發作，這些發作是突然的、強烈的恐懼、不適或感到失去控制的狀態。這些發作即使在沒有實際危險的情況下也會發生。它們通常會引起身體上的症狀。例如，您可能會感到心跳加速或劇烈，甚至感覺像要中風。",
+      "source_excerpt_exact_in_material": true,
+      "translation_excerpt_exact_in_material": true,
+      "selected_error_count": 21,
+      "selected_critical_count": 21,
+      "evidence": [
+        {
+          "judge_slot": "judge-02",
+          "severity": "critical",
+          "type": "medical_term_error",
+          "confidence": 1.0,
+          "critical_flag": true,
+          "source_span": "having a heart attack",
+          "target_exact_quote": "中風",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "Source says 'feel like you are having a heart attack'; the target renders this as 中風 (stroke), a different and dangerous medical emergency."
+        },
+        {
+          "judge_slot": "judge-03",
+          "severity": "critical",
+          "type": "safety_critical",
+          "confidence": 1.0,
+          "critical_flag": true,
+          "source_span": "heart attack",
+          "target_exact_quote": "中風",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "heart attack — mistranslated as stroke (中風)"
+        },
+        {
+          "judge_slot": "judge-04",
+          "severity": "critical",
+          "type": "mistranslation",
+          "confidence": 1.0,
+          "critical_flag": true,
+          "source_span": "feel like you are having a heart attack",
+          "target_exact_quote": "中風",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "“Heart attack” is a cardiac event, whereas 中風 means stroke, substituting a different medical emergency."
+        }
+      ],
+      "judge_review_only_note": null,
+      "interpretation": "judge-evidence-supported risk example; exact quote checks are reported and the annotation is not treated as human gold",
+      "image_ground_truth_status": "not_applicable_text_no_human_gold",
+      "why_zh": "原文 heart attack 被譯成「中風」，把兩種不同事件混淆。這是可直接對照的術語錯誤，也是本模型較低分的實例；不能由單一案例推算整體錯誤率。",
+      "why_en": "“Heart attack” became “stroke” (中風), confusing two different events. This is a directly checkable terminology error, not an estimate of the overall error rate."
+    }
+  },
+  "gemma4-e4b": {
+    "better": {
+      "material_id": "text-01",
+      "track": "text",
+      "panel_mean": 100.0,
+      "panel_scores": {
+        "judge-01": 100.0,
+        "judge-02": 100.0,
+        "judge-03": 100.0,
+        "judge-04": 100.0,
+        "judge-05": 100.0
+      },
+      "source_excerpt": "Everyone feels sad or low sometimes, but these feelings usually pass. ",
+      "translation_excerpt": "每個人有時候都會感到悲傷或低落，但這些感覺通常會過去。",
+      "source_excerpt_exact_in_material": true,
+      "translation_excerpt_exact_in_material": true,
+      "selected_error_count": 0,
+      "selected_critical_count": 0,
+      "evidence": [],
+      "judge_review_only_note": null,
+      "interpretation": "comparatively strong proxy example; no selected error annotation was retained, but this is not a human gold proof",
+      "image_ground_truth_status": "not_applicable_text_no_human_gold",
+      "why_zh": "五位文字評審在這個案例給予高分，且未保留錯誤標註。摘錄保留原文的基本語意，但高分不等於經人工確認完全正確。",
+      "why_en": "The five text judges scored this case highly and retained no error annotation. The excerpt preserves the basic source meaning, but this is not a human-certified perfect translation."
+    },
+    "risk": {
+      "material_id": "text-19",
+      "track": "text",
+      "panel_mean": 75.2,
+      "panel_scores": {
+        "judge-01": 85.0,
+        "judge-02": 79.0,
+        "judge-03": 62.0,
+        "judge-04": 84.0,
+        "judge-05": 66.0
+      },
+      "source_excerpt": "But some of the people who have panic attacks do develop panic disorder. They have repeated panic attacks. The attacks can happen as often as several times a day or as rarely as a few times a year. People with panic disorder often worry about having another attack. It may cause them to avoid places and situations where they had panic attacks in the past.",
+      "translation_excerpt": "但有些有恐慌症的人會發展成恐慌障礙。他們會反覆發作恐慌症。這些發作可以一天發生好幾次，也可以一年只發生幾次。患有恐慌障礙的人通常會擔心再次發作。這可能會導致他們避免過去曾發作恐慌症的場所和情境。",
+      "source_excerpt_exact_in_material": true,
+      "translation_excerpt_exact_in_material": true,
+      "selected_error_count": 13,
+      "selected_critical_count": 6,
+      "evidence": [
+        {
+          "judge_slot": "judge-03",
+          "severity": "critical",
+          "type": "terminology_error",
+          "confidence": 1.0,
+          "critical_flag": true,
+          "source_span": "panic attacks",
+          "target_exact_quote": "恐慌症",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "Source 'panic attacks' must be '恐慌發作'; '恐慌症' denotes panic disorder, not attacks"
+        },
+        {
+          "judge_slot": "judge-03",
+          "severity": "critical",
+          "type": "terminology_error",
+          "confidence": 1.0,
+          "critical_flag": true,
+          "source_span": "repeated panic attacks",
+          "target_exact_quote": "恐慌症",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "Source 'repeated panic attacks' must be '反覆恐慌發作'; '反覆發作恐慌症' misrepresents attacks as disorder"
+        },
+        {
+          "judge_slot": "judge-02",
+          "severity": "critical",
+          "type": "terminology_mistranslation",
+          "confidence": 0.95,
+          "critical_flag": true,
+          "source_span": "people who have panic attacks",
+          "target_exact_quote": "有恐慌症的人",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "Source says people who have panic attacks (distinct from panic disorder); target renders panic attacks as 恐慌症 (panic disorder), conflating attack with disorder."
+        }
+      ],
+      "judge_review_only_note": null,
+      "interpretation": "judge-evidence-supported risk example; exact quote checks are reported and the annotation is not treated as human gold",
+      "image_ground_truth_status": "not_applicable_text_no_human_gold",
+      "why_zh": "原文談的是 panic attacks（恐慌發作），此處譯為「恐慌症」，把發作事件與疾病名稱混在一起。讀者應連同完整句子檢查；這不是對任何人的診斷。",
+      "why_en": "The source refers to panic attacks, while the excerpt uses the disorder name 恐慌症. Review the full sentence for the event-versus-disorder distinction; this is not a diagnosis."
+    }
+  },
+  "gemma4-12b": {
+    "better": {
+      "material_id": "text-01",
+      "track": "text",
+      "panel_mean": 100.0,
+      "panel_scores": {
+        "judge-01": 100.0,
+        "judge-02": 100.0,
+        "judge-03": 100.0,
+        "judge-04": 100.0,
+        "judge-05": 100.0
+      },
+      "source_excerpt": "Everyone feels sad or low sometimes, but these feelings usually pass. ",
+      "translation_excerpt": "每個人有時都會感到悲傷或低落，但這些感覺通常會過去。",
+      "source_excerpt_exact_in_material": true,
+      "translation_excerpt_exact_in_material": true,
+      "selected_error_count": 0,
+      "selected_critical_count": 0,
+      "evidence": [],
+      "judge_review_only_note": null,
+      "interpretation": "comparatively strong proxy example; no selected error annotation was retained, but this is not a human gold proof",
+      "image_ground_truth_status": "not_applicable_text_no_human_gold",
+      "why_zh": "五位文字評審在這個案例給予高分，且未保留錯誤標註。摘錄保留原文的基本語意，但高分不等於經人工確認完全正確。",
+      "why_en": "The five text judges scored this case highly and retained no error annotation. The excerpt preserves the basic source meaning, but this is not a human-certified perfect translation."
+    },
+    "risk": {
+      "material_id": "text-27",
+      "track": "text",
+      "panel_mean": 80.0,
+      "panel_scores": {
+        "judge-01": 78.0,
+        "judge-02": 90.0,
+        "judge-03": 68.0,
+        "judge-04": 82.0,
+        "judge-05": 82.0
+      },
+      "source_excerpt": "Suicide doesn’t have just one cause, and it can’t be prevented with just one solution. Preventing suicide requires understanding and addressing the factors that increase risk for suicide and suicidal behaviors, helping those at higher risk, and supporting survivors of suicide loss.",
+      "translation_excerpt": "自殺並非只有一個原因，也無法僅用一個解決方案來預防。預防自殺需要了解並處理增加自殺和自殺行為風險的因素，幫助高風險對象，並支持自殺受難者。",
+      "source_excerpt_exact_in_material": true,
+      "translation_excerpt_exact_in_material": true,
+      "selected_error_count": 6,
+      "selected_critical_count": 3,
+      "evidence": [
+        {
+          "judge_slot": "judge-03",
+          "severity": "critical",
+          "type": "meaning_error",
+          "confidence": 1.0,
+          "critical_flag": true,
+          "source_span": "survivors of suicide loss",
+          "target_exact_quote": "自殺受難者",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "\"survivors of suicide loss\" refers to people bereaved by suicide (e.g., family/friends), not suicide victims; mistranslation inverts the concept."
+        },
+        {
+          "judge_slot": "judge-04",
+          "severity": "critical",
+          "type": "mistranslation",
+          "confidence": 0.96,
+          "critical_flag": true,
+          "source_span": "survivors of suicide loss",
+          "target_exact_quote": "自殺受難者",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "'survivors of suicide loss' refers to people bereaved by another person's suicide. 自殺受難者 fails to convey bereavement and changes the identified recipients of support."
+        },
+        {
+          "judge_slot": "judge-01",
+          "severity": "critical",
+          "type": "semantic_safety",
+          "confidence": 0.86,
+          "critical_flag": true,
+          "source_span": "survivors of suicide loss",
+          "target_exact_quote": "自殺受難者",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "survivors of suicide loss refers to people bereaved by suicide, not suicide victims or sufferers."
+        }
+      ],
+      "judge_review_only_note": null,
+      "interpretation": "judge-evidence-supported risk example; exact quote checks are reported and the annotation is not treated as human gold",
+      "image_ground_truth_status": "not_applicable_text_no_human_gold",
+      "why_zh": "原文 survivors of suicide loss 指因自殺而失去親友的人；「自殺受難者」沒有清楚保留遺族／親友這層意思。評審指出指涉可能改變，適合作為人工複核案例。",
+      "why_en": "“Survivors of suicide loss” refers to people bereaved by suicide. 自殺受難者 does not clearly retain that referent. Judges flagged a possible shift in who is being described."
+    }
+  },
+  "gemma4-26b": {
+    "better": {
+      "material_id": "text-03",
+      "track": "text",
+      "panel_mean": 100.0,
+      "panel_scores": {
+        "judge-01": 100.0,
+        "judge-02": 100.0,
+        "judge-03": 100.0,
+        "judge-04": 100.0,
+        "judge-05": 100.0
+      },
+      "source_excerpt": "Depression treatment typically involves psychotherapy (in person or virtual), medication, or both. ",
+      "translation_excerpt": "憂鬱症的治療通常包括心理治療（面對面或遠距）、藥物治療，或兩者兼具。",
+      "source_excerpt_exact_in_material": true,
+      "translation_excerpt_exact_in_material": true,
+      "selected_error_count": 0,
+      "selected_critical_count": 0,
+      "evidence": [],
+      "judge_review_only_note": null,
+      "interpretation": "comparatively strong proxy example; no selected error annotation was retained, but this is not a human gold proof",
+      "image_ground_truth_status": "not_applicable_text_no_human_gold",
+      "why_zh": "五位文字評審在這個案例給予高分，且未保留錯誤標註。摘錄保留原文的基本語意，但高分不等於經人工確認完全正確。",
+      "why_en": "The five text judges scored this case highly and retained no error annotation. The excerpt preserves the basic source meaning, but this is not a human-certified perfect translation."
+    },
+    "risk": {
+      "material_id": "img-04",
+      "track": "image",
+      "panel_mean": 72.0,
+      "panel_scores": {
+        "judge-01": 76.0,
+        "judge-02": 73.0,
+        "judge-04": 80.0,
+        "judge-05": 59.0
+      },
+      "source_excerpt": "MEDICATION LABEL MOCKUP\nSYNTHETIC EVALUATION IMAGE — NOT A PRESCRIPTION\nSERTRALINE — TAKE 50 mg ONCE DAILY\nDo not change the dose or stop suddenly without medical advice.\nRecord nausea, sleep changes, and any urgent safety concern.\nSource cue: medication-safety wording is benchmark-authored.\nSynthetic image for translation/OCR evaluation • no real patient data • no endorsement",
+      "translation_excerpt": "藥物標籤模擬圖\n合成評估圖像 — 非處方箋\n\nSETRALINE — 每日一次，每次 50 mg\n\n請勿在未諮詢醫療建議的情況下更改劑量或突然停藥。\n\n請記錄噁心、睡眠變化以及任何緊急安全問題。\n\n來源提示：藥物安全用詞為基準作者編寫。\n\n用於翻譯/OCR 評估的合成圖像 • 無真實患者數據 • 無背書",
+      "source_excerpt_exact_in_material": true,
+      "translation_excerpt_exact_in_material": true,
+      "selected_error_count": 9,
+      "selected_critical_count": 9,
+      "evidence": [
+        {
+          "judge_slot": "judge-02",
+          "severity": "critical",
+          "type": "medication_name_error",
+          "confidence": 1.0,
+          "critical_flag": true,
+          "source_span": "SERTRALINE",
+          "target_exact_quote": "SETRALINE",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "The image header reads 'SERTRALINE — TAKE 50 mg ONCE DAILY'; the candidate writes 'SETRALINE', dropping the 'R' and producing an incorrect/non-existent medication name."
+        },
+        {
+          "judge_slot": "judge-04",
+          "severity": "critical",
+          "type": "medication_name",
+          "confidence": 1.0,
+          "critical_flag": true,
+          "source_span": "SERTRALINE",
+          "target_exact_quote": "SETRALINE",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "The visible medication name is “SERTRALINE”; the target omits its first R, incorrectly reproducing the drug name."
+        },
+        {
+          "judge_slot": "judge-01",
+          "severity": "major",
+          "type": "semantic_safety",
+          "confidence": 0.8,
+          "critical_flag": true,
+          "source_span": "NOT A PRESCRIPTION",
+          "target_exact_quote": "非處方箋",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "Visible disclaimer cue says NOT A PRESCRIPTION; the candidate wording can imply a non-prescription/OTC item rather than stating that the image is not a prescription."
+        }
+      ],
+      "judge_review_only_note": null,
+      "interpretation": "judge-evidence-supported risk example; exact quote checks are reported and the annotation is not treated as human gold",
+      "image_ground_truth_status": "authored_rendered_text; complete visible English labels; not a prescription",
+      "why_zh": "原圖藥名 SERTRALINE 被抄成 SETRALINE，少了一個 R。四位圖片評審都提出藥名問題，原圖與輸出也可直接核對。這張是自製模擬藥袋，非真實處方；高文字平均分不保證圖片中的重要文字不出錯。",
+      "why_en": "The image reads SERTRALINE, but the output reads SETRALINE, dropping one R. All four image judges flagged the drug name, and the source image supports the observation. This is a synthetic label, not a real prescription; a high text average does not guarantee correct image text."
+    }
+  },
+  "gemma4-31b-qat": {
+    "better": {
+      "material_id": "text-01",
+      "track": "text",
+      "panel_mean": 100.0,
+      "panel_scores": {
+        "judge-01": 100.0,
+        "judge-02": 100.0,
+        "judge-03": 100.0,
+        "judge-04": 100.0,
+        "judge-05": 100.0
+      },
+      "source_excerpt": "Everyone feels sad or low sometimes, but these feelings usually pass. ",
+      "translation_excerpt": "每個人有時都會感到悲傷或低落，但這些感覺通常會消失。",
+      "source_excerpt_exact_in_material": true,
+      "translation_excerpt_exact_in_material": true,
+      "selected_error_count": 0,
+      "selected_critical_count": 0,
+      "evidence": [],
+      "judge_review_only_note": null,
+      "interpretation": "comparatively strong proxy example; no selected error annotation was retained, but this is not a human gold proof",
+      "image_ground_truth_status": "not_applicable_text_no_human_gold",
+      "why_zh": "五位文字評審在這個案例給予高分，且未保留錯誤標註。摘錄保留原文的基本語意，但高分不等於經人工確認完全正確。",
+      "why_en": "The five text judges scored this case highly and retained no error annotation. The excerpt preserves the basic source meaning, but this is not a human-certified perfect translation."
+    },
+    "risk": {
+      "material_id": "text-12",
+      "track": "text",
+      "panel_mean": 95.8,
+      "panel_scores": {
+        "judge-01": 96.0,
+        "judge-02": 98.0,
+        "judge-03": 100.0,
+        "judge-04": 92.0,
+        "judge-05": 93.0
+      },
+      "source_excerpt": "Psychotic symptoms include changes in the way a person thinks, acts, and experiences the world. A person experiencing psychotic symptoms often has disrupted thoughts and perceptions, and they may have difficulty recognizing what is real and what is not. For some people, these symptoms come and go. For others, the symptoms become stable over time. Psychotic symptoms include hallucinations, delusions, and thought disorder.",
+      "translation_excerpt": "精神病症狀包括一個人思考、行動以及體驗世界方式的改變。經歷精神病症狀的人通常會有思考與感知中斷的情況，且他們可能難以分辨什麼是真實的，什麼不是。對某些人而言，這些症狀會反覆出現。對其他人而言，這些症狀隨著時間會變得穩定。精神病症狀包括幻覺、妄想以及思考障礙。",
+      "source_excerpt_exact_in_material": true,
+      "translation_excerpt_exact_in_material": true,
+      "selected_error_count": 3,
+      "selected_critical_count": 0,
+      "evidence": [
+        {
+          "judge_slot": "judge-04",
+          "severity": "major",
+          "type": "mistranslation",
+          "confidence": 0.97,
+          "critical_flag": false,
+          "source_span": "disrupted thoughts and perceptions",
+          "target_exact_quote": "中斷",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "“disrupted thoughts and perceptions” 指思考與知覺受到干擾或紊亂，譯為「中斷」則變成思考與感知停止，改變了症狀的意義。"
+        },
+        {
+          "judge_slot": "judge-05",
+          "severity": "minor",
+          "type": "mistranslation",
+          "confidence": 0.85,
+          "critical_flag": false,
+          "source_span": "disrupted",
+          "target_exact_quote": "中斷",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "In  the  phrase  'disrupted  thoughts  and  perceptions',  'disrupted'  refers  to  disturbed,  disorganized,  or  impaired  thinking  and  perception;  translating  it  as  '中斷'  (interrupted/ceased)  suggests  perception  stops  rather  than  becomes  distorted  or  disordered."
+        },
+        {
+          "judge_slot": "judge-01",
+          "severity": "minor",
+          "type": "fluency",
+          "confidence": 0.8,
+          "critical_flag": false,
+          "source_span": "experiences the world",
+          "target_exact_quote": "體驗世界方式的改變",
+          "source_span_exact_in_material": true,
+          "target_quote_exact_in_translation": true,
+          "source_evidence": "Source says \"experiences the world\"; the target phrase is understandable but slightly awkward without a clearer modifier structure."
+        }
+      ],
+      "judge_review_only_note": null,
+      "interpretation": "judge-evidence-supported risk example; exact quote checks are reported and the annotation is not treated as human gold",
+      "image_ground_truth_status": "not_applicable_text_no_human_gold",
+      "why_zh": "原文 disrupted thoughts and perceptions 描述思考與知覺受干擾或紊亂；「中斷」可能使讀者理解成停止。這是 GPT 評審提出的語意疑義，與整體高分並不矛盾；仍應由專業讀者複核。",
+      "why_en": "The source describes disrupted thoughts and perceptions; 中斷 can suggest that they stop. GPT flagged this possible meaning shift. A local concern can coexist with a high overall mean and still warrants expert review."
+    }
+  }
+}

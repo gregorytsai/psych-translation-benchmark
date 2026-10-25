@@ -1,0 +1,23 @@
+Psychology and mental-health English-to-Traditional-Chinese benchmark
+Public snapshot: 2026-10-25
+
+Gemma is provided under and subject to the Gemma Terms of Use found at ai.google.dev/gemma/terms
+
+This notice accompanies the archived TranslateGemma/Gemma 3 templates.
+See licenses/GEMMA_TERMS_OF_USE.txt and licenses/NOTICE.md. The custom
+English-to-zh-TW service adapter is a project modification, not the official
+unmodified Google prompt interface. Model weights are not distributed.
+
+Gemma 4 upstream/model terms are Apache 2.0 and recorded separately in
+licenses/APACHE-2.0.txt and licenses/GEMMA4_APACHE-2.0.txt. Archived third-party
+templates and source code are not relicensed by the website's MIT license.
+
+All archived source files whose local workstation roots were replaced with
+generic /benchmark paths are identified, with original and public SHA-256,
+in docs/data/source_file_provenance.json. Their scoring logic and measured
+translation content were not rewritten for publication.
+
+WHO image materials and their translations are CC BY-NC-SA 3.0 IGO.
+See docs/materials/RIGHTS.md for attribution and the mandatory unofficial
+translation disclaimer. US federal source texts and original synthetic cards
+have separate rights notices. No source institution endorses this project.

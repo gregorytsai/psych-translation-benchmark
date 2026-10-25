@@ -1,0 +1,192 @@
+{
+  "$id": "pointwise_result.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "ok"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "abstain": {
+            "const": false
+          },
+          "score_0_100": {
+            "type": "integer"
+          },
+          "subscores": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "blocked",
+              "missing"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "abstain": {
+            "const": true
+          },
+          "block_reason": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "critical": {
+            "const": false
+          },
+          "errors": {
+            "maxItems": 0
+          },
+          "score_0_100": {
+            "const": null
+          },
+          "subscores": {
+            "const": null
+          }
+        },
+        "required": [
+          "block_reason"
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "abstain": {
+      "type": "boolean"
+    },
+    "blind_id": {
+      "pattern": "^b-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "block_reason": {
+      "type": "string"
+    },
+    "critical": {
+      "type": "boolean"
+    },
+    "errors": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "confidence": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number"
+          },
+          "severity": {
+            "enum": [
+              "minor",
+              "major",
+              "critical"
+            ],
+            "type": "string"
+          },
+          "source_evidence": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_span": {
+            "type": "string"
+          },
+          "target_anchor": {
+            "type": "string"
+          },
+          "target_exact_quote": {
+            "type": "string"
+          },
+          "type": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "severity",
+          "type",
+          "target_exact_quote",
+          "source_evidence",
+          "source_span",
+          "target_anchor",
+          "confidence"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "score_0_100": {
+      "maximum": 100,
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "blocked",
+        "missing"
+      ],
+      "type": "string"
+    },
+    "subscores": {
+      "additionalProperties": false,
+      "properties": {
+        "completeness_format": {
+          "maximum": 20,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "fluency": {
+          "maximum": 20,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "semantic_safety": {
+          "maximum": 30,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "terminology_locale": {
+          "maximum": 30,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "terminology_locale",
+        "semantic_safety",
+        "fluency",
+        "completeness_format"
+      ],
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "blind_id",
+    "status",
+    "abstain",
+    "score_0_100",
+    "subscores",
+    "critical",
+    "errors"
+  ],
+  "title": "New-material pointwise judge result",
+  "type": "object"
+}

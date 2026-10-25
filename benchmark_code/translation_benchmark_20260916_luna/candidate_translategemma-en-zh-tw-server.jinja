@@ -1,0 +1,90 @@
+{#
+  TranslateGemma OpenAI/llama.cpp adapter.
+
+  The official Google template takes source_lang_code and target_lang_code in
+  each user content item.  llama.cpp's OpenAI parser intentionally normalizes
+  content parts to {type,text} before running Jinja, so those two fields do not
+  survive /v1/chat/completions.  This deployment template therefore fixes the
+  tested service contract to English -> Traditional Chinese (zh-TW), while
+  preserving llama.cpp's media_marker for image requests.  In this llama.cpp
+  release a message containing media is serialized as a string containing the
+  marker, so the string branch detects <__media_...__> as well as the typed
+  fallback.
+#}
+{{- bos_token -}}
+{%- if messages is none or messages | length == 0 -%}
+    {{ raise_exception("At least one user message is required.") }}
+{%- endif -%}
+{%- if messages[0]['role'] != 'user' -%}
+    {{ raise_exception("Conversations must start with a user prompt.") }}
+{%- endif -%}
+{%- for message in messages -%}
+    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}
+        {{ raise_exception("Conversation roles must alternate user/assistant/user/assistant/....") }}
+    {%- endif -%}
+    {%- if message['role'] == 'assistant' -%}
+        {{- '<start_of_turn>model\n' -}}
+        {%- if message['content'] is string -%}
+            {{- message['content'] | trim -}}
+        {%- elif message['content'] is iterable and message['content'] is not string -%}
+            {%- for part in message['content'] -%}
+                {%- if part['type'] == 'text' -%}
+                    {{- part['text'] | trim -}}
+                {%- elif part['type'] != 'media_marker' -%}
+                    {{ raise_exception("Assistant content only supports text parts.") }}
+                {%- endif -%}
+            {%- endfor -%}
+        {%- elif message['content'] is not none -%}
+            {{ raise_exception("Assistant content must be a string or text parts.") }}
+        {%- endif -%}
+    {%- elif message['role'] == 'user' -%}
+        {%- set data = namespace(text='', marker='', has_image=false) -%}
+        {# Exercise one indexed access even for the string probe.  llama.cpp
+           uses that operation to discover that this template accepts typed
+           content; without it the server concatenates image markers. #}
+        {%- set content_probe = message['content'][0] if message['content'] is not none and message['content'] | length > 0 else none -%}
+        {%- if message['content'] is string -%}
+            {%- set data.text = message['content'] -%}
+            {%- if '<__media_' in data.text or '<__media__>' in data.text -%}
+                {%- set data.has_image = true -%}
+                {%- set data.marker = data.text -%}
+            {%- endif -%}
+        {%- elif message['content'] is iterable and message['content'] is not string -%}
+            {# The indexed access is intentional: llama.cpp's capability
+               detector uses it to retain typed content arrays (and thus
+               preserve media_marker instead of concatenating it to text). #}
+            {%- if message['content'] | length > 0 -%}
+                {%- set first_part = message['content'][0] -%}
+            {%- endif -%}
+            {%- for part in message['content'] -%}
+                {%- if part['type'] == 'text' -%}
+                    {%- if part['text'] is not string -%}
+                        {{ raise_exception("Text content parts must contain a string text field.") }}
+                    {%- endif -%}
+                    {%- set data.text = data.text + part['text'] -%}
+                {%- elif part['type'] == 'media_marker' -%}
+                    {%- set data.has_image = true -%}
+                    {%- set data.marker = part['text'] -%}
+                {%- else -%}
+                    {{ raise_exception("Unsupported content part; use text or image_url.") }}
+                {%- endif -%}
+            {%- endfor -%}
+        {%- elif message['content'] is not none -%}
+            {{ raise_exception("User content must be a string or content parts.") }}
+        {%- endif -%}
+        {{- '<start_of_turn>user\nYou are a professional English (en) to Chinese (zh-TW) translator. Your goal is to accurately convey the meaning and nuances of the original English text while adhering to Chinese grammar, vocabulary, and cultural sensitivities. Use Taiwan Traditional Chinese characters exclusively; do not output Simplified Chinese characters.\n' -}}
+        {%- if data.has_image -%}
+            {{- 'Please translate the English (en) text in the provided image into Chinese (zh-TW). Produce only the Chinese translation, without any additional explanations, alternatives or commentary. Focus only on the text, do not output where the text is located, surrounding objects or any other explanation about the picture. Ignore symbols, pictogram, and arrows!\n\n\n' -}}
+            {{- data.marker -}}
+        {%- else -%}
+            {{- 'Produce only the Chinese translation, without any additional explanations or commentary. Please translate the following English text into Chinese (zh-TW):\n\n\n' -}}
+            {{- data.text | trim -}}
+        {%- endif -%}
+    {%- else -%}
+        {{ raise_exception("Conversations must only contain user or assistant roles.") }}
+    {%- endif -%}
+    {{- '<end_of_turn>\n' -}}
+{%- endfor -%}
+{%- if add_generation_prompt -%}
+    {{- '<start_of_turn>model\n' -}}
+{%- endif -%}

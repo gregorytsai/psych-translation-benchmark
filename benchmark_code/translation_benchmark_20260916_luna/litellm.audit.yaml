@@ -1,0 +1,55 @@
+# Candidate-only LiteLLM proxy configuration.  This file is not wired to the
+# running proxy.  Replace llama-server with the service DNS name reachable by
+# the LiteLLM container/host, and set a real proxy master_key before use.
+#
+# llama.cpp owns chat-template rendering.  LiteLLM and Open WebUI must forward
+# messages, never pre-render <start_of_turn>, <|turn>, or other model markers.
+
+model_list:
+  - model_name: translategemma-4b-en-zh-tw
+    litellm_params:
+      model: openai/translategemma-4b-en-zh-tw
+      api_base: http://llama-server:8080/v1
+      api_key: sk-llama-local
+      supports_system_message: false
+
+  - model_name: translategemma-12b-en-zh-tw
+    litellm_params:
+      model: openai/translategemma-12b-en-zh-tw
+      api_base: http://llama-server:8080/v1
+      api_key: sk-llama-local
+      supports_system_message: false
+
+  - model_name: translategemma-27b-en-zh-tw
+    litellm_params:
+      model: openai/translategemma-27b-en-zh-tw
+      api_base: http://llama-server:8080/v1
+      api_key: sk-llama-local
+      supports_system_message: false
+
+  - model_name: gemma-4-e4b
+    litellm_params:
+      model: openai/gemma-4-e4b
+      api_base: http://llama-server:8080/v1
+      api_key: sk-llama-local
+
+  - model_name: gemma-4-12b
+    litellm_params:
+      model: openai/gemma-4-12b
+      api_base: http://llama-server:8080/v1
+      api_key: sk-llama-local
+
+general_settings:
+  master_key: sk-litellm-change-me
+
+# Operational notes:
+# - The three TranslateGemma aliases are fixed English -> zh-TW by the
+#   candidate llama.cpp Jinja adapter; OAI content normalization drops the
+#   official source_lang_code/target_lang_code fields.
+# - For Gemma 4, pass reasoning_format=deepseek (the candidate llama.cpp
+#   presets do this) and do not use reasoning_format=none with Gemma4 12B.
+# - Set api_key to the value accepted by llama-server if --api-key is enabled.
+#   The current local server has no API key and ignores this upstream header.
+# - If Open WebUI sends unsupported optional parameters, add drop_params: true
+#   only after confirming the resulting request; do not use it to hide template
+#   or multimodal errors.

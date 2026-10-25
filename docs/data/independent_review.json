@@ -1,0 +1,1022 @@
+{
+  "source_counts": {
+    "rows": 238,
+    "models": 7,
+    "case_ids": 34,
+    "text_rows": 210,
+    "image_rows": 28,
+    "status_counts": {
+      "ok": 238
+    },
+    "duplicate_model_case_keys": 0,
+    "source_csv_available": true
+  },
+  "comparison_counts": {
+    "rows": 238,
+    "models": 7,
+    "text_rows": 210,
+    "image_rows": 28,
+    "panel_complete_rows": 237,
+    "panel_incomplete_rows": 1
+  },
+  "common_sets": {
+    "text": {
+      "eligible_items": [
+        "text-01",
+        "text-02",
+        "text-03",
+        "text-04",
+        "text-05",
+        "text-06",
+        "text-07",
+        "text-08",
+        "text-09",
+        "text-10",
+        "text-11",
+        "text-12",
+        "text-13",
+        "text-14",
+        "text-16",
+        "text-17",
+        "text-18",
+        "text-19",
+        "text-20",
+        "text-21",
+        "text-22",
+        "text-23",
+        "text-24",
+        "text-25",
+        "text-26",
+        "text-27",
+        "text-28",
+        "text-29",
+        "text-30"
+      ],
+      "eligible_count": 29,
+      "excluded_items": [
+        "text-15"
+      ]
+    },
+    "image": {
+      "eligible_items": [
+        "img-01",
+        "img-04",
+        "img-09",
+        "img-10"
+      ],
+      "eligible_count": 4,
+      "excluded_items": []
+    }
+  },
+  "model_metrics": [
+    {
+      "track": "text",
+      "model_id": "translategemma-27b",
+      "model_name": "TranslateGemma 27B",
+      "material_units": 30,
+      "panel_required_k": 5,
+      "panel_complete_units": 30,
+      "valid_judge_cells": 150,
+      "expected_judge_cells": 150,
+      "coverage_fraction": 1.0,
+      "observed_panel_mean": 96.54,
+      "observed_panel_median": 98.69999999999999,
+      "critical_flag_cells": 8,
+      "critical_review_units_1ofk": 3,
+      "critical_fail_units_2plusofk": 2,
+      "translation_untranslated_visible_english_units": 0,
+      "common_case_items": 29,
+      "common_case_panel_mean": 96.53793103448275
+    },
+    {
+      "track": "text",
+      "model_id": "translategemma-12b",
+      "model_name": "TranslateGemma 12B",
+      "material_units": 30,
+      "panel_required_k": 5,
+      "panel_complete_units": 30,
+      "valid_judge_cells": 150,
+      "expected_judge_cells": 150,
+      "coverage_fraction": 1.0,
+      "observed_panel_mean": 95.64,
+      "observed_panel_median": 97.3,
+      "critical_flag_cells": 6,
+      "critical_review_units_1ofk": 4,
+      "critical_fail_units_2plusofk": 1,
+      "translation_untranslated_visible_english_units": 0,
+      "common_case_items": 29,
+      "common_case_panel_mean": 95.62068965517241
+    },
+    {
+      "track": "text",
+      "model_id": "translategemma-4b",
+      "model_name": "TranslateGemma 4B",
+      "material_units": 30,
+      "panel_required_k": 5,
+      "panel_complete_units": 29,
+      "valid_judge_cells": 149,
+      "expected_judge_cells": 150,
+      "coverage_fraction": 0.9933333333333333,
+      "observed_panel_mean": 92.26206896551724,
+      "observed_panel_median": 94.8,
+      "critical_flag_cells": 16,
+      "critical_review_units_1ofk": 4,
+      "critical_fail_units_2plusofk": 4,
+      "translation_untranslated_visible_english_units": 0,
+      "common_case_items": 29,
+      "common_case_panel_mean": 92.26206896551724
+    },
+    {
+      "track": "text",
+      "model_id": "gemma4-e4b",
+      "model_name": "Gemma 4 E4B",
+      "material_units": 30,
+      "panel_required_k": 5,
+      "panel_complete_units": 30,
+      "valid_judge_cells": 150,
+      "expected_judge_cells": 150,
+      "coverage_fraction": 1.0,
+      "observed_panel_mean": 95.18,
+      "observed_panel_median": 97.6,
+      "critical_flag_cells": 8,
+      "critical_review_units_1ofk": 3,
+      "critical_fail_units_2plusofk": 2,
+      "translation_untranslated_visible_english_units": 0,
+      "common_case_items": 29,
+      "common_case_panel_mean": 95.37241379310345
+    },
+    {
+      "track": "text",
+      "model_id": "gemma4-12b",
+      "model_name": "Gemma 4 12B",
+      "material_units": 30,
+      "panel_required_k": 5,
+      "panel_complete_units": 30,
+      "valid_judge_cells": 150,
+      "expected_judge_cells": 150,
+      "coverage_fraction": 1.0,
+      "observed_panel_mean": 97.22666666666666,
+      "observed_panel_median": 98.6,
+      "critical_flag_cells": 3,
+      "critical_review_units_1ofk": 0,
+      "critical_fail_units_2plusofk": 1,
+      "translation_untranslated_visible_english_units": 0,
+      "common_case_items": 29,
+      "common_case_panel_mean": 97.20689655172414
+    },
+    {
+      "track": "text",
+      "model_id": "gemma4-26b",
+      "model_name": "Gemma 4 26B",
+      "material_units": 30,
+      "panel_required_k": 5,
+      "panel_complete_units": 30,
+      "valid_judge_cells": 150,
+      "expected_judge_cells": 150,
+      "coverage_fraction": 1.0,
+      "observed_panel_mean": 98.64666666666666,
+      "observed_panel_median": 99.2,
+      "critical_flag_cells": 0,
+      "critical_review_units_1ofk": 0,
+      "critical_fail_units_2plusofk": 0,
+      "translation_untranslated_visible_english_units": 0,
+      "common_case_items": 29,
+      "common_case_panel_mean": 98.61379310344827
+    },
+    {
+      "track": "text",
+      "model_id": "gemma4-31b-qat",
+      "model_name": "Gemma 4 31B QAT",
+      "material_units": 30,
+      "panel_required_k": 5,
+      "panel_complete_units": 30,
+      "valid_judge_cells": 150,
+      "expected_judge_cells": 150,
+      "coverage_fraction": 1.0,
+      "observed_panel_mean": 98.56666666666666,
+      "observed_panel_median": 99.2,
+      "critical_flag_cells": 0,
+      "critical_review_units_1ofk": 0,
+      "critical_fail_units_2plusofk": 0,
+      "translation_untranslated_visible_english_units": 0,
+      "common_case_items": 29,
+      "common_case_panel_mean": 98.53103448275861
+    },
+    {
+      "track": "image",
+      "model_id": "translategemma-27b",
+      "model_name": "TranslateGemma 27B",
+      "material_units": 4,
+      "panel_required_k": 4,
+      "panel_complete_units": 4,
+      "valid_judge_cells": 16,
+      "expected_judge_cells": 16,
+      "coverage_fraction": 1.0,
+      "observed_panel_mean": 83.9375,
+      "observed_panel_median": 84.375,
+      "critical_flag_cells": 5,
+      "critical_review_units_1ofk": 0,
+      "critical_fail_units_2plusofk": 2,
+      "translation_untranslated_visible_english_units": 0,
+      "common_case_items": 4,
+      "common_case_panel_mean": 83.9375
+    },
+    {
+      "track": "image",
+      "model_id": "translategemma-12b",
+      "model_name": "TranslateGemma 12B",
+      "material_units": 4,
+      "panel_required_k": 4,
+      "panel_complete_units": 4,
+      "valid_judge_cells": 16,
+      "expected_judge_cells": 16,
+      "coverage_fraction": 1.0,
+      "observed_panel_mean": 83.75,
+      "observed_panel_median": 81.0,
+      "critical_flag_cells": 6,
+      "critical_review_units_1ofk": 0,
+      "critical_fail_units_2plusofk": 2,
+      "translation_untranslated_visible_english_units": 0,
+      "common_case_items": 4,
+      "common_case_panel_mean": 83.75
+    },
+    {
+      "track": "image",
+      "model_id": "translategemma-4b",
+      "model_name": "TranslateGemma 4B",
+      "material_units": 4,
+      "panel_required_k": 4,
+      "panel_complete_units": 4,
+      "valid_judge_cells": 16,
+      "expected_judge_cells": 16,
+      "coverage_fraction": 1.0,
+      "observed_panel_mean": 76.625,
+      "observed_panel_median": 86.625,
+      "critical_flag_cells": 4,
+      "critical_review_units_1ofk": 0,
+      "critical_fail_units_2plusofk": 1,
+      "translation_untranslated_visible_english_units": 0,
+      "common_case_items": 4,
+      "common_case_panel_mean": 76.625
+    },
+    {
+      "track": "image",
+      "model_id": "gemma4-e4b",
+      "model_name": "Gemma 4 E4B",
+      "material_units": 4,
+      "panel_required_k": 4,
+      "panel_complete_units": 4,
+      "valid_judge_cells": 16,
+      "expected_judge_cells": 16,
+      "coverage_fraction": 1.0,
+      "observed_panel_mean": 83.875,
+      "observed_panel_median": 85.375,
+      "critical_flag_cells": 4,
+      "critical_review_units_1ofk": 1,
+      "critical_fail_units_2plusofk": 1,
+      "translation_untranslated_visible_english_units": 0,
+      "common_case_items": 4,
+      "common_case_panel_mean": 83.875
+    },
+    {
+      "track": "image",
+      "model_id": "gemma4-12b",
+      "model_name": "Gemma 4 12B",
+      "material_units": 4,
+      "panel_required_k": 4,
+      "panel_complete_units": 4,
+      "valid_judge_cells": 16,
+      "expected_judge_cells": 16,
+      "coverage_fraction": 1.0,
+      "observed_panel_mean": 91.25,
+      "observed_panel_median": 90.5,
+      "critical_flag_cells": 3,
+      "critical_review_units_1ofk": 0,
+      "critical_fail_units_2plusofk": 1,
+      "translation_untranslated_visible_english_units": 0,
+      "common_case_items": 4,
+      "common_case_panel_mean": 91.25
+    },
+    {
+      "track": "image",
+      "model_id": "gemma4-26b",
+      "model_name": "Gemma 4 26B",
+      "material_units": 4,
+      "panel_required_k": 4,
+      "panel_complete_units": 4,
+      "valid_judge_cells": 16,
+      "expected_judge_cells": 16,
+      "coverage_fraction": 1.0,
+      "observed_panel_mean": 88.0625,
+      "observed_panel_median": 90.125,
+      "critical_flag_cells": 6,
+      "critical_review_units_1ofk": 0,
+      "critical_fail_units_2plusofk": 2,
+      "translation_untranslated_visible_english_units": 0,
+      "common_case_items": 4,
+      "common_case_panel_mean": 88.0625
+    },
+    {
+      "track": "image",
+      "model_id": "gemma4-31b-qat",
+      "model_name": "Gemma 4 31B QAT",
+      "material_units": 4,
+      "panel_required_k": 4,
+      "panel_complete_units": 4,
+      "valid_judge_cells": 16,
+      "expected_judge_cells": 16,
+      "coverage_fraction": 1.0,
+      "observed_panel_mean": 92.6875,
+      "observed_panel_median": 92.125,
+      "critical_flag_cells": 0,
+      "critical_review_units_1ofk": 0,
+      "critical_fail_units_2plusofk": 0,
+      "translation_untranslated_visible_english_units": 1,
+      "common_case_items": 4,
+      "common_case_panel_mean": 92.6875
+    }
+  ],
+  "speed_metrics": [
+    {
+      "model_id": "translategemma-27b",
+      "track": "text",
+      "cases": 30,
+      "elapsed_median_s": 3.849635291378945,
+      "elapsed_p95_s": 5.667886986024678,
+      "generation_tok_s_median": 22.68923448359024,
+      "generation_tok_s_mean": 22.697137883673626,
+      "completion_tokens": 2263,
+      "speed_provenance": "source translation_results.csv"
+    },
+    {
+      "model_id": "translategemma-27b",
+      "track": "image",
+      "cases": 4,
+      "elapsed_median_s": 5.324288041796535,
+      "elapsed_p95_s": 13.523897056467831,
+      "generation_tok_s_median": 22.523156630129385,
+      "generation_tok_s_mean": 22.52122803290713,
+      "completion_tokens": 493,
+      "speed_provenance": "source translation_results.csv"
+    },
+    {
+      "model_id": "translategemma-12b",
+      "track": "text",
+      "cases": 30,
+      "elapsed_median_s": 1.8497860829811543,
+      "elapsed_p95_s": 2.6635572934523224,
+      "generation_tok_s_median": 46.53900585504725,
+      "generation_tok_s_mean": 46.53891671238998,
+      "completion_tokens": 2252,
+      "speed_provenance": "source translation_results.csv"
+    },
+    {
+      "model_id": "translategemma-12b",
+      "track": "image",
+      "cases": 4,
+      "elapsed_median_s": 3.0725360007490963,
+      "elapsed_p95_s": 6.416985537367873,
+      "generation_tok_s_median": 46.41998746355499,
+      "generation_tok_s_mean": 46.458403850357115,
+      "completion_tokens": 535,
+      "speed_provenance": "source translation_results.csv"
+    },
+    {
+      "model_id": "translategemma-4b",
+      "track": "text",
+      "cases": 30,
+      "elapsed_median_s": 0.7589084373321384,
+      "elapsed_p95_s": 1.015339929307811,
+      "generation_tok_s_median": 110.27634754701,
+      "generation_tok_s_mean": 110.25334498267168,
+      "completion_tokens": 2162,
+      "speed_provenance": "source translation_results.csv"
+    },
+    {
+      "model_id": "translategemma-4b",
+      "track": "image",
+      "cases": 4,
+      "elapsed_median_s": 1.3758016875945032,
+      "elapsed_p95_s": 2.5222320838598535,
+      "generation_tok_s_median": 109.98161833562895,
+      "generation_tok_s_mean": 110.00058605852371,
+      "completion_tokens": 453,
+      "speed_provenance": "source translation_results.csv"
+    },
+    {
+      "model_id": "gemma4-e4b",
+      "track": "text",
+      "cases": 30,
+      "elapsed_median_s": 0.7511078959796578,
+      "elapsed_p95_s": 1.0329547411995008,
+      "generation_tok_s_median": 102.8171121436055,
+      "generation_tok_s_mean": 102.79487659823619,
+      "completion_tokens": 2031,
+      "speed_provenance": "source translation_results.csv"
+    },
+    {
+      "model_id": "gemma4-e4b",
+      "track": "image",
+      "cases": 4,
+      "elapsed_median_s": 1.4453568544704467,
+      "elapsed_p95_s": 3.3590590332867576,
+      "generation_tok_s_median": 101.77449749987785,
+      "generation_tok_s_mean": 101.67832817013601,
+      "completion_tokens": 494,
+      "speed_provenance": "source translation_results.csv"
+    },
+    {
+      "model_id": "gemma4-12b",
+      "track": "text",
+      "cases": 30,
+      "elapsed_median_s": 1.248187145916745,
+      "elapsed_p95_s": 1.660931018507108,
+      "generation_tok_s_median": 65.91726452841476,
+      "generation_tok_s_mean": 65.87650610736281,
+      "completion_tokens": 2088,
+      "speed_provenance": "source translation_results.csv"
+    },
+    {
+      "model_id": "gemma4-12b",
+      "track": "image",
+      "cases": 4,
+      "elapsed_median_s": 2.2390222914982587,
+      "elapsed_p95_s": 5.537898025033064,
+      "generation_tok_s_median": 64.75152635040394,
+      "generation_tok_s_mean": 64.50355627507207,
+      "completion_tokens": 534,
+      "speed_provenance": "source translation_results.csv"
+    },
+    {
+      "model_id": "gemma4-26b",
+      "track": "text",
+      "cases": 30,
+      "elapsed_median_s": 0.6864462704397738,
+      "elapsed_p95_s": 0.9337632462149486,
+      "generation_tok_s_median": 121.50495000110969,
+      "generation_tok_s_mean": 121.42511505740728,
+      "completion_tokens": 2108,
+      "speed_provenance": "source translation_results.csv"
+    },
+    {
+      "model_id": "gemma4-26b",
+      "track": "image",
+      "cases": 4,
+      "elapsed_median_s": 1.9447838754858822,
+      "elapsed_p95_s": 4.165050876652822,
+      "generation_tok_s_median": 119.72231634165908,
+      "generation_tok_s_mean": 119.13694401179227,
+      "completion_tokens": 547,
+      "speed_provenance": "source translation_results.csv"
+    },
+    {
+      "model_id": "gemma4-31b-qat",
+      "track": "text",
+      "cases": 30,
+      "elapsed_median_s": 2.5113135632127523,
+      "elapsed_p95_s": 3.516642273007892,
+      "generation_tok_s_median": 31.894461643250718,
+      "generation_tok_s_mean": 31.882707665204915,
+      "completion_tokens": 2053,
+      "speed_provenance": "source translation_results.csv"
+    },
+    {
+      "model_id": "gemma4-31b-qat",
+      "track": "image",
+      "cases": 4,
+      "elapsed_median_s": 5.680260750465095,
+      "elapsed_p95_s": 21.997599908174017,
+      "generation_tok_s_median": 31.22794908831606,
+      "generation_tok_s_mean": 31.123886090571595,
+      "completion_tokens": 856,
+      "speed_provenance": "source translation_results.csv"
+    }
+  ],
+  "judge_metrics": [
+    {
+      "judge_slot": "judge-01",
+      "expected_rows": 238,
+      "scalar_valid": 237,
+      "invalid_or_excluded": 1,
+      "technical_invalid": 1,
+      "unsupported_by_design": 0,
+      "mean": 93.71729957805907,
+      "sd_population": 8.272790811643103,
+      "median": 96.0,
+      "unique_scores": 31,
+      "critical_flag_count": 18,
+      "evidence_warning_count": 569,
+      "latency_median_s": 50.28272168735,
+      "latency_p95_s": 110.91738926244997
+    },
+    {
+      "judge_slot": "judge-02",
+      "expected_rows": 238,
+      "scalar_valid": 238,
+      "invalid_or_excluded": 0,
+      "technical_invalid": 0,
+      "unsupported_by_design": 0,
+      "mean": 97.61344537815125,
+      "sd_population": 6.1870143811776295,
+      "median": 100.0,
+      "unique_scores": 21,
+      "critical_flag_count": 8,
+      "evidence_warning_count": 83,
+      "latency_median_s": 70.2677254374,
+      "latency_p95_s": 177.1838825688
+    },
+    {
+      "judge_slot": "judge-03",
+      "expected_rows": 238,
+      "scalar_valid": 210,
+      "invalid_or_excluded": 28,
+      "technical_invalid": 0,
+      "unsupported_by_design": 28,
+      "mean": 97.56190476190476,
+      "sd_population": 8.10752009471255,
+      "median": 100.0,
+      "unique_scores": 21,
+      "critical_flag_count": 10,
+      "evidence_warning_count": 114,
+      "latency_median_s": 181.2803501665,
+      "latency_p95_s": 843.397051992
+    },
+    {
+      "judge_slot": "judge-04",
+      "expected_rows": 238,
+      "scalar_valid": 238,
+      "invalid_or_excluded": 0,
+      "technical_invalid": 0,
+      "unsupported_by_design": 0,
+      "mean": 95.5798319327731,
+      "sd_population": 6.487863003971957,
+      "median": 98.0,
+      "unique_scores": 25,
+      "critical_flag_count": 25,
+      "evidence_warning_count": 410,
+      "latency_median_s": 38.35453450004999,
+      "latency_p95_s": 81.96509198128999
+    },
+    {
+      "judge_slot": "judge-05",
+      "expected_rows": 238,
+      "scalar_valid": 238,
+      "invalid_or_excluded": 0,
+      "technical_invalid": 0,
+      "unsupported_by_design": 0,
+      "mean": 92.22689075630252,
+      "sd_population": 11.060518758473908,
+      "median": 96.5,
+      "unique_scores": 33,
+      "critical_flag_count": 8,
+      "evidence_warning_count": 315,
+      "latency_median_s": null,
+      "latency_p95_s": null
+    }
+  ],
+  "pairwise_metrics": {
+    "raw_rows": 360,
+    "raw_valid_orientations": 336,
+    "raw_unsupported_by_design": 24,
+    "raw_status_counts": {
+      "valid": 336,
+      "unsupported_by_design": 24
+    },
+    "canonical_rows": 180,
+    "canonical_status_counts": {
+      "CONSISTENT": 112,
+      "ABSTAIN_INCONSISTENT": 49,
+      "MISSING_OR_INVALID": 12,
+      "CONSISTENT_TIE": 7
+    },
+    "canonical_strict_consistent": 112,
+    "canonical_consistent_tie": 7,
+    "canonical_consistent_including_tie": 119,
+    "canonical_abstain_inconsistent": 49,
+    "canonical_missing_or_invalid": 12
+  },
+  "lofo_metrics": [
+    {
+      "track": "text",
+      "omitted_judge_slot": "judge-01",
+      "remaining_actual_k": 4,
+      "candidate_means": {
+        "translategemma-27b": 96.83620689655173,
+        "translategemma-12b": 96.25862068965517,
+        "translategemma-4b": 93.12931034482759,
+        "gemma4-e4b": 95.48275862068965,
+        "gemma4-12b": 97.61206896551724,
+        "gemma4-26b": 98.91379310344827,
+        "gemma4-31b-qat": 98.80172413793103
+      },
+      "candidate_order": [
+        "gemma4-26b",
+        "gemma4-31b-qat",
+        "gemma4-12b",
+        "translategemma-27b",
+        "translategemma-12b",
+        "gemma4-e4b",
+        "translategemma-4b"
+      ],
+      "common_case_items": 29,
+      "excluded_case_ids": [
+        "text-15"
+      ]
+    },
+    {
+      "track": "text",
+      "omitted_judge_slot": "judge-02",
+      "remaining_actual_k": 4,
+      "candidate_means": {
+        "translategemma-27b": 95.94827586206897,
+        "translategemma-12b": 94.83620689655173,
+        "translategemma-4b": 91.24137931034483,
+        "gemma4-e4b": 94.87931034482759,
+        "gemma4-12b": 96.93103448275862,
+        "gemma4-26b": 98.47413793103448,
+        "gemma4-31b-qat": 98.38793103448276
+      },
+      "candidate_order": [
+        "gemma4-26b",
+        "gemma4-31b-qat",
+        "gemma4-12b",
+        "translategemma-27b",
+        "gemma4-e4b",
+        "translategemma-12b",
+        "translategemma-4b"
+      ],
+      "common_case_items": 29,
+      "excluded_case_ids": [
+        "text-15"
+      ]
+    },
+    {
+      "track": "text",
+      "omitted_judge_slot": "judge-03",
+      "remaining_actual_k": 4,
+      "candidate_means": {
+        "translategemma-27b": 96.85344827586206,
+        "translategemma-12b": 95.34482758620689,
+        "translategemma-4b": 91.21551724137932,
+        "gemma4-e4b": 94.94827586206897,
+        "gemma4-12b": 96.93103448275862,
+        "gemma4-26b": 98.46551724137932,
+        "gemma4-31b-qat": 98.27586206896552
+      },
+      "candidate_order": [
+        "gemma4-26b",
+        "gemma4-31b-qat",
+        "gemma4-12b",
+        "translategemma-27b",
+        "translategemma-12b",
+        "gemma4-e4b",
+        "translategemma-4b"
+      ],
+      "common_case_items": 29,
+      "excluded_case_ids": [
+        "text-15"
+      ]
+    },
+    {
+      "track": "text",
+      "omitted_judge_slot": "judge-04",
+      "remaining_actual_k": 4,
+      "candidate_means": {
+        "translategemma-27b": 96.36206896551724,
+        "translategemma-12b": 95.62931034482759,
+        "translategemma-4b": 92.26724137931035,
+        "gemma4-e4b": 95.30172413793103,
+        "gemma4-12b": 97.10344827586206,
+        "gemma4-26b": 98.54310344827586,
+        "gemma4-31b-qat": 98.53448275862068
+      },
+      "candidate_order": [
+        "gemma4-26b",
+        "gemma4-31b-qat",
+        "gemma4-12b",
+        "translategemma-27b",
+        "translategemma-12b",
+        "gemma4-e4b",
+        "translategemma-4b"
+      ],
+      "common_case_items": 29,
+      "excluded_case_ids": [
+        "text-15"
+      ]
+    },
+    {
+      "track": "text",
+      "omitted_judge_slot": "judge-05",
+      "remaining_actual_k": 4,
+      "candidate_means": {
+        "translategemma-27b": 96.6896551724138,
+        "translategemma-12b": 96.03448275862068,
+        "translategemma-4b": 93.45689655172414,
+        "gemma4-e4b": 96.25,
+        "gemma4-12b": 97.45689655172414,
+        "gemma4-26b": 98.67241379310344,
+        "gemma4-31b-qat": 98.65517241379311
+      },
+      "candidate_order": [
+        "gemma4-26b",
+        "gemma4-31b-qat",
+        "gemma4-12b",
+        "translategemma-27b",
+        "gemma4-e4b",
+        "translategemma-12b",
+        "translategemma-4b"
+      ],
+      "common_case_items": 29,
+      "excluded_case_ids": [
+        "text-15"
+      ]
+    },
+    {
+      "track": "image",
+      "omitted_judge_slot": "judge-01",
+      "remaining_actual_k": 3,
+      "candidate_means": {
+        "translategemma-27b": 84.5,
+        "translategemma-12b": 84.33333333333333,
+        "translategemma-4b": 76.16666666666667,
+        "gemma4-e4b": 82.83333333333333,
+        "gemma4-12b": 90.58333333333333,
+        "gemma4-26b": 87.66666666666667,
+        "gemma4-31b-qat": 91.16666666666667
+      },
+      "candidate_order": [
+        "gemma4-31b-qat",
+        "gemma4-12b",
+        "gemma4-26b",
+        "translategemma-27b",
+        "translategemma-12b",
+        "gemma4-e4b",
+        "translategemma-4b"
+      ],
+      "common_case_items": 4,
+      "excluded_case_ids": []
+    },
+    {
+      "track": "image",
+      "omitted_judge_slot": "judge-02",
+      "remaining_actual_k": 3,
+      "candidate_means": {
+        "translategemma-27b": 79.83333333333333,
+        "translategemma-12b": 81.25,
+        "translategemma-4b": 74.66666666666667,
+        "gemma4-e4b": 82.16666666666667,
+        "gemma4-12b": 89.5,
+        "gemma4-26b": 86.41666666666667,
+        "gemma4-31b-qat": 90.25
+      },
+      "candidate_order": [
+        "gemma4-31b-qat",
+        "gemma4-12b",
+        "gemma4-26b",
+        "gemma4-e4b",
+        "translategemma-12b",
+        "translategemma-27b",
+        "translategemma-4b"
+      ],
+      "common_case_items": 4,
+      "excluded_case_ids": []
+    },
+    {
+      "track": "image",
+      "omitted_judge_slot": "judge-04",
+      "remaining_actual_k": 3,
+      "candidate_means": {
+        "translategemma-27b": 83.25,
+        "translategemma-12b": 82.91666666666667,
+        "translategemma-4b": 75.0,
+        "gemma4-e4b": 82.91666666666667,
+        "gemma4-12b": 91.0,
+        "gemma4-26b": 87.41666666666667,
+        "gemma4-31b-qat": 91.66666666666667
+      },
+      "candidate_order": [
+        "gemma4-31b-qat",
+        "gemma4-12b",
+        "gemma4-26b",
+        "translategemma-27b",
+        "gemma4-e4b",
+        "translategemma-12b",
+        "translategemma-4b"
+      ],
+      "common_case_items": 4,
+      "excluded_case_ids": []
+    },
+    {
+      "track": "image",
+      "omitted_judge_slot": "judge-05",
+      "remaining_actual_k": 3,
+      "candidate_means": {
+        "translategemma-27b": 88.16666666666667,
+        "translategemma-12b": 86.5,
+        "translategemma-4b": 80.66666666666667,
+        "gemma4-e4b": 87.58333333333333,
+        "gemma4-12b": 93.91666666666667,
+        "gemma4-26b": 90.75,
+        "gemma4-31b-qat": 97.66666666666667
+      },
+      "candidate_order": [
+        "gemma4-31b-qat",
+        "gemma4-12b",
+        "gemma4-26b",
+        "translategemma-27b",
+        "gemma4-e4b",
+        "translategemma-12b",
+        "translategemma-4b"
+      ],
+      "common_case_items": 4,
+      "excluded_case_ids": []
+    }
+  ],
+  "reliability_metrics": [
+    {
+      "track": "text",
+      "complete_balanced_units": 203,
+      "expected_balanced_units": 203,
+      "common_case_items": 29,
+      "judge_slots_fixed_panel": [
+        "judge-01",
+        "judge-02",
+        "judge-03",
+        "judge-04",
+        "judge-05"
+      ],
+      "actual_k": 5,
+      "icc_2_1_absolute_agreement": 0.5813871190911727,
+      "icc_2_k_absolute_agreement": 0.8741221534180033,
+      "icc_k_is_actual_fixed_panel": true,
+      "kendall_w_system_level": 0.8485714285714285,
+      "kendall_w_unit_level": 0.6636020053442638,
+      "kendall_w_per_item_defined_count": 29,
+      "kendall_w_per_item_mean": 0.5842619652077953,
+      "kendall_w_per_item_median": 0.5508620689655173,
+      "kendall_w_per_item_min": 0.2903225806451613,
+      "kendall_w_per_item_max": 0.9173553719008265
+    },
+    {
+      "track": "image",
+      "complete_balanced_units": 28,
+      "expected_balanced_units": 28,
+      "common_case_items": 4,
+      "judge_slots_fixed_panel": [
+        "judge-01",
+        "judge-02",
+        "judge-04",
+        "judge-05"
+      ],
+      "actual_k": 4,
+      "icc_2_1_absolute_agreement": 0.5133729653265917,
+      "icc_2_k_absolute_agreement": 0.8084235208660552,
+      "icc_k_is_actual_fixed_panel": true,
+      "kendall_w_system_level": 0.8526785714285714,
+      "kendall_w_unit_level": 0.6949947312961011,
+      "kendall_w_per_item_defined_count": 4,
+      "kendall_w_per_item_mean": 0.7345268611420569,
+      "kendall_w_per_item_median": 0.7152708901562113,
+      "kendall_w_per_item_min": 0.6032863849765259,
+      "kendall_w_per_item_max": 0.9042792792792793
+    }
+  ],
+  "settings": {
+    "translator_generation": {
+      "protocol_version": "translation-benchmark-new-materials-v1-runner-v1",
+      "llama_version_expected": "0.7.0-dev build 524 commit 620d2225c",
+      "ctx_size": 8192,
+      "max_tokens": 4096,
+      "temperature": 0,
+      "top_p": 1,
+      "seed": 20261023,
+      "reasoning": "off",
+      "reasoning_effort": "none",
+      "stream": false,
+      "parallel": 1,
+      "batch_size": 2048,
+      "ubatch_size": 4096,
+      "cache_prompt": false,
+      "speculative": "off",
+      "n_gpu_layers": "all",
+      "flash_attn": "on",
+      "no_cont_batching": true,
+      "no_warmup": true,
+      "shared_instruction": "English→Taiwan Traditional Chinese, faithful, preserve all numbers/negation/layout, only translation, no explanation/advice"
+    },
+    "translator_model_count": 7,
+    "runtime": {
+      "expected": "0.7.0-dev build 524 commit 620d2225c",
+      "observed": "version: 0.7.0-dev (build 524, commit 620d2225c)\nbuilt with AppleClang 21.0.0.21000101 for Darwin arm64",
+      "pass": true,
+      "generic_hardware_evidence": "Darwin arm64 build; n_gpu_layers=all and flash_attn=on. Exact SoC/RAM is not asserted here."
+    },
+    "judge_runner_only": {
+      "context": 32768,
+      "max_tokens": 16384,
+      "reasoning_budget_tokens": 8192,
+      "temperature": 0,
+      "top_p": 1,
+      "seed": 20261023,
+      "speculative": "off",
+      "judges": [
+        {
+          "id": "qwen3.8-flash-next-xhigh",
+          "family": "qwen",
+          "native_mode": "thinking_on",
+          "reasoning_effort": "xhigh",
+          "enable_thinking": true,
+          "mmproj_required": true,
+          "vision_policy": null
+        },
+        {
+          "id": "nemotron3.5-super-vl-120b-a12b-thinking",
+          "family": "nemotron",
+          "native_mode": "thinking_on",
+          "reasoning_effort": null,
+          "enable_thinking": true,
+          "mmproj_required": true,
+          "vision_policy": null
+        },
+        {
+          "id": "mistral-medium-3.5-128b-high",
+          "family": "mistral",
+          "native_mode": "reasoning_effort_high",
+          "reasoning_effort": "high",
+          "enable_thinking": null,
+          "mmproj_required": false,
+          "vision_policy": "N/A_not_supported if runtime props/modalities or matching mmproj does not prove native image support; never OCR fallback"
+        }
+      ]
+    }
+  },
+  "audit_findings": [
+    {
+      "id": "translation_vs_judge_generation_limits",
+      "severity": "documentation_clarity",
+      "status": "confirmed_track_mismatch_in_wording",
+      "reproducibility_claim": {
+        "ctx": 32768,
+        "max_tokens": 16384,
+        "reasoning_budget": 8192
+      },
+      "translator_authoritative": {
+        "ctx_size": 8192,
+        "max_tokens": 4096,
+        "reasoning": "off",
+        "reasoning_effort": "none"
+      },
+      "judge_runner_authoritative": {
+        "context": 32768,
+        "max_tokens": 16384,
+        "reasoning_budget_tokens": 8192
+      },
+      "conclusion": "The 32768/16384/8192 values match the local judge runner, while translator config/protocol/raw generation request use 8192/4096/reasoning off. The document should label these tracks explicitly."
+    },
+    {
+      "id": "pairwise_canonical_denominator_clarity",
+      "severity": "reporting_clarity",
+      "status": "needs_explicit_breakdown",
+      "strict_consistent": 112,
+      "consistent_tie": 7,
+      "abstain_inconsistent": 49,
+      "missing_or_invalid": 12,
+      "conclusion": "The shorthand 119 consistent / 49 abstain groups consistent ties with strict consistency and omits 12 missing/invalid groups; show all four categories to make the 180-group denominator auditable."
+    },
+    {
+      "id": "no_human_gold_or_clinical_claim",
+      "severity": "scope_limit",
+      "status": "confirmed",
+      "conclusion": "All means/examples are descriptive judge proxies; no human gold, clinical safety certification, or universal-best claim is inferred."
+    },
+    {
+      "id": "mistral_image_design_unsupported",
+      "severity": "design_boundary",
+      "status": "preserve",
+      "conclusion": "Mistral image cells remain unsupported by design (28 pointwise + 24 pairwise); no zero imputation."
+    },
+    {
+      "id": "qwen_invalid_preserved",
+      "severity": "data_integrity",
+      "status": "confirmed",
+      "conclusion": "One Qwen pointwise record remains invalid due to subscores_sum_mismatch and is excluded from scalar means rather than converted to zero."
+    },
+    {
+      "id": "judge_terminology_claim_requires_human_review",
+      "severity": "scope_limit",
+      "status": "confirmed_review_caveat",
+      "case": {
+        "model_id": "gemma4-31b-qat",
+        "material_id": "text-06",
+        "source_exact": "Bipolar disorder",
+        "translation_exact": "雙相情緒障礙症",
+        "note": "judge-03 提出台灣術語疑義，但此術語偏好不在本審核中裁定；該 annotation 僅作待人工複核示範，不視為確定錯誤。",
+        "references": [
+          "https://www.nhi.gov.tw/ch/dl-80164-84214b36b10846c49afefc8dab9648a2-1.pdf",
+          "https://www.hch.gov.tw/?aid=503&iid=130&page_name=detail&pid=0"
+        ]
+      },
+      "conclusion": "The Gemma 4 31B text-06 terminology criticism is retained as a judge annotation but not accepted as a model error; Taiwan terminology should be checked by qualified human reviewers. This demonstrates that judge evidence can be questionable and must not be blindly treated as ground truth."
+    }
+  ]
+}

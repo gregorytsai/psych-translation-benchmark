@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Seven-model psychological health translation benchmark with descriptive quality observations, generation latency and traceable methods.">
+  <link rel="canonical" href="https://gregorytsai.github.io/psych-translation-benchmark/models/gemma4-26b-en.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://gregorytsai.github.io/psych-translation-benchmark/models/gemma4-26b.html">
+  <link rel="alternate" hreflang="en" href="https://gregorytsai.github.io/psych-translation-benchmark/models/gemma4-26b-en.html">
+  <link rel="alternate" hreflang="x-default" href="https://gregorytsai.github.io/psych-translation-benchmark/models/gemma4-26b.html">
+  <title>Gemma 4 26B · Psychological Health Translation Benchmark</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index-en.html"><span class="brand-mark">譯</span><span>Psychological Health<br><em>Translation benchmark 2026</em></span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation"><a class="nav-link" href="../index-en.html">Home</a>
+<a class="nav-link active" href="../models/gemma4-26b-en.html" aria-current="page">Models</a>
+<a class="nav-link" href="../results-en.html">238 translations</a>
+<a class="nav-link" href="../methods-en.html">Methods & limits</a>
+<a class="nav-link" href="../downloads-en.html">Downloads</a>
+<a class="nav-link" href="../licenses-en.html">Licensing & sources</a><a class="language-switch" href="gemma4-26b.html" lang="zh-Hant-TW">中文</a></nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="section-shell page-hero compact"><div class="eyebrow">Model page · gemma4-26b</div><h1>Gemma 4 26B</h1><p>Under fixed translation settings, the same materials, and a shared-case panel, this page places auditable outputs beside the limits of the measurement.</p><div class="model-chips" aria-label="Switch model"><a class="model-chip" href="gemma4-12b-en.html">Gemma 4 12B</a> <a class="model-chip active" href="gemma4-26b-en.html">Gemma 4 26B</a> <a class="model-chip" href="gemma4-31b-qat-en.html">Gemma 4 31B QAT</a> <a class="model-chip" href="gemma4-e4b-en.html">Gemma 4 E4B</a> <a class="model-chip" href="translategemma-12b-en.html">TranslateGemma 12B</a> <a class="model-chip" href="translategemma-27b-en.html">TranslateGemma 27B</a> <a class="model-chip" href="translategemma-4b-en.html">TranslateGemma 4B</a></div></section>
+    <section class="section-shell metrics-row"><div class="metric-card teal"><div class="metric-label">Shared text score</div><div class="metric-value">98.614</div><div class="metric-note">29 shared cases; median 99.200</div></div><div class="metric-card coral"><div class="metric-label">Shared image score</div><div class="metric-value">88.062</div><div class="metric-note">4 images; median 90.125</div></div><div class="metric-card purple"><div class="metric-label">Text response median</div><div class="metric-value">0.686 s</div><div class="metric-note">p95 0.934 s; 30 cases</div></div><div class="metric-card amber"><div class="metric-label">Image response median</div><div class="metric-value">1.945 s</div><div class="metric-note">p95 4.165 s; 4 cases</div></div></section>
+    
+    <section class="section-shell runtime-section"><div class="section-heading"><div><div class="eyebrow">Measured files and settings</div><h2>What was actually loaded?</h2><p class="section-intro">These are the public inventory facts for the measured local artifacts, not a claim about official full-precision weights.</p></div></div><div class="runtime-grid"><div class="runtime-facts"><div><b>Model file</b><code>gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf</code><span>13.270 GiB</span></div><div><b>mmproj file</b><code>mmproj-F16.gguf</code><span>1.111 GiB</span></div><div><b>Model + mmproj on-disk size</b><strong>14.382 GiB</strong></div><div><b>Template mode</b><span>embedded_gemma4_native</span></div><div><b>Runtime alias</b><span>gemma4-26b-new-translation</span></div></div><div class="runtime-settings"><b>Measured translation configuration</b><p>ctx 8192 · max tokens 4096 · temperature 0 · seed 20261023 · reasoning off</p><p class="runtime-note">On-disk file size is not a RAM requirement; runtime memory also depends on context, projector, buffers and settings.</p><p><a class="text-link" href="https://ai.google.dev/gemma/docs/core/model_card_4">Official model documentation：Gemma 4 model card ↗</a></p></div></div><details class="sha-details"><summary>SHA-256 checksums</summary><div><code>model: a7c5bc715f5ff8e99a3e8901ce7d2b42b402c669bf24f7c5250747633d0f5891</code><code>mmproj: d00f211a7d4f7fb19bd9b75d8e9342eccffb5920b08fd9562167560fdfcc5dd1</code></div></details></section>
+    
+    <section class="section-shell split-panel model-reading"><div><div class="eyebrow">How to read this model</div><h2>Start with shared cases, then inspect outputs.</h2><p>The text score uses 29 shared cases and five fixed reviewers; the image score uses four images and four fixed reviewers. These are observations, not a gold accuracy score, and incomplete panels are not filled with zeros.</p><p>The response medians come from the frozen translation run. They answer how long this configuration took after loading, not how fast every machine will be.</p></div><div class="accent-note"><strong>Diagnostics</strong><span>Text critical flag cells: 0</span><span>Text shared-case exclusions: 1</span><small>Critical flags and exclusions are separate diagnostics, not clinical-risk estimates.</small></div></section>
+    <section class="section-shell"><div class="section-heading"><div><div class="eyebrow">Exact examples</div><h2>Source and output, side by side.</h2><p class="section-intro">These text fields are taken directly from the allow-listed results; they were not regenerated or invented for this page.</p></div><a class="text-link" href="../results-en.html">See all 238 →</a></div><div class="examples-grid">
+    <article class="example-card curated-example"><div class="example-header"><span class="case-label">Better example 01 · text-03</span><span class="pill">100.000 score</span></div><div class="example-source"><div class="label">English source excerpt</div><p>Depression treatment typically involves psychotherapy (in person or virtual), medication, or both. </p></div><div class="example-arrow" aria-hidden="true">↓</div><div class="example-target"><div class="label">Traditional Chinese output excerpt</div><p>憂鬱症的治療通常包括心理治療（面對面或遠距）、藥物治療，或兩者兼具。</p></div><div class="curated-evidence"><div class="label">Why it matters</div><p>The five text judges scored this case highly and retained no error annotation. The excerpt preserves the basic source meaning, but this is not a human-certified perfect translation.</p></div></article>
+    
+
+    <article class="example-card curated-example"><div class="example-header"><span class="case-label">Risk example 02 · img-04</span><span class="pill">72.000 score</span></div><div class="example-source"><div class="label">English source excerpt</div><p>MEDICATION LABEL MOCKUP
+SYNTHETIC EVALUATION IMAGE — NOT A PRESCRIPTION
+SERTRALINE — TAKE 50 mg ONCE DAILY
+Do not change the dose or stop suddenly without medical advice.
+Record nausea, sleep changes, and any urgent safety concern.
+Source cue: medication-safety wording is benchmark-authored.
+Synthetic image for translation/OCR evaluation • no real patient data • no endorsement</p></div><div class="example-arrow" aria-hidden="true">↓</div><div class="example-target"><div class="label">Traditional Chinese output excerpt</div><p>藥物標籤模擬圖
+合成評估圖像 — 非處方箋
+
+SETRALINE — 每日一次，每次 50 mg
+
+請勿在未諮詢醫療建議的情況下更改劑量或突然停藥。
+
+請記錄噁心、睡眠變化以及任何緊急安全問題。
+
+來源提示：藥物安全用詞為基準作者編寫。
+
+用於翻譯/OCR 評估的合成圖像 • 無真實患者數據 • 無背書</p></div><div class="curated-evidence"><div class="label">Why it matters</div><p>The image reads SERTRALINE, but the output reads SETRALINE, dropping one R. All four image judges flagged the drug name, and the source image supports the observation. This is a synthetic label, not a real prescription; a high text average does not guarantee correct image text.</p></div></article>
+    </div></section>
+    <section class="section-shell"><article id="img-04-example" class="image-example-card"><div class="case-label">Image case img-04</div><h3>Traditional Chinese output for the visual input</h3><p>藥物標籤模擬圖
+合成評估圖像 — 非處方箋
+
+SETRALINE — 每日一次，每次 50 mg
+
+請勿在未諮詢醫療建議的情況下更改劑量或突然停藥。
+
+請記錄噁心、睡眠變化以及任何緊急安全問題。
+
+來源提示：藥物安全用詞為基準作者編寫。
+
+用於翻譯/OCR 評估的合成圖像 • 無真實患者數據 • 無背書</p><div class="mini-facts"><span>4-image mean <b>88.062</b></span><span>Response median <b>1.945 s</b></span></div><small>Image quality scores are not OCR character accuracy; the frozen source link is shown below.</small><div class="source-links"><a class="text-link" href="../materials/images/img04_synthetic_medication_label.png">Open frozen PNG ↗</a><small class="source-condition">Project-authored synthetic render; not a patient record or prescription.</small></div></article></section>
+    <section class="section-shell table-section"><div class="section-heading"><div><div class="eyebrow">Detailed data</div><h2>All case summaries for this model</h2></div></div><div class="table-wrap"><table><thead><tr><th>Case</th><th>Track</th><th>Panel score</th><th>Generation seconds</th><th>Valid / required</th></tr></thead><tbody><tr><td>text-01</td><td>Text</td><td>95.400</td><td>0.712</td><td>5/5</td></tr>
+<tr><td>text-02</td><td>Text</td><td>99.600</td><td>0.543</td><td>5/5</td></tr>
+<tr><td>text-03</td><td>Text</td><td>100.000</td><td>0.463</td><td>5/5</td></tr>
+<tr><td>text-04</td><td>Text</td><td>98.600</td><td>0.705</td><td>5/5</td></tr>
+<tr><td>text-05</td><td>Text</td><td>100.000</td><td>0.735</td><td>5/5</td></tr>
+<tr><td>text-06</td><td>Text</td><td>92.200</td><td>0.548</td><td>5/5</td></tr>
+<tr><td>text-07</td><td>Text</td><td>99.200</td><td>0.350</td><td>5/5</td></tr>
+<tr><td>text-08</td><td>Text</td><td>98.200</td><td>0.948</td><td>5/5</td></tr>
+<tr><td>text-09</td><td>Text</td><td>99.600</td><td>0.671</td><td>5/5</td></tr>
+<tr><td>text-10</td><td>Text</td><td>98.800</td><td>0.720</td><td>5/5</td></tr>
+<tr><td>text-11</td><td>Text</td><td>99.800</td><td>0.867</td><td>5/5</td></tr>
+<tr><td>text-12</td><td>Text</td><td>99.000</td><td>0.868</td><td>5/5</td></tr>
+<tr><td>text-13</td><td>Text</td><td>98.200</td><td>0.558</td><td>5/5</td></tr>
+<tr><td>text-14</td><td>Text</td><td>100.000</td><td>0.454</td><td>5/5</td></tr>
+<tr><td>text-15</td><td>Text</td><td>99.600</td><td>0.605</td><td>5/5</td></tr>
+<tr><td>text-16</td><td>Text</td><td>99.400</td><td>1.284</td><td>5/5</td></tr>
+<tr><td>text-17</td><td>Text</td><td>96.400</td><td>0.615</td><td>5/5</td></tr>
+<tr><td>text-18</td><td>Text</td><td>99.000</td><td>0.760</td><td>5/5</td></tr>
+<tr><td>text-19</td><td>Text</td><td>100.000</td><td>0.763</td><td>5/5</td></tr>
+<tr><td>text-20</td><td>Text</td><td>99.600</td><td>0.327</td><td>5/5</td></tr>
+<tr><td>text-21</td><td>Text</td><td>95.200</td><td>0.818</td><td>5/5</td></tr>
+<tr><td>text-22</td><td>Text</td><td>100.000</td><td>0.781</td><td>5/5</td></tr>
+<tr><td>text-23</td><td>Text</td><td>100.000</td><td>0.664</td><td>5/5</td></tr>
+<tr><td>text-24</td><td>Text</td><td>100.000</td><td>0.564</td><td>5/5</td></tr>
+<tr><td>text-25</td><td>Text</td><td>97.800</td><td>0.322</td><td>5/5</td></tr>
+<tr><td>text-26</td><td>Text</td><td>98.400</td><td>0.702</td><td>5/5</td></tr>
+<tr><td>text-27</td><td>Text</td><td>100.000</td><td>0.481</td><td>5/5</td></tr>
+<tr><td>text-28</td><td>Text</td><td>99.000</td><td>0.916</td><td>5/5</td></tr>
+<tr><td>text-29</td><td>Text</td><td>99.200</td><td>0.830</td><td>5/5</td></tr>
+<tr><td>text-30</td><td>Text</td><td>97.200</td><td>0.473</td><td>5/5</td></tr>
+<tr><td>img-01</td><td>Image</td><td>91.500</td><td>1.779</td><td>4/4</td></tr>
+<tr><td>img-04</td><td>Image</td><td>72.000</td><td>1.880</td><td>4/4</td></tr>
+<tr><td>img-09</td><td>Image</td><td>88.750</td><td>4.545</td><td>4/4</td></tr>
+<tr><td>img-10</td><td>Image</td><td>100.000</td><td>2.010</td><td>4/4</td></tr></tbody></table></div></section>
+    <section class="section-shell callout caution"><div class="callout-icon">!</div><div><strong>Read the limits with the score</strong><p>There are only 30 text cases and 4 images; five reviewers are not a human gold standard, and images are not OCR CER. A model page is not a ranking or clinical-safety conclusion.</p></div></section>
+    </main>
+  
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div><strong>Psychological Health Translation Benchmark</strong><br><span class="muted">2026-10-25 frozen review · research use</span></div>
+        <div class="footer-links"><a href="../methods-en.html">Methods & limits</a><a href="../downloads-en.html">Downloads</a><a href="../licenses-en.html">Licensing & sources</a></div>
+      </div>
+      <p class="footer-note">This site provides descriptive, traceable translation observations; it is not medical advice or clinical-safety certification. Data pages contain only explicitly allow-listed public fields.</p>
+    </footer>
+    
+  <script src="../assets/site.js" defer></script>
+</body>
+</html>

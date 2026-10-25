@@ -1,0 +1,15 @@
+track,model_id,estimator,status,B,cluster_count,common_case_items,excluded_case_ids,ci_low,ci_high,note
+text,gemma4-12b,panel_mean,AVAILABLE_LIMITED_COMMON_CASE_SOURCE_CLUSTER_BOOTSTRAP,10000,12,29,"[""text-15""]",95.1701433692,98.8689655172,Text bootstrap resamples source pages with replacement; common-case exploratory only.
+text,gemma4-26b,panel_mean,AVAILABLE_LIMITED_COMMON_CASE_SOURCE_CLUSTER_BOOTSTRAP,10000,12,29,"[""text-15""]",98.0580645161,99.1266666667,Text bootstrap resamples source pages with replacement; common-case exploratory only.
+text,gemma4-31b-qat,panel_mean,AVAILABLE_LIMITED_COMMON_CASE_SOURCE_CLUSTER_BOOTSTRAP,10000,12,29,"[""text-15""]",97.9076923077,99.0689721485,Text bootstrap resamples source pages with replacement; common-case exploratory only.
+text,gemma4-e4b,panel_mean,AVAILABLE_LIMITED_COMMON_CASE_SOURCE_CLUSTER_BOOTSTRAP,10000,12,29,"[""text-15""]",93.096481681,97.5130745342,Text bootstrap resamples source pages with replacement; common-case exploratory only.
+text,translategemma-12b,panel_mean,AVAILABLE_LIMITED_COMMON_CASE_SOURCE_CLUSTER_BOOTSTRAP,10000,12,29,"[""text-15""]",93.7229032258,97.4278525641,Text bootstrap resamples source pages with replacement; common-case exploratory only.
+text,translategemma-27b,panel_mean,AVAILABLE_LIMITED_COMMON_CASE_SOURCE_CLUSTER_BOOTSTRAP,10000,12,29,"[""text-15""]",94.0665517241,98.5615384615,Text bootstrap resamples source pages with replacement; common-case exploratory only.
+text,translategemma-4b,panel_mean,AVAILABLE_LIMITED_COMMON_CASE_SOURCE_CLUSTER_BOOTSTRAP,10000,12,29,"[""text-15""]",88.6758405172,95.1260035842,Text bootstrap resamples source pages with replacement; common-case exploratory only.
+image,gemma4-12b,panel_mean,AVAILABLE_SOURCE_CLUSTER_BOOTSTRAP,10000,4,4,[],85.6875,97.5625,Text bootstrap resamples 12 source pages with replacement; image uses no CI.
+image,gemma4-26b,panel_mean,AVAILABLE_SOURCE_CLUSTER_BOOTSTRAP,10000,4,4,[],76.875,97.1875,Text bootstrap resamples 12 source pages with replacement; image uses no CI.
+image,gemma4-31b-qat,panel_mean,AVAILABLE_SOURCE_CLUSTER_BOOTSTRAP,10000,4,4,[],90.75,95,Text bootstrap resamples 12 source pages with replacement; image uses no CI.
+image,gemma4-e4b,panel_mean,AVAILABLE_SOURCE_CLUSTER_BOOTSTRAP,10000,4,4,[],78.875,87.375,Text bootstrap resamples 12 source pages with replacement; image uses no CI.
+image,translategemma-12b,panel_mean,AVAILABLE_SOURCE_CLUSTER_BOOTSTRAP,10000,4,4,[],75.375,94.1875,Text bootstrap resamples 12 source pages with replacement; image uses no CI.
+image,translategemma-27b,panel_mean,AVAILABLE_SOURCE_CLUSTER_BOOTSTRAP,10000,4,4,[],79.75,88.125,Text bootstrap resamples 12 source pages with replacement; image uses no CI.
+image,translategemma-4b,panel_mean,AVAILABLE_SOURCE_CLUSTER_BOOTSTRAP,10000,4,4,[],56.0625,87.75,Text bootstrap resamples 12 source pages with replacement; image uses no CI.

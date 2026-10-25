@@ -1,0 +1,20 @@
+[
+  {
+    "name": "benchmark-code.zip",
+    "files": 136,
+    "bytes": 715729,
+    "sha256": "40cd9d16ba96a9717620750c6da5f8b8c51570204189de8d30d84d7fbbc69eec"
+  },
+  {
+    "name": "complete-results.zip",
+    "files": 26,
+    "bytes": 584544,
+    "sha256": "23c7b65d353edfc3ccd33ab486f7c1d9043581b5740a29e91ff18d9e89248b75"
+  },
+  {
+    "name": "materials.zip",
+    "files": 10,
+    "bytes": 1044024,
+    "sha256": "2ef3947d6154ed4fa59f859e62fcd0adf7729d127511c60953738e197cca519b"
+  }
+]

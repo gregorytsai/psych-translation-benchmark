@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/index.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/index-en.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/methods.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/methods-en.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/results.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/results-en.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/downloads.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/downloads-en.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/licenses.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/licenses-en.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/models/gemma4-12b.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/models/gemma4-12b-en.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/models/gemma4-26b.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/models/gemma4-26b-en.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/models/gemma4-31b-qat.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/models/gemma4-31b-qat-en.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/models/gemma4-e4b.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/models/gemma4-e4b-en.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/models/translategemma-12b.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/models/translategemma-12b-en.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/models/translategemma-27b.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/models/translategemma-27b-en.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/models/translategemma-4b.html</loc></url>
+  <url><loc>https://gregorytsai.github.io/psych-translation-benchmark/models/translategemma-4b-en.html</loc></url>
+</urlset>

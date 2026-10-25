@@ -1,0 +1,68 @@
+{
+  "schema_version": "judge-local-config-v1",
+  "purpose": "New 2026-10-23 local-only assessment of the frozen translation packet; no quality score is computed by this runner.",
+  "source_csv": "/benchmark/translation_benchmark_20261023_new_materials/results/translation_results.csv",
+  "runtime": {
+    "binary": "/benchmark/llama-v0.7.0/build-release/bin/llama-server",
+    "expected_build": "b524-620d2225c",
+    "formal_endpoint": "http://127.0.0.1:8080",
+    "formal_policy": "read-only health/models only; never start, stop, reconfigure, or autoload the formal service",
+    "lite_llm": "paused",
+    "open_webui": "untouched"
+  },
+  "fixed_generation": {
+    "context": 32768,
+    "max_tokens": 16384,
+    "reasoning_budget_tokens": 8192,
+    "temperature": 0,
+    "top_p": 1,
+    "seed": 20261023,
+    "stream": false,
+    "parallel": 1,
+    "cache_prompt": false,
+    "speculative": "off",
+    "one_fresh_source_candidate_per_call": true,
+    "format_only_repair_max": 1,
+    "quality_retry": false
+  },
+  "judges": [
+    {
+      "id": "qwen3.8-flash-next-xhigh",
+      "family": "qwen",
+      "native_mode": "thinking_on",
+      "reasoning_effort": "xhigh",
+      "enable_thinking": true,
+      "preserve_thinking": false,
+      "mmproj_required": true,
+      "isolated_port": 18201
+    },
+    {
+      "id": "nemotron3.5-super-vl-120b-a12b-thinking",
+      "family": "nemotron",
+      "native_mode": "thinking_on",
+      "reasoning_effort": null,
+      "enable_thinking": true,
+      "preserve_reasoning": false,
+      "mmproj_required": true,
+      "isolated_port": 18202
+    },
+    {
+      "id": "mistral-medium-3.5-128b-high",
+      "family": "mistral",
+      "native_mode": "reasoning_effort_high",
+      "reasoning_effort": "high",
+      "enable_thinking_field": "omitted",
+      "preserve_reasoning": false,
+      "mmproj_required": false,
+      "isolated_port": 18203,
+      "vision_policy": "N/A_not_supported if runtime props/modalities or matching mmproj does not prove native image support; never OCR fallback"
+    }
+  ],
+  "request_contract": {
+    "text": "system frozen judge instructions + one user message containing one English source and one blind candidate translation",
+    "image": "system frozen judge instructions + one user content list containing one instruction text and one image_url data URL; no English transcription or image ground truth",
+    "pairwise": "one fresh AB or BA orientation per call; source/candidate order is packet-frozen",
+    "response": "strict JSON object; invalid/missing is retained and never converted to zero",
+    "provenance": "raw redacted request/response, content/reasoning separated, HTTP/timestamp/request-hash/response-hash/finish/usage/timing, apply-template envelope"
+  }
+}

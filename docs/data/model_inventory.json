@@ -1,0 +1,210 @@
+{
+  "created_at": "2026-10-23T14:24:10.840+08:00",
+  "server_binary": "/benchmark/llama-v0.7.0/build-release/bin/llama-server",
+  "server_version": "version: 0.7.0-dev (build 524, commit 620d2225c)\nbuilt with AppleClang 21.0.0.21000101 for Darwin arm64",
+  "models": {
+    "translategemma-27b": {
+      "model_path": "/benchmark/translategemma-27b-it-q8_0.gguf",
+      "model_size_bytes": 28707970368,
+      "model_sha256": "8cad711b2893c27b79d8a46f99b63881a7e38b6c578e846d9efea8e832e33114",
+      "mmproj_path": "/benchmark/translategemma-27b-it.mmproj-Q8_0.gguf",
+      "mmproj_size_bytes": 597865664,
+      "mmproj_sha256": "e55f77e0644a33a8430d342e0bc5164a31ecf428bc01e3a4ed89cddcae8f903b",
+      "model_metadata": {
+        "general.architecture": "gemma3",
+        "general.name": "Translategemma 27b It",
+        "general.context_length": null,
+        "general.file_type": 7,
+        "general.quantization_version": 2,
+        "general.size_label": "27B"
+      },
+      "mmproj_metadata": {
+        "general.architecture": "clip",
+        "general.name": "Translategemma 27b It",
+        "general.type": "mmproj",
+        "general.finetune": "27b-it",
+        "general.size_label": "423M",
+        "clip.projector_type": "gemma3"
+      },
+      "embedded_template_present": false,
+      "embedded_template_bytes": 0,
+      "embedded_template_sha256": null,
+      "adapter_template_path": "/benchmark/translation_benchmark_20260916_luna/candidate_translategemma-en-zh-tw-server.jinja",
+      "adapter_template_sha256": "f983aca15c75d92d56b219bb7a63bdc5909eb73fdd31f764e70246db75cba040"
+    },
+    "translategemma-12b": {
+      "model_path": "/benchmark/translategemma-12b-it.Q8_0.gguf",
+      "model_size_bytes": 12510228352,
+      "model_sha256": "67993426eeab946876b58f2b612b2fb5962b197605cf65a69b4ebacf31fd94e0",
+      "mmproj_path": "/benchmark/translategemma-12b-it.mmproj-Q8_0.gguf",
+      "mmproj_size_bytes": 594326720,
+      "mmproj_sha256": "d707192f7edc97e45d7a666dabfc8123f0eb1f8f960ad180e63078b8a015a769",
+      "model_metadata": {
+        "general.architecture": "gemma3",
+        "general.name": "Translategemma 12b It",
+        "general.context_length": null,
+        "general.file_type": 7,
+        "general.quantization_version": 2,
+        "general.size_label": "12B"
+      },
+      "mmproj_metadata": {
+        "general.architecture": "clip",
+        "general.name": "Translategemma 12b It",
+        "general.type": "mmproj",
+        "general.finetune": "12b-it",
+        "general.size_label": "421M",
+        "clip.projector_type": "gemma3"
+      },
+      "embedded_template_present": true,
+      "embedded_template_bytes": 16982,
+      "embedded_template_sha256": "5e85514635b80a62b64c9982810bfdfbdd482be9a59ed12c25ded2bf3aabddaf",
+      "adapter_template_path": "/benchmark/translation_benchmark_20260916_luna/candidate_translategemma-en-zh-tw-server.jinja",
+      "adapter_template_sha256": "f983aca15c75d92d56b219bb7a63bdc5909eb73fdd31f764e70246db75cba040"
+    },
+    "translategemma-4b": {
+      "model_path": "/benchmark/translategemma-4b-it.Q8_0.gguf",
+      "model_size_bytes": 4130417920,
+      "model_sha256": "f5006ddf207becaace1668113a61b31cf8b2e03f0f0baa0d1ca37eb8371d4bc1",
+      "mmproj_path": "/benchmark/translategemma-4b-it.mmproj-Q8_0.gguf",
+      "mmproj_size_bytes": 591377600,
+      "mmproj_sha256": "482f68be8823dfdfb3561c22cdd1c0f617d0d5e6efe9c323cc6428a4331dba01",
+      "model_metadata": {
+        "general.architecture": "gemma3",
+        "general.name": "Translategemma 4b It",
+        "general.context_length": null,
+        "general.file_type": 7,
+        "general.quantization_version": 2,
+        "general.size_label": "4B"
+      },
+      "mmproj_metadata": {
+        "general.architecture": "clip",
+        "general.name": "Translategemma 4b It",
+        "general.type": "mmproj",
+        "general.finetune": "4b-it",
+        "general.size_label": "420M",
+        "clip.projector_type": "gemma3"
+      },
+      "embedded_template_present": true,
+      "embedded_template_bytes": 16982,
+      "embedded_template_sha256": "5e85514635b80a62b64c9982810bfdfbdd482be9a59ed12c25ded2bf3aabddaf",
+      "adapter_template_path": "/benchmark/translation_benchmark_20260916_luna/candidate_translategemma-en-zh-tw-server.jinja",
+      "adapter_template_sha256": "f983aca15c75d92d56b219bb7a63bdc5909eb73fdd31f764e70246db75cba040"
+    },
+    "gemma4-e4b": {
+      "model_path": "/benchmark/gemma-4-E4B-it-qat-UD-Q4_K_XL.gguf",
+      "model_size_bytes": 4215695776,
+      "model_sha256": "df0fd4ee07072c607c29a0a1cb4f98918426cca12f45a2776bdd6ee6d09a4de3",
+      "mmproj_path": "/benchmark/gemma-4-E4B-mmproj-F16.gguf",
+      "mmproj_size_bytes": 990372672,
+      "mmproj_sha256": "ddf46c21d7078e95338cfc22306b19b276a29a5ad089023449dd54d4b6170a51",
+      "model_metadata": {
+        "general.architecture": "gemma4",
+        "general.name": "Gemma-4 E4B IT (smart Q4_0, QAT-lossless)",
+        "general.context_length": null,
+        "general.file_type": 2,
+        "general.quantization_version": 2,
+        "general.size_label": "7.5B"
+      },
+      "mmproj_metadata": {
+        "general.architecture": "clip",
+        "general.name": "Gemma-4-E4B-It",
+        "general.type": "mmproj",
+        "general.finetune": null,
+        "general.size_label": "478M",
+        "clip.projector_type": null
+      },
+      "embedded_template_present": true,
+      "embedded_template_bytes": 18810,
+      "embedded_template_sha256": "241c50d86bdfe5e43307da87f559cd2416aacd67a8de46c15acc0105ef2200b7",
+      "adapter_template_path": null,
+      "adapter_template_sha256": null
+    },
+    "gemma4-12b": {
+      "model_path": "/benchmark/Gemma4 12b/gemma-4-12B-it-qat-UD-Q4_K_XL.gguf",
+      "model_size_bytes": 6716356800,
+      "model_sha256": "90fd44e29e0d7cffeb0fd00dc73cfdab9ed0b0e95306ecf7821ea634c940c370",
+      "mmproj_path": "/benchmark/Gemma4 12b/mmproj-F16.gguf",
+      "mmproj_size_bytes": 175115840,
+      "mmproj_sha256": "ecc4e93128da8363b7dbf2193eab98cf1142353f52ceaa0c95c0872997aaadd3",
+      "model_metadata": {
+        "general.architecture": "gemma4",
+        "general.name": "Gemma-4 12B IT (smart Q4_0, QAT-lossless)",
+        "general.context_length": null,
+        "general.file_type": 2,
+        "general.quantization_version": 2,
+        "general.size_label": "12B"
+      },
+      "mmproj_metadata": {
+        "general.architecture": "clip",
+        "general.name": "Gemma-4-12B-It",
+        "general.type": "mmproj",
+        "general.finetune": "12b-it",
+        "general.size_label": "52M",
+        "clip.projector_type": null
+      },
+      "embedded_template_present": true,
+      "embedded_template_bytes": 18924,
+      "embedded_template_sha256": "845f1ee48e39fc942fe190da9df6a1c5db229e17a96ea08966ad1c9274e73d1b",
+      "adapter_template_path": null,
+      "adapter_template_sha256": null
+    },
+    "gemma4-26b": {
+      "model_path": "/benchmark/Gemma4 26b/gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf",
+      "model_size_bytes": 14249047104,
+      "model_sha256": "a7c5bc715f5ff8e99a3e8901ce7d2b42b402c669bf24f7c5250747633d0f5891",
+      "mmproj_path": "/benchmark/Gemma4 26b/mmproj-F16.gguf",
+      "mmproj_size_bytes": 1193058784,
+      "mmproj_sha256": "d00f211a7d4f7fb19bd9b75d8e9342eccffb5920b08fd9562167560fdfcc5dd1",
+      "model_metadata": {
+        "general.architecture": "gemma4",
+        "general.name": "Gemma-4 26B-A4B IT (smart Q4_0, QAT-lossless)",
+        "general.context_length": null,
+        "general.file_type": 2,
+        "general.quantization_version": 2,
+        "general.size_label": "128x2.6B"
+      },
+      "mmproj_metadata": {
+        "general.architecture": "clip",
+        "general.name": "Gemma-4-26B-A4B-It",
+        "general.type": "mmproj",
+        "general.finetune": "26b-it",
+        "general.size_label": "A4B",
+        "clip.projector_type": null
+      },
+      "embedded_template_present": true,
+      "embedded_template_bytes": 18924,
+      "embedded_template_sha256": "845f1ee48e39fc942fe190da9df6a1c5db229e17a96ea08966ad1c9274e73d1b",
+      "adapter_template_path": null,
+      "adapter_template_sha256": null
+    },
+    "gemma4-31b-qat": {
+      "model_path": "/benchmark/gemma-4-31B-it-qat-UD-Q4_K_XL/gemma-4-31B-it-qat-UD-Q4_K_XL.gguf",
+      "model_size_bytes": 17287670048,
+      "model_sha256": "00b5a7c497f0c8934033088c10a7fa9a4c015e46ee6d89e9c6890650ba5d0e71",
+      "mmproj_path": "/benchmark/gemma-4-31B-it-qat-UD-Q4_K_XL/mmproj-F16.gguf",
+      "mmproj_size_bytes": 1198957024,
+      "mmproj_sha256": "4775e1bf6ef6f8df94caed2d672c74432f0722565e5225a170c72949ebe4cf23",
+      "model_metadata": {
+        "general.architecture": "gemma4",
+        "general.name": "Gemma-4 31B IT (smart Q4_0, QAT-lossless)",
+        "general.context_length": null,
+        "general.file_type": 2,
+        "general.quantization_version": 2,
+        "general.size_label": "31B"
+      },
+      "mmproj_metadata": {
+        "general.architecture": "clip",
+        "general.name": "Gemma-4-31B-It",
+        "general.type": "mmproj",
+        "general.finetune": "31b-it",
+        "general.size_label": "576M",
+        "clip.projector_type": null
+      },
+      "embedded_template_present": true,
+      "embedded_template_bytes": 18924,
+      "embedded_template_sha256": "845f1ee48e39fc942fe190da9df6a1c5db229e17a96ea08966ad1c9274e73d1b",
+      "adapter_template_path": null,
+      "adapter_template_sha256": null
+    }
+  }
+}

@@ -1,0 +1,15 @@
+track,model_id,model_name,common_case_items,common_case_source_pages,required_judge_k,valid_judge_cells,expected_judge_cells,common_case_panel_mean,common_case_panel_median,critical_flag_cells,critical_review_units_1ofk,critical_fail_units_2plusofk,excluded_case_count,excluded_case_ids,analysis_status
+text,gemma4-12b,Gemma 4 12B,29,12,5,145,145,97.2068965517,98.6,3,0,1,1,text-15,LIMITED_COMMON_CASE
+text,gemma4-26b,Gemma 4 26B,29,12,5,145,145,98.6137931034,99.2,0,0,0,1,text-15,LIMITED_COMMON_CASE
+text,gemma4-31b-qat,Gemma 4 31B QAT,29,12,5,145,145,98.5310344828,99,0,0,0,1,text-15,LIMITED_COMMON_CASE
+text,gemma4-e4b,Gemma 4 E4B,29,12,5,145,145,95.3724137931,97.6,7,2,2,1,text-15,LIMITED_COMMON_CASE
+text,translategemma-12b,TranslateGemma 12B,29,12,5,145,145,95.6206896552,97.6,6,4,1,1,text-15,LIMITED_COMMON_CASE
+text,translategemma-27b,TranslateGemma 27B,29,12,5,145,145,96.5379310345,98.8,8,3,2,1,text-15,LIMITED_COMMON_CASE
+text,translategemma-4b,TranslateGemma 4B,29,12,5,145,145,92.2620689655,94.8,16,4,4,1,text-15,LIMITED_COMMON_CASE
+image,gemma4-12b,Gemma 4 12B,4,0,4,16,16,91.25,90.5,3,0,1,0,,LIMITED_COMMON_CASE
+image,gemma4-26b,Gemma 4 26B,4,0,4,16,16,88.0625,90.125,6,0,2,0,,LIMITED_COMMON_CASE
+image,gemma4-31b-qat,Gemma 4 31B QAT,4,0,4,16,16,92.6875,92.125,0,0,0,0,,LIMITED_COMMON_CASE
+image,gemma4-e4b,Gemma 4 E4B,4,0,4,16,16,83.875,85.375,4,1,1,0,,LIMITED_COMMON_CASE
+image,translategemma-12b,TranslateGemma 12B,4,0,4,16,16,83.75,81,6,0,2,0,,LIMITED_COMMON_CASE
+image,translategemma-27b,TranslateGemma 27B,4,0,4,16,16,83.9375,84.375,5,0,2,0,,LIMITED_COMMON_CASE
+image,translategemma-4b,TranslateGemma 4B,4,0,4,16,16,76.625,86.625,4,0,1,0,,LIMITED_COMMON_CASE

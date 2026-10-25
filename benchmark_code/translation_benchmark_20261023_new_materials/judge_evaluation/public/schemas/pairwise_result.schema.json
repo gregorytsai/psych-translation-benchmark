@@ -1,0 +1,39 @@
+{
+  "$id": "pairwise_result.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "confidence": {
+      "maximum": 1,
+      "minimum": 0,
+      "type": "number"
+    },
+    "critical_override": {
+      "type": "boolean"
+    },
+    "reason_codes": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "winner": {
+      "enum": [
+        "A",
+        "B",
+        "TIE"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "winner",
+    "confidence",
+    "critical_override",
+    "reason_codes"
+  ],
+  "title": "New-material pairwise orientation result",
+  "type": "object"
+}

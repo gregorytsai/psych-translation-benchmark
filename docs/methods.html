@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="七個模型的繁體中文心理健康翻譯基準：品質觀察、生成速度與可追溯方法。">
+  <link rel="canonical" href="https://gregorytsai.github.io/psych-translation-benchmark/methods.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://gregorytsai.github.io/psych-translation-benchmark/methods.html">
+  <link rel="alternate" hreflang="en" href="https://gregorytsai.github.io/psych-translation-benchmark/methods-en.html">
+  <link rel="alternate" hreflang="x-default" href="https://gregorytsai.github.io/psych-translation-benchmark/methods.html">
+  <title>方法與限制 · 心理健康翻譯基準</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html"><span class="brand-mark">譯</span><span>心理健康翻譯<br><em>Benchmark 2026</em></span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">選單</button>
+      <nav id="site-nav" class="site-nav" aria-label="主要導覽"><a class="nav-link" href="index.html">首頁</a>
+<a class="nav-link" href="models/gemma4-26b.html">模型比較</a>
+<a class="nav-link" href="results.html">238 筆翻譯</a>
+<a class="nav-link active" href="methods.html" aria-current="page">方法與限制</a>
+<a class="nav-link" href="downloads.html">下載</a>
+<a class="nav-link" href="licenses.html">授權與來源</a><a class="language-switch" href="methods-en.html" lang="en">English</a></nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="section-shell page-hero compact"><div class="eyebrow">方法與限制</div><h1>把數字放回它的上下文。</h1><p>本頁保留需要的技術細節，但先把一般讀者最容易誤讀的地方說清楚：共同題目、AI 評審群組、翻譯回應時間是三件不同的事。</p></section>
+
+    <section class="section-shell method-flow"><article><span>01</span><h2>固定素材</h2><p>30 篇英文文字、4 張圖片；每個候選模型各跑一筆，合計 238 個模型－題目翻譯欄位。</p></article><article><span>02</span><h2>固定設定</h2><p>翻譯測試使用固定上下文、temperature 0、關閉 thinking 與逐一請求；詳細設定留在可重建來源。</p></article><article><span>03</span><h2>固定評審群組</h2><p>文字使用 5 位 AI 評審；圖片使用 4 位固定 AI 評審。這是觀察結果，不是人工金標。</p></article></section>
+
+    <section class="section-shell split-panel"><div><div class="eyebrow">為什麼是 29？</div><h2>1 筆無效，不補 0 分。</h2><p>文字共同題目要求同一案例有完整的 5 位 AI 評審結果。text-15 有一個評審欄位無效，因此共同比較集為 29 篇；仍保留候選翻譯與原始有效資訊。</p><p>圖片共同題目為 4 張、每張使用 4 位固定 AI 評審。Mistral 的圖片路徑屬於設計上不支援，因此不把它補成低分。</p></div><div class="big-number"><strong>29</strong><span>共同文字案例</span><small>12 個來源頁面</small></div></section>
+
+    <section class="section-shell"><div class="section-heading"><div><div class="eyebrow">分數怎麼算？</div><h2>共同案例評審均分</h2></div></div><div class="definition-grid"><div class="definition"><h3>分母</h3><p>每類題目的完整共同題目；文字 29、圖片 4。</p></div><div class="definition"><h3>分數</h3><p>每筆有效 AI 評審分數先取題內平均，再對共同題目做描述性算術平均。</p></div><div class="definition"><h3>不代表</h3><p>不是翻譯正確率、不是臨床安全分數，也不是跨模型通用排行榜。</p></div></div></section>
+    
+    <section class="section-shell image-sources-section"><div class="section-heading"><div><div class="eyebrow">圖片原圖與來源連結</div><h2>四張圖片，一次列出原圖來源。</h2><p class="section-intro">原圖連結集中在此，不在 238 筆結果逐列重複。WHO render 附 CC BY-NC-SA 3.0 IGO 條件與翻譯聲明提醒。</p></div></div><div class="source-card-grid"><article class="source-card"><div class="case-label">img-01</div><h3>合成評估圖像</h3><p>SYNTHETIC EVALUATION IMAGE — NOT A CLINICAL RECORD</p><div class="source-links"><a class="text-link" href="materials/images/img01_synthetic_depression_note.png">開啟凍結原圖 ↗</a></div><small>Project-authored synthetic render; not a patient record or prescription.</small></article><article class="source-card"><div class="case-label">img-04</div><h3>合成評估圖像</h3><p>SYNTHETIC EVALUATION IMAGE — NOT A PRESCRIPTION</p><div class="source-links"><a class="text-link" href="materials/images/img04_synthetic_medication_label.png">開啟凍結原圖 ↗</a></div><small>Project-authored synthetic render; not a patient record or prescription.</small></article><article class="source-card"><div class="case-label">img-09</div><h3>WHO 來源頁面 render</h3><p>machine_extracted; AI_visual_checked; not_human_gold</p><div class="source-links"><a class="text-link" href="materials/images/img09_original_who_suicide_policy_p1.png">開啟凍結原圖 ↗</a><a class="text-link" href="https://cdn.who.int/media/docs/default-source/mental-health/9789240078796-eng.pdf?download=true" target="_blank" rel="noopener">開啟 WHO 原始 PDF ↗</a></div><small>WHO source: CC BY-NC-SA 3.0 IGO; attribution, non-commercial use and ShareAlike apply.</small></article><article class="source-card"><div class="case-label">img-10</div><h3>WHO 來源頁面 render</h3><p>machine_extracted; AI_visual_checked; not_human_gold</p><div class="source-links"><a class="text-link" href="materials/images/img10_original_who_depression_brochure_p1.png">開啟凍結原圖 ↗</a><a class="text-link" href="https://cdn.who.int/media/docs/default-source/searo/mhs/depression-what-you-should-know-what-you-can-do.pdf?sfvrsn=293cb15b_5" target="_blank" rel="noopener">開啟 WHO 原始 PDF ↗</a></div><small>WHO source: CC BY-NC-SA 3.0 IGO; attribution, non-commercial use and ShareAlike apply.</small></article></div></section>
+    
+
+    <section class="section-shell table-section"><div class="section-heading"><div><div class="eyebrow">AI 評審摘要</div><h2>觀察來源與速度分開。</h2><p class="section-intro">下表的 latency 是 AI 評審回覆的摘要；首頁與模型頁的載入後回應秒數只來自翻譯測試，兩者不可混用。</p></div></div><div class="table-wrap"><table><thead><tr><th>欄位</th><th>標籤</th><th>有效 / 預期</th><th>評審回覆中位（秒）</th></tr></thead><tbody><tr><td>judge-01</td><td>Qwen (local)</td><td>237 / 238</td><td>50.283</td></tr>
+<tr><td>judge-02</td><td>Nemotron (local)</td><td>238 / 238</td><td>70.268</td></tr>
+<tr><td>judge-03</td><td>Mistral (local)</td><td>210 / 238</td><td>181.280</td></tr>
+<tr><td>judge-04</td><td>GPT (cloud)</td><td>238 / 238</td><td>38.355</td></tr>
+<tr><td>judge-05</td><td>Gemini (cloud)</td><td>238 / 238</td><td>—</td></tr></tbody></table></div></section>
+
+    <section class="section-shell limitations"><div class="eyebrow">限制清單</div><h2>哪些問題，這份資料回答不了？</h2><div class="limit-list"><div><b>樣本小</b><span>文字 30、圖片 4；圖片最高分不能當作普遍視覺能力。</span></div><div><b>評審結果不是人工真值</b><span>5 位 AI 評審的一致性不等於翻譯真值或臨床安全。</span></div><div><b>圖片不是逐字辨識</b><span>圖片結果是端到端翻譯品質觀察，不是逐字 OCR CER。</span></div><div><b>速度不可外推</b><span>翻譯時間中位數受硬體、runtime、設定和請求內容影響。</span></div><div><b>不做完整勝率</b><span>兩兩比較不是完整 round-robin，不從不完整比較圖推導排名。</span></div><div><b>原始檔不公開</b><span>網站排除 raw attempt、絕對路徑、PID、private binding 與未整理 logs。</span></div></div></section>
+
+    <section class="section-shell reproducibility"><div><div class="eyebrow">重建</div><h2>可重跑，但邊界先說明。</h2><p>網站由根目錄的 <code>build_site.py</code> 用 Python 標準庫重建。它從 frozen review 的 CSV 讀取資料，先做 allow-list，再寫入 docs。若結果檔或方法檔更新，請重新核對公開欄位與授權。</p></div><pre><code>python build_site.py
+python build_site.py --results &lt;latest_results&gt; --materials &lt;materials&gt;</code></pre></section>
+    
+<section class="section-shell editorial-section"><h2>連評審也需要被查核：一個實例</h2><p>Gemma 4 31B QAT 的 <code>text-06</code> 使用「<b>雙相情緒障礙症</b>」。Mistral 評審認為「情緒」不標準、必須用「情感」，但健保署資料與臺大醫院新竹分院均使用「雙相情緒障礙症」。因此，這項絕對化的批評不能當成已證實的模型錯誤。原始評分完整保留；這是發布時新增的外部查核註記，不是補做一套人工評分。</p><p><a href="https://www.nhi.gov.tw/ch/dl-80164-84214b36b10846c49afefc8dab9648a2-1.pdf">Taiwan NHI terminology</a> · <a href="https://www.hch.gov.tw/?aid=503&amp;iid=130&amp;page_name=detail&amp;pid=0">National Taiwan University Hospital, Hsinchu</a></p></section><section class="section-shell editorial-section"><h2>重現註解與查核修正</h2><p>翻譯端：context 8,192、輸出上限 4,096、關閉 thinking、temperature 0、seed 20261023。本機評審端：context 32,768、輸出上限 16,384、reasoning budget 8,192。原始概括重現說明混用了兩者；本網站依設定及執行紀錄分開交代。</p><p>A/B 與 B/A 順序檢查：168 組受支援配對（336 個方向）中，112 組一致、7 組一致平手、49 組順序不一致而棄權。另 12 組 Mistral 圖片配對是設計上不支援。配對並未涵蓋所有模型組合，不能推導完整勝率排行榜。</p></section>
+</main>
+  
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div><strong>心理健康翻譯基準</strong><br><span class="muted">2026-10-25 凍結檢視版本 · 研究用途</span></div>
+        <div class="footer-links"><a href="methods.html">方法與限制</a><a href="downloads.html">下載</a><a href="licenses.html">授權與來源</a></div>
+      </div>
+      <p class="footer-note">本網站提供描述性、可追溯的翻譯觀察；不是醫療建議，也不是臨床安全認證。資料頁只包含明確允許公開的欄位。</p>
+    </footer>
+    
+  <script src="assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+judge_slot,judge_label,judge_family,source_kind,requested_model,requested_reasoning_effort,manifest_sha256,packet_sha256,instruction_sha256,schema_regimes,record_count
+judge-01,Qwen (local),local_qwen,direct,,,,,,[],311
+judge-02,Nemotron (local),local_nemotron,direct,,,,,,[],310
+judge-03,Mistral (local),local_mistral,direct,,,,,,[],310
+judge-04,GPT (cloud),cloud_gpt,bundle_fallback,,,,,,[],72
+judge-04,GPT (cloud),cloud_gpt,direct,gpt-6.1-sol,max,c7427f7896b5bcc8f4bf0e6161cf701a08fbd89b21d169e244a916d111ae703e,1909d6ba244b8008bfb3e5f372817276baa014572e1f39b615379fe4813c7471,7da2424f8b0b90d2644d9e5e64aad2abb7ef05c863db2982d9f324d8ed636a0c,[],316
+judge-05,Gemini (cloud),cloud_gemini,direct,Gemini 3.8 Flash High,native UI default,c7427f7896b5bcc8f4bf0e6161cf701a08fbd89b21d169e244a916d111ae703e,026facfb63de77fc33a1ee15e01deca5d66c5397f73f8ff77bfc73312b1c20a4,7da2424f8b0b90d2644d9e5e64aad2abb7ef05c863db2982d9f324d8ed636a0c,"[""schema_not_embedded""]",11
+judge-05,Gemini (cloud),cloud_gemini,direct,,,,,,"[""schema_embedded_v2""]",23
+judge-05,Gemini (cloud),cloud_gemini,gemini_ui_response,Gemini 3.8 Flash High,,,,7da2424f8b0b90d2644d9e5e64aad2abb7ef05c863db2982d9f324d8ed636a0c,"[""schema_embedded_v2""]",282

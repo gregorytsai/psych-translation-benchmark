@@ -1,0 +1,35 @@
+{
+  "schema_version": "public-release-validation-v1",
+  "root": ".",
+  "status": "PASS",
+  "summary": {
+    "html_files": 24,
+    "failures": 0,
+    "warnings": 0,
+    "notes": 5
+  },
+  "failures": [],
+  "warnings": [],
+  "notes": [
+    {
+      "code": "html_pairs",
+      "message": "validated 12 Chinese/English page pairs"
+    },
+    {
+      "code": "sitemap",
+      "message": "validated 24 exact public-base page URLs"
+    },
+    {
+      "code": "json_csv_translation_parity",
+      "message": "238 JSON rows exactly match CSV source/target/status/elapsed fields"
+    },
+    {
+      "code": "numeric_chart_fields",
+      "message": "validated single-card bars, 7-row overview dual scores/times, generation medians, and 238 result rows"
+    },
+    {
+      "code": "allowlisted_fixtures",
+      "message": "allowed synthetic fixtures: {'example.invalid': 4, 'sk-llama-local': 6, 'sk-test': 5, 'sk-litellm-change-me': 2}"
+    }
+  ]
+}

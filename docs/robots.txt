@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gregorytsai.github.io/psych-translation-benchmark/sitemap.xml

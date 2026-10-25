@@ -1,0 +1,29 @@
+{{ bos_token }}
+{%- if messages[0]['role'] != 'user' -%}
+    {{ raise_exception("Conversations must start with a user prompt.") }}
+{%- endif -%}
+{%- for message in messages -%}
+    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}
+        {{ raise_exception("Conversation roles must alternate user/assistant/user/assistant/...") }}
+    {%- endif -%}
+    {%- if message['role'] == 'assistant' -%}
+        {%- if message['content'] is none or message['content'] is not string -%}
+            {{ raise_exception("Assistant role must provide content as a string") }}
+        {%- endif -%}
+        {{ '<start_of_turn>model\n' }}
+        {{ message['content'] | trim }}
+    {%- elif message['role'] == 'user' -%}
+        {%- if message['content'] is none or message['content'] is not string -%}
+            {{ raise_exception("User role must provide content as a string") }}
+        {%- endif -%}
+        {{ '<start_of_turn>user\nYou are a professional English (en) to Chinese (zh-TW) translator. Your goal is to accurately convey the meaning and nuances of the original English text while adhering to Chinese grammar, vocabulary, and cultural sensitivities.\n' }}
+        {{ 'Produce only the Chinese translation, without any additional explanations or commentary. Please translate the following English text into Traditional Chinese (zh-TW):\n\n\n' }}
+        {{ message['content'] | trim }}
+    {%- else -%}
+        {{ raise_exception("Conversations must only contain user or assistant roles.") }}
+    {%- endif -%}
+    {{ '<end_of_turn>\n' }}
+{%- endfor -%}
+{%- if add_generation_prompt -%}
+    {{ '<start_of_turn>model\n' }}
+{%- endif -%}

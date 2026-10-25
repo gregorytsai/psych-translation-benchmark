@@ -1,0 +1,28 @@
+Gemma 4 Apache License 2.0 notice
+==================================
+
+Official Gemma 4 license page:
+https://ai.google.dev/gemma/apache_2
+
+Checked: 2026-10-25
+
+The official Gemma 4 model card identifies Apache 2.0. The canonical Apache
+License 2.0 text is included in `APACHE-2.0.txt` in this directory and is also
+available at:
+
+https://www.apache.org/licenses/LICENSE-2.0
+
+This notice applies to the Gemma 4 model-family license record only. It does
+not automatically determine the rights for a particular local GGUF, QAT
+conversion, mmproj, converter, quantizer, extracted chat template, or other
+derivative artifact. Those artifacts require their own provenance and notice
+review. No Gemma 4 weights or mmproj files are included in this repository.
+
+For this archive, the two Gemma 4 template paths are:
+
+* `benchmark_code/translation_benchmark_20260916_luna/embedded_templates/gemma-4-12B-it-qat-UD-Q4_K_XL.jinja`
+* `benchmark_code/translation_benchmark_20260916_luna/embedded_templates/gemma-4-E4B-it-qat-UD-Q4_K_XL.jinja`
+
+They remain separately identified as upstream/extracted templates and are not
+relicensed by the repository root MIT notice.
+

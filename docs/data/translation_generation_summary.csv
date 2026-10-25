@@ -1,0 +1,15 @@
+model_id,model_name,track,translation_cases,translation_elapsed_median_s,translation_elapsed_p95_s,translation_completion_tokens,translation_status_ok,not_judge_latency,note
+gemma4-12b,Gemma 4 12B,text,30,1.24818714592,1.66093101851,2088,30,true,Generation latency is from the frozen translation run and is not compared to judge latency.
+gemma4-12b,Gemma 4 12B,image,4,2.2390222915,5.53789802503,534,4,true,Generation latency is from the frozen translation run and is not compared to judge latency.
+gemma4-26b,Gemma 4 26B,text,30,0.68644627044,0.933763246215,2108,30,true,Generation latency is from the frozen translation run and is not compared to judge latency.
+gemma4-26b,Gemma 4 26B,image,4,1.94478387549,4.16505087665,547,4,true,Generation latency is from the frozen translation run and is not compared to judge latency.
+gemma4-31b-qat,Gemma 4 31B QAT,text,30,2.51131356321,3.51664227301,2053,30,true,Generation latency is from the frozen translation run and is not compared to judge latency.
+gemma4-31b-qat,Gemma 4 31B QAT,image,4,5.68026075047,21.9975999082,856,4,true,Generation latency is from the frozen translation run and is not compared to judge latency.
+gemma4-e4b,Gemma 4 E4B,text,30,0.75110789598,1.0329547412,2031,30,true,Generation latency is from the frozen translation run and is not compared to judge latency.
+gemma4-e4b,Gemma 4 E4B,image,4,1.44535685447,3.35905903329,494,4,true,Generation latency is from the frozen translation run and is not compared to judge latency.
+translategemma-12b,TranslateGemma 12B,text,30,1.84978608298,2.66355729345,2252,30,true,Generation latency is from the frozen translation run and is not compared to judge latency.
+translategemma-12b,TranslateGemma 12B,image,4,3.07253600075,6.41698553737,535,4,true,Generation latency is from the frozen translation run and is not compared to judge latency.
+translategemma-27b,TranslateGemma 27B,text,30,3.84963529138,5.66788698602,2263,30,true,Generation latency is from the frozen translation run and is not compared to judge latency.
+translategemma-27b,TranslateGemma 27B,image,4,5.3242880418,13.5238970565,493,4,true,Generation latency is from the frozen translation run and is not compared to judge latency.
+translategemma-4b,TranslateGemma 4B,text,30,0.758908437332,1.01533992931,2162,30,true,Generation latency is from the frozen translation run and is not compared to judge latency.
+translategemma-4b,TranslateGemma 4B,image,4,1.37580168759,2.52223208386,453,4,true,Generation latency is from the frozen translation run and is not compared to judge latency.

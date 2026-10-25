@@ -1,0 +1,989 @@
+[
+  {
+    "source": "latest_results\\bootstrap_summary.csv",
+    "public": "docs/data/bootstrap_summary.csv",
+    "source_sha256": "10711d93e6e1625fa86fa9746b7577dff1a2e005990f482c62fc0e1a5ecf81e8",
+    "public_sha256": "d4a4999e64d3059bbaa4747cc52f4e17592b2cafce50318b5f7813a149b96b31",
+    "changed": true
+  },
+  {
+    "source": "latest_results\\common_case_model_summary.csv",
+    "public": "docs/data/common_case_model_summary.csv",
+    "source_sha256": "cefb92a82316b7fcd63f9afdbdb009897f89048fa34930fed4c5ed17160de082",
+    "public_sha256": "de25856757efd89c3b3f84ab068da86a2195b4bba9c40470964cf0bea2e7f0ea",
+    "changed": true
+  },
+  {
+    "source": "latest_results\\error_annotations.csv",
+    "public": "docs/data/error_annotations.csv",
+    "source_sha256": "967c7eac77b47fb130c07b540bf33f2c21973b1782206611be178249e081cc23",
+    "public_sha256": "9831aab9312999c11d34305d7d7a19bf13ac81733dada103297e6884afe2fb6e",
+    "changed": true
+  },
+  {
+    "source": "latest_results\\invalid_annotations.csv",
+    "public": "docs/data/invalid_annotations.csv",
+    "source_sha256": "b6b934c2351113d24dbbdffc301716dd8a6f0b5b00129a66bfdc3f0bf9405894",
+    "public_sha256": "513553b820ed6b762ac27107249b084d19dc739ec359764c1ceb9a6497986850",
+    "changed": true
+  },
+  {
+    "source": "latest_results\\judge_summary.csv",
+    "public": "docs/data/judge_summary.csv",
+    "source_sha256": "67afe14a9a7d684c1458b7e4ed35a4dd3232c485e7ec01460970f1d55f16aedb",
+    "public_sha256": "afc22cc8012ef7aaba898155924c52fc1d020bb7b69ccfec5c7d76cc27acdd4e",
+    "changed": true
+  },
+  {
+    "source": "latest_results\\lofo_summary.csv",
+    "public": "docs/data/lofo_summary.csv",
+    "source_sha256": "15f31645124817decf5fa320f9268b6de6c06743385ff291b7b8129242197757",
+    "public_sha256": "97b56618ee4dbb17a1860cad9d8154add25065026795339aebb9bb93c8a69165",
+    "changed": true
+  },
+  {
+    "source": "latest_results\\model_summary.csv",
+    "public": "docs/data/model_summary.csv",
+    "source_sha256": "412df771dc556e378ebac4919d570ecb8bb8196e5e0b01f8085c63e17da25774",
+    "public_sha256": "b81783f01fdb7922f0a6e8419a7374aa7c9cff3907431dce30f353a597c24a3a",
+    "changed": true
+  },
+  {
+    "source": "latest_results\\pairwise_canonical.csv",
+    "public": "docs/data/pairwise_canonical.csv",
+    "source_sha256": "aec4f4fa1ec63d9878998df9586e03d68650963d6a864f6a79b9a862b88039cc",
+    "public_sha256": "1880cc676e0e9243ae8470fe3fab538533daccc8ce269df2d580eda80cb1fe60",
+    "changed": true
+  },
+  {
+    "source": "latest_results\\pairwise_raw.csv",
+    "public": "docs/data/pairwise_raw.csv",
+    "source_sha256": "a4c20088a5e3133af9703432464b61ccdc40afc37a903749bf509e37d6673a6d",
+    "public_sha256": "203b6c082b5e14bd48699b78e778a9b10844ae42123e20f23ba6f9160e7f3cb9",
+    "changed": true
+  },
+  {
+    "source": "latest_results\\pointwise_results_long.csv",
+    "public": "docs/data/pointwise_results_long.csv",
+    "source_sha256": "4c380edac7a255c78a44d29e60fbcf26d6a1d3cef9ea7630508407e41cf323d8",
+    "public_sha256": "3c374839e9c73faf9342d05cac8f172953f174fd6749246efb6ae97c26dfbb87",
+    "changed": true
+  },
+  {
+    "source": "latest_results\\reliability_summary.csv",
+    "public": "docs/data/reliability_summary.csv",
+    "source_sha256": "780c858a2fa321f281fc142c05ef46c45e4d99c69fda675fd7c8bcf1eebd70c5",
+    "public_sha256": "8b67bcfd413ca3e8ab74e6d8065810549fece6dc52efe8e8eb4747dd7d7702b6",
+    "changed": true
+  },
+  {
+    "source": "latest_results\\settings_provenance.csv",
+    "public": "docs/data/settings_provenance.csv",
+    "source_sha256": "676b9c16e5661b40598add4b053c644b5fa3a48d851dc98e77bd632ca026a831",
+    "public_sha256": "c32d478a632aa048de4fa1a31e4d1ce63167055e02cdc1d7c4e0a7c08cf21fae",
+    "changed": true
+  },
+  {
+    "source": "latest_results\\snapshot_diagnostics.csv",
+    "public": "docs/data/snapshot_diagnostics.csv",
+    "source_sha256": "7703741f562b3f2c276fc35a9aba6f2de114df21e80f56ebf257cdb5ea03115c",
+    "public_sha256": "410f0d9cd0f7d301a94ed7fe486e60b5ee007fca5b7fc1e6bda3dc8475e7525c",
+    "changed": true
+  },
+  {
+    "source": "latest_results\\translation_comparison.csv",
+    "public": "docs/data/translation_comparison.csv",
+    "source_sha256": "d967800d0139921bad41f31a0e7a8d9afbd55064e8a9edd8213794488818de99",
+    "public_sha256": "f09ad2b1600a10ec08d53a41f6f9e13608197e03221aa75c45be2039f2f40970",
+    "changed": true
+  },
+  {
+    "source": "latest_results\\translation_generation_summary.csv",
+    "public": "docs/data/translation_generation_summary.csv",
+    "source_sha256": "4529ca1cefa1a08891b6f417e83e1f79e024508099b644f3e0815e3d9c45607f",
+    "public_sha256": "9df327aefb1dd8acbffe8e56d2a9ba9d20e123958fc63c0c8dfe8cb7c04a52d5",
+    "changed": true
+  },
+  {
+    "source": "archive_translation_project.py",
+    "public": "benchmark_code/archive_translation_project.py",
+    "source_sha256": "288b2b9dfedf3d18f321c0235bb345831aa3b173fa9f80990a6aeed28b681e55",
+    "public_sha256": "a5db0073f6ef97a44c068900525da9e93c1f79857363a043e18baba6727d0d03",
+    "changed": true
+  },
+  {
+    "source": "translategemma-en-zh-tw.jinja",
+    "public": "benchmark_code/translategemma-en-zh-tw.jinja",
+    "source_sha256": "1cdc5626861cd4dd020983ffd3de844a87f38b6d8bddb9ae0d1d7917cfd04444",
+    "public_sha256": "1cdc5626861cd4dd020983ffd3de844a87f38b6d8bddb9ae0d1d7917cfd04444",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\build_deployment_report.py",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/build_deployment_report.py",
+    "source_sha256": "57287a163c5fece38ebabddaeee42e7e483842a6737fda2e87911a96a253d342",
+    "public_sha256": "33215e683cd8c4754be17418940aa39e8ca0fe2198421409c1e124e08513f26e",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\build_report.py",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/build_report.py",
+    "source_sha256": "0b6ce838a77ab3322f9f13bb2c16c5e9f24b9ce4b5322ee5fe03c0496de7bfb5",
+    "public_sha256": "0b6ce838a77ab3322f9f13bb2c16c5e9f24b9ce4b5322ee5fe03c0496de7bfb5",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\build_report_7models.py",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/build_report_7models.py",
+    "source_sha256": "01871e7cd513ee4236beb6280cff32b2b33c8f78b250a4804bef39047abbe92f",
+    "public_sha256": "5b6941891977a1a07d6f1344a51c6be3dbb7839c914cc4f574700c76373df96f",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\candidate_translategemma-en-zh-tw-server.jinja",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/candidate_translategemma-en-zh-tw-server.jinja",
+    "source_sha256": "f983aca15c75d92d56b219bb7a63bdc5909eb73fdd31f764e70246db75cba040",
+    "public_sha256": "f983aca15c75d92d56b219bb7a63bdc5909eb73fdd31f764e70246db75cba040",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\candidate_translategemma-official.jinja",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/candidate_translategemma-official.jinja",
+    "source_sha256": "5e85514635b80a62b64c9982810bfdfbdd482be9a59ed12c25ded2bf3aabddaf",
+    "public_sha256": "5e85514635b80a62b64c9982810bfdfbdd482be9a59ed12c25ded2bf3aabddaf",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\extract_gguf_metadata.py",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/extract_gguf_metadata.py",
+    "source_sha256": "1e5fa182a1369a392d39628d683b36f86e716632af4a3c26796f8b95e278fc5d",
+    "public_sha256": "1e5fa182a1369a392d39628d683b36f86e716632af4a3c26796f8b95e278fc5d",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\make_test_image.py",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/make_test_image.py",
+    "source_sha256": "d8332cb88a48c1ca3ed60fae3e76edefada540e0ac4da6fa9614764113bce06b",
+    "public_sha256": "d8332cb88a48c1ca3ed60fae3e76edefada540e0ac4da6fa9614764113bce06b",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\make_test_image.sh",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/make_test_image.sh",
+    "source_sha256": "2185b56e494623cf3260fa7117bd3f70950c8dec5b3a0e2dcf89e2c6a8214a02",
+    "public_sha256": "2185b56e494623cf3260fa7117bd3f70950c8dec5b3a0e2dcf89e2c6a8214a02",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\make_test_image.swift",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/make_test_image.swift",
+    "source_sha256": "6493b0f4cc9f6cf1a529b989dd6a8ed0ee231061806f64777b0d0cf8b4349475",
+    "public_sha256": "6493b0f4cc9f6cf1a529b989dd6a8ed0ee231061806f64777b0d0cf8b4349475",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\run_image_benchmark.sh",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/run_image_benchmark.sh",
+    "source_sha256": "640a65b887f76633a6b9206d1a64501348380afb44a55ca023d5d60a87c37272",
+    "public_sha256": "640a65b887f76633a6b9206d1a64501348380afb44a55ca023d5d60a87c37272",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\run_template_audit.py",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/run_template_audit.py",
+    "source_sha256": "dd3c1207596e92f8353d5149a0395197f555c13d747783d9fa923bab5a11b05e",
+    "public_sha256": "dd3c1207596e92f8353d5149a0395197f555c13d747783d9fa923bab5a11b05e",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\run_text_benchmark.sh",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/run_text_benchmark.sh",
+    "source_sha256": "2e9195947cec6a1123614bbc17984608fc88a19ea33f65015cc084f616b988a8",
+    "public_sha256": "2e9195947cec6a1123614bbc17984608fc88a19ea33f65015cc084f616b988a8",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\score_deployment.py",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/score_deployment.py",
+    "source_sha256": "184871d81c32b37395ed63475273d4d03f08f62275cf101f62d0571f53d7f8da",
+    "public_sha256": "184871d81c32b37395ed63475273d4d03f08f62275cf101f62d0571f53d7f8da",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\test_fonts.py",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/test_fonts.py",
+    "source_sha256": "ee03a916c52674d27e3dfe66f69124170f0cfffa14fc9390e54c43b040ee7e34",
+    "public_sha256": "76ca337246325e72db35cffe12b77ae69471be69d8fdcacfb0bb1e6ab6b1ed5d",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\validate_deployment_csv_7models.mjs",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/validate_deployment_csv_7models.mjs",
+    "source_sha256": "182cec3c58a814b247018e0e2a2422d5e2a8687a09b4757ce1b4fe26bed24a0d",
+    "public_sha256": "ad32cd9c66064ef60a207a22974d435d7509c7946675fd578305732b52ed725d",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\aggregate_pilot.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/aggregate_pilot.py",
+    "source_sha256": "f8aa45ebe0d779bb3cba904d9d1a332088f8292e189a4ba71dc39dc94ad58dd1",
+    "public_sha256": "f8aa45ebe0d779bb3cba904d9d1a332088f8292e189a4ba71dc39dc94ad58dd1",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\build_csv_results.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/build_csv_results.py",
+    "source_sha256": "bdaf709b5d114304c3fb98ac24b2192c03de41d835c59469dbcd3dd0745aeea5",
+    "public_sha256": "bdaf709b5d114304c3fb98ac24b2192c03de41d835c59469dbcd3dd0745aeea5",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\build_fivejudge_report.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/build_fivejudge_report.py",
+    "source_sha256": "43a119fcf61c5682239665dbed6e8dcf3c5b17fb69cd987abcb6cf76d9166f0c",
+    "public_sha256": "43a119fcf61c5682239665dbed6e8dcf3c5b17fb69cd987abcb6cf76d9166f0c",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\build_local_thinking_combined_diagnostic.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/build_local_thinking_combined_diagnostic.py",
+    "source_sha256": "993a1ae13b82d200b70b9bb105f8549032d0bc9740923271ad8291d62b6f894d",
+    "public_sha256": "993a1ae13b82d200b70b9bb105f8549032d0bc9740923271ad8291d62b6f894d",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\build_mistral_targeted_stability_comparison.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/build_mistral_targeted_stability_comparison.py",
+    "source_sha256": "9bd04d39ac70016497eca786e49d2f4837c86d85c5199458079ceb91bf4565d5",
+    "public_sha256": "9bd04d39ac70016497eca786e49d2f4837c86d85c5199458079ceb91bf4565d5",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\build_mistral_thinking_comparison.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/build_mistral_thinking_comparison.py",
+    "source_sha256": "15699a860e2ba7bfad89501f4fa97249b086c52ac96e3b7d77000a6cd6c5f165",
+    "public_sha256": "15699a860e2ba7bfad89501f4fa97249b086c52ac96e3b7d77000a6cd6c5f165",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\build_nemotron_format_recovery.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/build_nemotron_format_recovery.py",
+    "source_sha256": "81923c1435b91553d4eaf8977e99a6a48c9c5524db65e35434aa3b9ca9721dde",
+    "public_sha256": "81923c1435b91553d4eaf8977e99a6a48c9c5524db65e35434aa3b9ca9721dde",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\build_nemotron_thinking_comparison.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/build_nemotron_thinking_comparison.py",
+    "source_sha256": "2c45dc43f4e32d3ea555a1ba2584d8abb0c845f449b0481359b8ac2fe61a5eae",
+    "public_sha256": "2c45dc43f4e32d3ea555a1ba2584d8abb0c845f449b0481359b8ac2fe61a5eae",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\build_packet.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/build_packet.py",
+    "source_sha256": "12c5cdb573d9637370eb173ba22f73f989cbea0829a15e39612434b5ce46e11b",
+    "public_sha256": "12c5cdb573d9637370eb173ba22f73f989cbea0829a15e39612434b5ce46e11b",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\build_pairwise_diagnostics.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/build_pairwise_diagnostics.py",
+    "source_sha256": "c9c49eb2845974524c853d8b01f698d74f26710110d45df660275597a7d43f50",
+    "public_sha256": "c9c49eb2845974524c853d8b01f698d74f26710110d45df660275597a7d43f50",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\build_qwen_thinking_comparison.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/build_qwen_thinking_comparison.py",
+    "source_sha256": "3fa80273401ef6c72a5c2c17a109112388e4962b750680d9ec71069edd2e4f6d",
+    "public_sha256": "3fa80273401ef6c72a5c2c17a109112388e4962b750680d9ec71069edd2e4f6d",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\collect_inventory.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/collect_inventory.py",
+    "source_sha256": "6551b97c995ec47e18ecae148e1d658b4e07fafcf34dd868c9e0cda5264c1c8e",
+    "public_sha256": "de534970f9fbdd9684ad20f3d6e4cdc258842822007d70aab4404a7896bb9115",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\configure_litellm_credentials.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/configure_litellm_credentials.py",
+    "source_sha256": "173b3ee730c7ff4340734ffa60005d432b3970deb25ccc41f79e9cef25df924a",
+    "public_sha256": "173b3ee730c7ff4340734ffa60005d432b3970deb25ccc41f79e9cef25df924a",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\import_gemini_batches.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/import_gemini_batches.py",
+    "source_sha256": "3dc121572d679483994a2b0a84c6e77e7daf8429a4ca765fb22b5894b7003b97",
+    "public_sha256": "3dc121572d679483994a2b0a84c6e77e7daf8429a4ca765fb22b5894b7003b97",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\litellm_safe_discovery.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/litellm_safe_discovery.py",
+    "source_sha256": "58e7991e6add79a3ca2a92c39586f4c0a99b882dee809364a097085e4cc1559b",
+    "public_sha256": "58e7991e6add79a3ca2a92c39586f4c0a99b882dee809364a097085e4cc1559b",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\make_gemini_prompts.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/make_gemini_prompts.py",
+    "source_sha256": "b3d4a495a683ed780fdbf34d263c9fe0b63967adb7e154b0dc97f0f8c088c6f6",
+    "public_sha256": "b3d4a495a683ed780fdbf34d263c9fe0b63967adb7e154b0dc97f0f8c088c6f6",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\make_gemini_prompts_v2.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/make_gemini_prompts_v2.py",
+    "source_sha256": "028b72a8fadd2c0b9994c37d9cfa40e2c56e0528abc65070e74ed0bbf79db6e3",
+    "public_sha256": "028b72a8fadd2c0b9994c37d9cfa40e2c56e0528abc65070e74ed0bbf79db6e3",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\qualification_summary.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/qualification_summary.py",
+    "source_sha256": "d19797d3afcb02ce8827098068ca70b45d2c4ce8a9fdd24ad7de39ccb42ea972",
+    "public_sha256": "d19797d3afcb02ce8827098068ca70b45d2c4ce8a9fdd24ad7de39ccb42ea972",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\repair_import_quotes.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/repair_import_quotes.py",
+    "source_sha256": "ed8f2063ba9fc2a90e65d68923498f052da353f71d76dd78a9b7628e6557fba3",
+    "public_sha256": "ed8f2063ba9fc2a90e65d68923498f052da353f71d76dd78a9b7628e6557fba3",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\run_live_judge.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/run_live_judge.py",
+    "source_sha256": "96e0d6151f13733d10bda3b8cce3748eb180bc9d83f10ca12acb9099e98a1cc0",
+    "public_sha256": "96e0d6151f13733d10bda3b8cce3748eb180bc9d83f10ca12acb9099e98a1cc0",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\run_mistral_local_isolated.sh",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/run_mistral_local_isolated.sh",
+    "source_sha256": "666a5226cba5a684a01cbabe5853b143f70d3cb677035a2d157d88c8d5402f94",
+    "public_sha256": "adbfdc5718fae66d1b881348da41f530c99c8ca1100b5cd230be6c883b9d2362",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\validate_import.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/validate_import.py",
+    "source_sha256": "a74bdaa6e97abbf398d2027a221a63b83cfe7aceaf4c0c8affad5c41e7b05527",
+    "public_sha256": "a74bdaa6e97abbf398d2027a221a63b83cfe7aceaf4c0c8affad5c41e7b05527",
+    "changed": false
+  },
+  {
+    "source": "translation_eval_materials_20261022\\build_synthetic_images.swift",
+    "public": "benchmark_code/translation_eval_materials_20261022/build_synthetic_images.swift",
+    "source_sha256": "6da9194d23592cf1094872671d65dd8be2ac0ee1e3b7361d9407bf3c0ebfd922",
+    "public_sha256": "6da9194d23592cf1094872671d65dd8be2ac0ee1e3b7361d9407bf3c0ebfd922",
+    "changed": false
+  },
+  {
+    "source": "translation_materials_psych_20261022_luna\\build_synthetic_images.swift",
+    "public": "benchmark_code/translation_materials_psych_20261022_luna/build_synthetic_images.swift",
+    "source_sha256": "6da9194d23592cf1094872671d65dd8be2ac0ee1e3b7361d9407bf3c0ebfd922",
+    "public_sha256": "6da9194d23592cf1094872671d65dd8be2ac0ee1e3b7361d9407bf3c0ebfd922",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\build_packets.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/build_packets.py",
+    "source_sha256": "2c6df764e51b0acb231ff58fde561d739283f4ced746f54f9316b7eb545b5602",
+    "public_sha256": "2c6df764e51b0acb231ff58fde561d739283f4ced746f54f9316b7eb545b5602",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\runner\\artifact_csv_qa.mjs",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/runner/artifact_csv_qa.mjs",
+    "source_sha256": "3fab0cd95a0bd71a72d1193058ac2df78b37a5cb6f01556634f33cddadfb4473",
+    "public_sha256": "3fab0cd95a0bd71a72d1193058ac2df78b37a5cb6f01556634f33cddadfb4473",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\runner\\derive_smoke_v2.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/runner/derive_smoke_v2.py",
+    "source_sha256": "879705017191bced5cabf7fdf9c1b4cca2d742649dc5302893c18a78dcbf0199",
+    "public_sha256": "879705017191bced5cabf7fdf9c1b4cca2d742649dc5302893c18a78dcbf0199",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\runner\\run_translation.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/runner/run_translation.py",
+    "source_sha256": "6966f087d7a6fbbc175c9133d6b54cff9d4251294f4fab7eab734d2c9e3492b6",
+    "public_sha256": "32a29c64466163106761ee4b220cfa3c45d71c6b46e44e18653962e0015e50db",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\runner\\template_probe.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/runner/template_probe.py",
+    "source_sha256": "e32a5f2f2386208595229fe3daf5fb49161089493976c56f3b6cf720588e7e6e",
+    "public_sha256": "e32a5f2f2386208595229fe3daf5fb49161089493976c56f3b6cf720588e7e6e",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\technical_smoke\\make_marker.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/technical_smoke/make_marker.py",
+    "source_sha256": "d5976312a4c91a17250e373a0eb9c8cf6569001ad34e6cc89f86f7dd9e2ff656",
+    "public_sha256": "d5976312a4c91a17250e373a0eb9c8cf6569001ad34e6cc89f86f7dd9e2ff656",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\technical_smoke\\marker.swift",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/technical_smoke/marker.swift",
+    "source_sha256": "a6d16e86ed96ee8d8877f474e350e86206038ca4a261b3d71cdb994457d0c7c9",
+    "public_sha256": "a6d16e86ed96ee8d8877f474e350e86206038ca4a261b3d71cdb994457d0c7c9",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\tests\\test_translation_driver.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/tests/test_translation_driver.py",
+    "source_sha256": "7aabcbb7959d76e5d1ccf75360d8798e2e5e8cd6e2ceefed76de5861bae65c37",
+    "public_sha256": "7aabcbb7959d76e5d1ccf75360d8798e2e5e8cd6e2ceefed76de5861bae65c37",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\tests\\verify_translation_results.mjs",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/tests/verify_translation_results.mjs",
+    "source_sha256": "cf7876850f07869f41d8a9ff9574dcf7a26277e3d97ec1ad99efe46ba35e350b",
+    "public_sha256": "e38ad67109a9d41d45122c875c670bf16ca37cc981b6eebbcff219a8ed615560",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\analysis_runner\\aggregate_new_panel.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/analysis_runner/aggregate_new_panel.py",
+    "source_sha256": "026aada24c17aea6c73278b7a0ce2bd44e2fa41954e20130b943914f01aeda92",
+    "public_sha256": "026aada24c17aea6c73278b7a0ce2bd44e2fa41954e20130b943914f01aeda92",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\cloud_runner\\capture_gemini_ui_result.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/cloud_runner/capture_gemini_ui_result.py",
+    "source_sha256": "e342b3f39ff3f87faeb9ff23420495149516b804c891f9ccb6adc7e3abf2d5f7",
+    "public_sha256": "54f6d1f7d64142b3a39b56a0d6370aee040eb055658ccbcd089e8a0c762c0e2b",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\cloud_runner\\gemini_recovery.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/cloud_runner/gemini_recovery.py",
+    "source_sha256": "9f355958ae3b7483bf4de10a89c87a0b5cfce72ef547ae65a8495ba41c1b8fc3",
+    "public_sha256": "9f355958ae3b7483bf4de10a89c87a0b5cfce72ef547ae65a8495ba41c1b8fc3",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\cloud_runner\\prepare_gemini_ui_job.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/cloud_runner/prepare_gemini_ui_job.py",
+    "source_sha256": "1ea945cf880dd94002ab0480813ad35b3a4bd1cf212d3fc1b068d6c2b2ccc03d",
+    "public_sha256": "9591abdffd8bee9a1eed674990261ed265b6abd415e8fb0f43760e7035633dba",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\cloud_runner\\prepare_gemini_ui_pairwise.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/cloud_runner/prepare_gemini_ui_pairwise.py",
+    "source_sha256": "120832c9a93e8eb18ed670ef73d491d7ac0e582e978c07daa1bb53d9147cc343",
+    "public_sha256": "ad7916f562ab96439fe3101bdc9c3f5fb28808d3d4e674722a558ae8a281b6ed",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\cloud_runner\\reconstruct_gemini_prompt_audit.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/cloud_runner/reconstruct_gemini_prompt_audit.py",
+    "source_sha256": "53563a8aa91b6c1417907b7fedf1e8b5513105e7e6a399385b976c04c42523e5",
+    "public_sha256": "53563a8aa91b6c1417907b7fedf1e8b5513105e7e6a399385b976c04c42523e5",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\cloud_runner\\record_gemini_ui_result.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/cloud_runner/record_gemini_ui_result.py",
+    "source_sha256": "80fcb8c09980e9c2177f21af7ac81a13ca6b8ee9d6fbbbcf5ea9d689e76ffb21",
+    "public_sha256": "99407deaacf19df2b7354ee933c23a51826bd13e63a6301cd403fa2fe0bf4561",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\cloud_runner\\run_cloud_judge.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/cloud_runner/run_cloud_judge.py",
+    "source_sha256": "1918f66481e72e29d4f04ba28fcd4252b75cdaadb30b0e38a065bc2e35cba975",
+    "public_sha256": "1918f66481e72e29d4f04ba28fcd4252b75cdaadb30b0e38a065bc2e35cba975",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\independent_qa\\report_qa.mjs",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/independent_qa/report_qa.mjs",
+    "source_sha256": "6a4b2d5e66ab43088ba5c5ed4a10d6fb14ece2d2d5188029cd067481d0addac8",
+    "public_sha256": "8450c3e93c8800e18696b3c37bdf26795ff4c4382c0b60854693699c562c7da1",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\independent_qa\\verify_judge_packets.mjs",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/independent_qa/verify_judge_packets.mjs",
+    "source_sha256": "9e57fa2c5ad9472e86d84b96691a9a609a3ee69de7ce65098bf47c2ae0ee19f0",
+    "public_sha256": "0df2a1570eca9333f92276e4773d92f237a9ffe08ef10208769822ddc60cdaad",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\local_runner\\judge_driver.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/local_runner/judge_driver.py",
+    "source_sha256": "c8ab0adc2a8f597e9331bc60ae84d3087fb1594309c9fe365403d5eb69b9fabd",
+    "public_sha256": "b98725ff3e738cf0174ccd921870bc2f58cc377c652f867e2c68cbe2f6146ad5",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\local_runner\\test_driver.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/local_runner/test_driver.py",
+    "source_sha256": "4218ce94e64865eb730d1215e8f80f6bf0b39211b26be90e721b752d4ce4c683",
+    "public_sha256": "4218ce94e64865eb730d1215e8f80f6bf0b39211b26be90e721b752d4ce4c683",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\tests\\test_packets.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/tests/test_packets.py",
+    "source_sha256": "833488ce82bccb654ddaa3ee259035c41221f08305d4ad05115238ad44c2b854",
+    "public_sha256": "833488ce82bccb654ddaa3ee259035c41221f08305d4ad05115238ad44c2b854",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\recovery_20261025_failed_jobs\\analysis\\post_recovery_runner.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/recovery_20261025_failed_jobs/analysis/post_recovery_runner.py",
+    "source_sha256": "a60a374f58b37e1629209f3820a51b29e7f3526ef576eefae236f6a3291468c1",
+    "public_sha256": "a60a374f58b37e1629209f3820a51b29e7f3526ef576eefae236f6a3291468c1",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\recovery_20261025_failed_jobs\\analysis\\test_post_recovery.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/recovery_20261025_failed_jobs/analysis/test_post_recovery.py",
+    "source_sha256": "4f848538d9a524bbdc5ddf46a341216fdc990fe80b5f4785bee5e0859e6e902f",
+    "public_sha256": "4f848538d9a524bbdc5ddf46a341216fdc990fe80b5f4785bee5e0859e6e902f",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\recovery_20261025_failed_jobs\\qwen\\recovery_controller.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/recovery_20261025_failed_jobs/qwen/recovery_controller.py",
+    "source_sha256": "3a90345286f75322bb0601f2e85753fa4faf2f15cc34a5b023db0154d48fb20b",
+    "public_sha256": "02f6465973ec648641c53909fab2673bad7e1ffa86be80dfa6f0d8f65f88fbcb",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\recovery_20261025_failed_jobs\\qwen\\retry_failed_job.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/recovery_20261025_failed_jobs/qwen/retry_failed_job.py",
+    "source_sha256": "bc5a643a53e84be5ac1297306feeb8a4d267cd5ad610577716f05372751db1b3",
+    "public_sha256": "1ba01b431734f5d1d9e1c1efd5aabc216dcd4f6e13152361166fe530af6570ed",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\analysis_runner\\tests\\qa_artifact_csv.mjs",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/analysis_runner/tests/qa_artifact_csv.mjs",
+    "source_sha256": "102dc9c9bccf77992c64fb04de2856c34b8ab19418994ac0a7ca48d14acf4fe0",
+    "public_sha256": "102dc9c9bccf77992c64fb04de2856c34b8ab19418994ac0a7ca48d14acf4fe0",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\analysis_runner\\tests\\test_aggregate.py",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/analysis_runner/tests/test_aggregate.py",
+    "source_sha256": "9ea64b5b15e08b5b0b68b1ba8f6b58c344f3dd87b8148b9a57b77aaeeb7a3b5c",
+    "public_sha256": "9ea64b5b15e08b5b0b68b1ba8f6b58c344f3dd87b8148b9a57b77aaeeb7a3b5c",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\mistral_targeted_retest_20261023\\start_mistral_targeted_server.sh",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/mistral_targeted_retest_20261023/start_mistral_targeted_server.sh",
+    "source_sha256": "0546a39dcf89bbee3f6507237dc51901b04dcc3d9bfe40e0f372439e439476a9",
+    "public_sha256": "c8a72d9dc31d2ff65c24a79d7ec363e9045c368a73e8f611f6ba168583a5774e",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\mistral_targeted_retest_20261023\\targeted_runner.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/mistral_targeted_retest_20261023/targeted_runner.py",
+    "source_sha256": "712ae27ed88e5de877f57b2baf349e6a02ce41bce9d18781f613cf1296d4cfd0",
+    "public_sha256": "712ae27ed88e5de877f57b2baf349e6a02ce41bce9d18781f613cf1296d4cfd0",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\mistral_targeted_retest_20261023\\template_audit.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/mistral_targeted_retest_20261023/template_audit.py",
+    "source_sha256": "d1aa043424b7c4b5fb2587617b35b1c751342d93d1e6c2c0acdd3b987da3f34f",
+    "public_sha256": "9c0d7a4a7bfc845fab7ad02f901bdcd54681d36e1e32e321c0ae63adceb68615",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\mistral_targeted_retest_20261023\\token_budget_audit.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/mistral_targeted_retest_20261023/token_budget_audit.py",
+    "source_sha256": "11d9a16b9f354d2165a293c36799c07260add52ed3a8961b5284d5b9ae4b9ff8",
+    "public_sha256": "5d5567f895381dd5e4a949e42604cd311f11878114b27996071657a3fd6ce464",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\tests\\test_aggregate_pilot.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/tests/test_aggregate_pilot.py",
+    "source_sha256": "7907a92bd685447c8dbdc9d14c776ce13991472a24c9480eecc4e8a6a6f85bd3",
+    "public_sha256": "7907a92bd685447c8dbdc9d14c776ce13991472a24c9480eecc4e8a6a6f85bd3",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\tests\\test_build_csv_quarantine.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/tests/test_build_csv_quarantine.py",
+    "source_sha256": "3a0258902ce37cc2c14505dc6dde5c676ef4fd6dad75df9f053a481ec139dec8",
+    "public_sha256": "3a0258902ce37cc2c14505dc6dde5c676ef4fd6dad75df9f053a481ec139dec8",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\tests\\test_configure_litellm_credentials.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/tests/test_configure_litellm_credentials.py",
+    "source_sha256": "1723260a3b3f74c39dbf19f6c168a59bf20a4d71d8bc33c9ce4712b863215495",
+    "public_sha256": "1723260a3b3f74c39dbf19f6c168a59bf20a4d71d8bc33c9ce4712b863215495",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\tests\\test_gemini_v2.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/tests/test_gemini_v2.py",
+    "source_sha256": "8e101290eb6e4cdab66a5032646289df9f0e4886a5e27b3f757bc67332c067d0",
+    "public_sha256": "8e101290eb6e4cdab66a5032646289df9f0e4886a5e27b3f757bc67332c067d0",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\tests\\test_litellm_safe_discovery.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/tests/test_litellm_safe_discovery.py",
+    "source_sha256": "e381a54f3c133aaafc5e412862fe648f73207c434bbf0b78db45a51924544085",
+    "public_sha256": "e381a54f3c133aaafc5e412862fe648f73207c434bbf0b78db45a51924544085",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\tests\\test_pairwise_family_ties.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/tests/test_pairwise_family_ties.py",
+    "source_sha256": "de28e71abcc74be2bed721b17bd0e54eed7f45814005edc3ac3df72e6195a780",
+    "public_sha256": "de28e71abcc74be2bed721b17bd0e54eed7f45814005edc3ac3df72e6195a780",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\tests\\test_run_live_judge.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/tests/test_run_live_judge.py",
+    "source_sha256": "efae8be4c48a030ad71b61fc8fa08b8256e4f72235328ff09c6abd4614ef762b",
+    "public_sha256": "efae8be4c48a030ad71b61fc8fa08b8256e4f72235328ff09c6abd4614ef762b",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\tests\\verify_mistral_targeted_stability_csv.mjs",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/tests/verify_mistral_targeted_stability_csv.mjs",
+    "source_sha256": "aca8a619bd1f0a9f6dd3667c0480cd950f08527c4c3769864d902f5857e77254",
+    "public_sha256": "7b2336db26c24dac57427097198cffc2e4417a1e704546a46f99068203f05013",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\tests\\verify_mistral_thinking_csv.mjs",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/tests/verify_mistral_thinking_csv.mjs",
+    "source_sha256": "c189ab21958c562fcdc486dd32874c624a4ea6657579059a2fded0eccd78e53c",
+    "public_sha256": "c189ab21958c562fcdc486dd32874c624a4ea6657579059a2fded0eccd78e53c",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\tests\\verify_nemotron_format_recovery_csv.mjs",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/tests/verify_nemotron_format_recovery_csv.mjs",
+    "source_sha256": "1fde9d740e63095219c0bbeb2f7670fe7918ddeecc8f8ab6482abeac51c237f6",
+    "public_sha256": "1fde9d740e63095219c0bbeb2f7670fe7918ddeecc8f8ab6482abeac51c237f6",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-format-recovery-20261022\\capture_attempt02_preflight.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-format-recovery-20261022/capture_attempt02_preflight.py",
+    "source_sha256": "c97a4f83996e86f14361eb874b0945334a358699e8c533ca8f7ca002ca02e07b",
+    "public_sha256": "418da6d962e7aed55fb9ff23cb9a981f2b43fa06d2ab546f1a83056f8f53b628",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-format-recovery-20261022\\cleanup_recovery_server.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-format-recovery-20261022/cleanup_recovery_server.py",
+    "source_sha256": "d2a8cea5c59891475c86772f246d3f4c1d17f4d4960dbfc1840390e82a3d930c",
+    "public_sha256": "d2a8cea5c59891475c86772f246d3f4c1d17f4d4960dbfc1840390e82a3d930c",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-format-recovery-20261022\\render_recovery_template.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-format-recovery-20261022/render_recovery_template.py",
+    "source_sha256": "f1e3097ffefc823ac5e655f9ae21cd8ffe7f5b56ba8506dacd1ae878de5eb5ea",
+    "public_sha256": "f1e3097ffefc823ac5e655f9ae21cd8ffe7f5b56ba8506dacd1ae878de5eb5ea",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-format-recovery-20261022\\run_recovery_case.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-format-recovery-20261022/run_recovery_case.py",
+    "source_sha256": "ef348b8a3989d0b9e38e3521577a8dfd8cb3b9b071d524845ae4cc15e4fdfc32",
+    "public_sha256": "ef348b8a3989d0b9e38e3521577a8dfd8cb3b9b071d524845ae4cc15e4fdfc32",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-format-recovery-20261022\\run_recovery_smoke.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-format-recovery-20261022/run_recovery_smoke.py",
+    "source_sha256": "9b050e4a89cb255ae63f552c97eb2a16ca13a1eb51044f5ea6a8d4098943e324",
+    "public_sha256": "9b050e4a89cb255ae63f552c97eb2a16ca13a1eb51044f5ea6a8d4098943e324",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-format-recovery-20261022\\start_recovery_server.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-format-recovery-20261022/start_recovery_server.py",
+    "source_sha256": "57350fb5f1a46bffce909a6d99f2c1270e63b885f43b30f4da0c26396548f942",
+    "public_sha256": "0f83ea2b1a282c7606f1f81228a9fe5d4b73d8e5add1b943bc8586ba7bff1fe6",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-format-recovery-20261022\\start_recovery_server_attempt02.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-format-recovery-20261022/start_recovery_server_attempt02.py",
+    "source_sha256": "d7c64d4ee8016acbd3e9801c0dc3b4af717f9daabc045ea32ff760ae5e269841",
+    "public_sha256": "d6dcfd2c6c45348a7ae98decf09417a7bd2de1a08b66b1357ccb7de4068a6d85",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-format-recovery-20261022\\write_attempt02_manifest.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-format-recovery-20261022/write_attempt02_manifest.py",
+    "source_sha256": "0dc9d2ffc149ce00ef5946a5cd7c1369d3dbfd673c18e17d40681e51335c47be",
+    "public_sha256": "0dc9d2ffc149ce00ef5946a5cd7c1369d3dbfd673c18e17d40681e51335c47be",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-local-isolated-20261022\\capture_cleanup_evidence.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-local-isolated-20261022/capture_cleanup_evidence.py",
+    "source_sha256": "1c33b08cbcecba39ef77b0ae739ff0636d609d5cd92ed7f3ccb74afc0e6eda89",
+    "public_sha256": "1c33b08cbcecba39ef77b0ae739ff0636d609d5cd92ed7f3ccb74afc0e6eda89",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-local-isolated-20261022\\run_nemotron_live_attempt.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-local-isolated-20261022/run_nemotron_live_attempt.py",
+    "source_sha256": "66db4d7ba672302c391ef390e894c9eef9f313a71d3f46d5c0309a7163d744df",
+    "public_sha256": "ead5af956de2ad232ca8162c2972cd0094dbd80adfeba9400f9e2bc5ad6db243",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-local-isolated-20261022\\run_nemotron_render_diagnostics.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-local-isolated-20261022/run_nemotron_render_diagnostics.py",
+    "source_sha256": "de984d2e5758559df2fafd8cb1940214b951fe85c2c5cfb11df8dfc9cc20a599",
+    "public_sha256": "37174fd1f1a7db8ced2c8c44ce8f0a68ba35fb7a3aa23283543f0ad8c4b30231",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-local-isolated-20261022\\run_nemotron_smoke.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-local-isolated-20261022/run_nemotron_smoke.py",
+    "source_sha256": "fa8100e36af17c40ae6cd2cbd62d042406246a4d991398a36383143bc6eced5d",
+    "public_sha256": "fa8100e36af17c40ae6cd2cbd62d042406246a4d991398a36383143bc6eced5d",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-local-isolated-20261022\\run_nemotron_smoke_compat.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-local-isolated-20261022/run_nemotron_smoke_compat.py",
+    "source_sha256": "bd58e689618f13b7dc092c64918957b31af699f4931d6242ed2e9fdbb6a84881",
+    "public_sha256": "bd58e689618f13b7dc092c64918957b31af699f4931d6242ed2e9fdbb6a84881",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-local-isolated-20261022\\write_nemotron_manifest.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-local-isolated-20261022/write_nemotron_manifest.py",
+    "source_sha256": "7d22e1717f4fe9c074145ae39f32ae0668b29162fed446e782e844d99f769da9",
+    "public_sha256": "8d2c7327c0711347e24de54923fef53123afeb62e6c3e081e28c1d2b1f0bd53c",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-local-thinking-on-20261022\\capture_cleanup_evidence.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-local-thinking-on-20261022/capture_cleanup_evidence.py",
+    "source_sha256": "ec824593e9e31f1d4b5675cff85c119f9a60c665fc82da448a9012eea5cddd1b",
+    "public_sha256": "ec824593e9e31f1d4b5675cff85c119f9a60c665fc82da448a9012eea5cddd1b",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-local-thinking-on-20261022\\reasoning_budget_tokenize_audit.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-local-thinking-on-20261022/reasoning_budget_tokenize_audit.py",
+    "source_sha256": "4effedf3930d9369a31dab2ea36a7cae13944c0cbaba3ae6603454f2e3112405",
+    "public_sha256": "4effedf3930d9369a31dab2ea36a7cae13944c0cbaba3ae6603454f2e3112405",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-local-thinking-on-20261022\\reasoning_budget_tokenize_probe.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-local-thinking-on-20261022/reasoning_budget_tokenize_probe.py",
+    "source_sha256": "6a03411af2ea6d629014a876522cd0e48b455297aa3f612e9b84bbd77cb14dd0",
+    "public_sha256": "6a03411af2ea6d629014a876522cd0e48b455297aa3f612e9b84bbd77cb14dd0",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-local-thinking-on-20261022\\run_nemotron_thinking_on_live_attempt.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-local-thinking-on-20261022/run_nemotron_thinking_on_live_attempt.py",
+    "source_sha256": "2a445eedee01b37ae1f366b562f93f63bea482587769718fcc0ce14aff2edd20",
+    "public_sha256": "83cbfd4c3d45bc8f93ead5c61d21ad022b896da0f09192eda52f3ccb0c1d8ee8",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-local-thinking-on-20261022\\run_nemotron_thinking_on_render_diagnostics.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-local-thinking-on-20261022/run_nemotron_thinking_on_render_diagnostics.py",
+    "source_sha256": "ac0a63cd483e5d5eb23cb7362c1bc0c9d46bb2c41dcb449ae209458d0423bd60",
+    "public_sha256": "5e93501911ce7beeb95bdc887bb86a5389d9c3a6b33fb6a436ef8c8d71517742",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-local-thinking-on-20261022\\run_nemotron_thinking_on_smoke.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-local-thinking-on-20261022/run_nemotron_thinking_on_smoke.py",
+    "source_sha256": "79634c8897130efbf804d70db156e9146e30635a5e1ddf4c1ed65bd0e04006bb",
+    "public_sha256": "79634c8897130efbf804d70db156e9146e30635a5e1ddf4c1ed65bd0e04006bb",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-local-thinking-on-20261022\\start_nemotron_thinking_on.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-local-thinking-on-20261022/start_nemotron_thinking_on.py",
+    "source_sha256": "7069d75145d419df12e3ea5f1114fc9b47259bc44e69dc92d19b3ac79a002c7b",
+    "public_sha256": "8715d24923799d632643298bacc564a977788af2620e15abd721686c329d1e17",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\nemotron-3.5-super-vl-120b-a12b-local-thinking-on-20261022\\write_nemotron_thinking_on_manifest.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/nemotron-3.5-super-vl-120b-a12b-local-thinking-on-20261022/write_nemotron_thinking_on_manifest.py",
+    "source_sha256": "b248ef79d3a405e8244f54cd95f7429f0018420d08ae10f579eb7dc8be03e66d",
+    "public_sha256": "4fdd003b06254db0db8e69c9743586ad8ab00022ab1cb6d7f7c0f9dcf972f82e",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\qwen3.8-flash-next-local-thinking-xhigh-20261022\\make_raw_manifest.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/qwen3.8-flash-next-local-thinking-xhigh-20261022/make_raw_manifest.py",
+    "source_sha256": "333e9f61ef8cb2293156f6cb4fba1f7dbb923d9ff6b8f3e103278d2ac90ccf48",
+    "public_sha256": "333e9f61ef8cb2293156f6cb4fba1f7dbb923d9ff6b8f3e103278d2ac90ccf48",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\qwen3.8-flash-next-local-thinking-xhigh-20261022\\qwen_strict_validate.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/qwen3.8-flash-next-local-thinking-xhigh-20261022/qwen_strict_validate.py",
+    "source_sha256": "c78cbb2af822feb42cbc130785e45455ce1359f1ad7309e67dbaa9235a71c572",
+    "public_sha256": "c78cbb2af822feb42cbc130785e45455ce1359f1ad7309e67dbaa9235a71c572",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\qwen3.8-flash-next-local-thinking-xhigh-20261022\\qwen_token_budget_audit.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/qwen3.8-flash-next-local-thinking-xhigh-20261022/qwen_token_budget_audit.py",
+    "source_sha256": "dd85ab541ddf0aa8a79dabc18d1ab5d019d363b61b645de7596aa89366c95818",
+    "public_sha256": "dd85ab541ddf0aa8a79dabc18d1ab5d019d363b61b645de7596aa89366c95818",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261022_judge_pilot\\raw\\qwen3.8-flash-next-local-thinking-xhigh-20261022\\template_hash_audit.py",
+    "public": "benchmark_code/translation_benchmark_20261022_judge_pilot/raw/qwen3.8-flash-next-local-thinking-xhigh-20261022/template_hash_audit.py",
+    "source_sha256": "9b0cf94465b130b45a8298c730278caab7ebc885cd243f031a6e48054ec34014",
+    "public_sha256": "34a2506a42a660c4c41bbe766552016a96c27059c842bc45f11b789dbeb0b07b",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\embedded_templates\\gemma-4-12B-it-qat-UD-Q4_K_XL.jinja",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/embedded_templates/gemma-4-12B-it-qat-UD-Q4_K_XL.jinja",
+    "source_sha256": "845f1ee48e39fc942fe190da9df6a1c5db229e17a96ea08966ad1c9274e73d1b",
+    "public_sha256": "845f1ee48e39fc942fe190da9df6a1c5db229e17a96ea08966ad1c9274e73d1b",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\embedded_templates\\gemma-4-E4B-it-qat-UD-Q4_K_XL.jinja",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/embedded_templates/gemma-4-E4B-it-qat-UD-Q4_K_XL.jinja",
+    "source_sha256": "241c50d86bdfe5e43307da87f559cd2416aacd67a8de46c15acc0105ef2200b7",
+    "public_sha256": "241c50d86bdfe5e43307da87f559cd2416aacd67a8de46c15acc0105ef2200b7",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\embedded_templates\\translategemma-12b-it.Q8_0.jinja",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/embedded_templates/translategemma-12b-it.Q8_0.jinja",
+    "source_sha256": "5e85514635b80a62b64c9982810bfdfbdd482be9a59ed12c25ded2bf3aabddaf",
+    "public_sha256": "5e85514635b80a62b64c9982810bfdfbdd482be9a59ed12c25ded2bf3aabddaf",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\embedded_templates\\translategemma-4b-it.Q8_0.jinja",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/embedded_templates/translategemma-4b-it.Q8_0.jinja",
+    "source_sha256": "5e85514635b80a62b64c9982810bfdfbdd482be9a59ed12c25ded2bf3aabddaf",
+    "public_sha256": "5e85514635b80a62b64c9982810bfdfbdd482be9a59ed12c25ded2bf3aabddaf",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\multi_judge_trial\\multi_judge_eval.py",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/multi_judge_trial/multi_judge_eval.py",
+    "source_sha256": "dce4e0afa32628f67b8b2c240b528e63cb099f6fe6c2656d172b8f6301530de3",
+    "public_sha256": "dce4e0afa32628f67b8b2c240b528e63cb099f6fe6c2656d172b8f6301530de3",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\configs\\translation_config.json",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/configs/translation_config.json",
+    "source_sha256": "5b5a160a83ea1fc71eb29c39302923d2973c50f79654d12c22c5005f5fc50265",
+    "public_sha256": "812ae73f0f9b2ca714f26edfbdd236464d5dc018ec71d7ffa23960096b931be4",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\litellm.audit.yaml",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/litellm.audit.yaml",
+    "source_sha256": "34789ab5e31e33562b4f46174061f4b7742db517f5499deae9e1ab1076cad59b",
+    "public_sha256": "34789ab5e31e33562b4f46174061f4b7742db517f5499deae9e1ab1076cad59b",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\local_runner\\judge_config.json",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/local_runner/judge_config.json",
+    "source_sha256": "1c643d846f3caba00b17bfa9a72b0a64a1e97c8d71d8e9abb6095841aa50ab7a",
+    "public_sha256": "8e83e14c8dce19ac7ac0f5a61ea7cbcba4b4261d0ad443a2f66233e2cd30c7dc",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\public\\schemas\\pairwise_result.schema.json",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/public/schemas/pairwise_result.schema.json",
+    "source_sha256": "02fcd319cba6f4294bd91d2bea88c693196d0d7009a8135b660a7137e9559a6a",
+    "public_sha256": "02fcd319cba6f4294bd91d2bea88c693196d0d7009a8135b660a7137e9559a6a",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\public\\schemas\\pointwise_result.schema.json",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/public/schemas/pointwise_result.schema.json",
+    "source_sha256": "a13bd7dfbe59e1633d9eafc06f88feac39d50ccd74604ac06424a0a39b22d4f5",
+    "public_sha256": "a13bd7dfbe59e1633d9eafc06f88feac39d50ccd74604ac06424a0a39b22d4f5",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\protocol.md",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/protocol.md",
+    "source_sha256": "fce32300d020d0dba32b3d1261522dc33221be3a86608514799688cd94a7a963",
+    "public_sha256": "19476a04024950f262a9106f8b412b332648f213bb7946eba45cdb99aa74ee4a",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\protocol.md",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/protocol.md",
+    "source_sha256": "8900c4df3d1d6346d1354d7219d0d8c4edc21abf8b195b3306823ed171ac7022",
+    "public_sha256": "8900c4df3d1d6346d1354d7219d0d8c4edc21abf8b195b3306823ed171ac7022",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\public\\instructions.md",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/public/instructions.md",
+    "source_sha256": "7da2424f8b0b90d2644d9e5e64aad2abb7ef05c863db2982d9f324d8ed636a0c",
+    "public_sha256": "7da2424f8b0b90d2644d9e5e64aad2abb7ef05c863db2982d9f324d8ed636a0c",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\judge_evaluation\\analysis_runner\\analysis_policy_amendment.md",
+    "public": "benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/analysis_runner/analysis_policy_amendment.md",
+    "source_sha256": "d582b3376c07d8c71d342f6d771023f0e339ff9724ee3626148a580bdf01b354",
+    "public_sha256": "d582b3376c07d8c71d342f6d771023f0e339ff9724ee3626148a580bdf01b354",
+    "changed": false
+  },
+  {
+    "source": "translation_benchmark_20260916_luna\\multi_judge_evaluation_protocol.md",
+    "public": "benchmark_code/translation_benchmark_20260916_luna/multi_judge_evaluation_protocol.md",
+    "source_sha256": "a806d94426cc9cec1f7f212be7479a1644f2bada68e30e7bbbe5f6ef3735761e",
+    "public_sha256": "18fcc37718c34af3606d55bfaeb3c241a943140ad14ca0572726f87f1af6f9af",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\raw\\model_inventory.json",
+    "public": "docs/data/model_inventory.json",
+    "source_sha256": "7e3141d04c751ae07b74ebb5743afc39b40fd93cb96c5135c2270d5247bdaf4b",
+    "public_sha256": "800cb26594804c0339c831aa99431e637c97fca66ae3381691e47eacfa2d30ea",
+    "changed": true
+  },
+  {
+    "source": "translation_benchmark_20261023_new_materials\\configs\\translation_config.json",
+    "public": "docs/data/translation_config.json",
+    "source_sha256": "5b5a160a83ea1fc71eb29c39302923d2973c50f79654d12c22c5005f5fc50265",
+    "public_sha256": "812ae73f0f9b2ca714f26edfbdd236464d5dc018ec71d7ffa23960096b931be4",
+    "changed": true
+  }
+]
