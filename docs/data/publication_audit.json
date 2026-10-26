@@ -29,7 +29,7 @@
     },
     {
       "code": "allowlisted_fixtures",
-      "message": "allowed synthetic fixtures: {'example.invalid': 4, 'sk-llama-local': 6, 'sk-test': 5, 'sk-litellm-change-me': 2}"
+      "message": "allowed synthetic fixtures: {'example.invalid': 4, 'sk-litellm-change-me': 2, 'sk-llama-local': 6, 'sk-test': 5}"
     }
   ]
 }

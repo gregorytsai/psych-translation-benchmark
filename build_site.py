@@ -346,6 +346,12 @@ def load_dataset(results_dir: Path) -> dict[str, Any]:
     curated_path = results_dir / "curated_examples.json"
     if curated_path.is_file():
         curated_examples = normalize_curated_examples(read_json(curated_path))
+    independent_review: dict[str, Any] = {}
+    independent_review_path = results_dir / "independent_review.json"
+    if independent_review_path.is_file():
+        loaded_review = read_json(independent_review_path)
+        if isinstance(loaded_review, dict):
+            independent_review = loaded_review
     runtime_inventory = load_runtime_inventory(results_dir)
 
     models: list[dict[str, Any]] = []
@@ -390,6 +396,7 @@ def load_dataset(results_dir: Path) -> dict[str, Any]:
         "generation_summary": generation_summary,
         "model_summary": model_summary,
         "curated_examples": curated_examples,
+        "independent_review": independent_review,
         "runtime_inventory": runtime_inventory,
     }
 
@@ -462,6 +469,15 @@ def page_html(
     english = lang == "en"
     html_lang = "en" if english else "zh-Hant-TW"
     language_label = "中文" if english else "English"
+    description = (
+        "Seven local models tested on psychological-health English-to-Traditional-Chinese translation, with reviewer scoring, response times and traceable results."
+        if english and current == "home"
+        else "七款地端模型實測：心理健康英中翻譯品質、模型載入後回應時間、AI 評審方法與可追溯結果。"
+        if not english and current == "home"
+        else "Seven-model psychological health translation benchmark with descriptive quality observations, generation latency and traceable methods."
+        if english
+        else "七個模型的繁體中文心理健康翻譯基準：品質觀察、生成速度與可追溯方法。"
+    )
     if switch_href is None:
         switch_href = f"{prefix}index.html" if english else f"{prefix}index-en.html"
     home_href = f"{prefix}index.html" if not english else f"{prefix}index-en.html"
@@ -487,13 +503,13 @@ def page_html(
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{esc('Seven-model psychological health translation benchmark with descriptive quality observations, generation latency and traceable methods.' if english else '七個模型的繁體中文心理健康翻譯基準：品質觀察、生成速度與可追溯方法。')}">
+  <meta name="description" content="{esc(description)}">
   <link rel="canonical" href="{esc(canonical_url)}">
   <link rel="alternate" hreflang="zh-Hant" href="{esc(zh_url)}">
   <link rel="alternate" hreflang="en" href="{esc(en_url)}">
   <link rel="alternate" hreflang="x-default" href="{esc(zh_url)}">{verification_html}
-  <title>{esc(title)} · {'Psychological Health Translation Benchmark' if english else '心理健康翻譯基準'}</title>
-  <link rel="stylesheet" href="{prefix}assets/style.css">
+  <title>{esc(title if current == 'home' else title + (' · Psychological Health Translation Benchmark' if english else ' · 心理健康翻譯基準'))}</title>
+  <link rel="stylesheet" href="{prefix}assets/style.css?v=20261026-2">
 </head>
 <body>
   <a class="skip-link" href="#main">{'Skip to main content' if english else '跳到主要內容'}</a>
@@ -566,7 +582,47 @@ def hero_result_panel(dataset: dict[str, Any], lang: str = "zh") -> str:
     best_text = next(m for m in dataset["models"] if m["model_id"] == "gemma4-26b")
     best_image = next(m for m in dataset["models"] if m["model_id"] == "gemma4-31b-qat")
     return f"""
-      <div class="hero-result-panel" aria-label="{'Key results' if english else '快速結果'}"><div class="eyebrow">{'Key results' if english else '快速結果'}</div><div class="hero-result-row"><span>{'Text | 26B' if english else '文字｜26B'}</span><strong>{display_number(best_text['text_score'])}</strong></div><div class="hero-result-row"><span>{'Image | 31B QAT' if english else '圖片｜31B QAT'}</span><strong>{display_number(best_image['image_score'])}</strong></div><div class="hero-result-row"><span>{'Fastest shared text | 26B' if english else '共同文字最快｜26B'}</span><strong>{display_number(best_text['text_warm_median'])} s</strong></div><div class="hero-result-note">{'Scores are descriptive; time is after model loading.' if english else '分數是本次描述性觀察；時間是模型載入後回應。'}</div></div>
+      <div class="hero-result-panel" aria-label="{'Key results' if english else '快速結果'}"><div class="eyebrow">{'Key results' if english else '快速結果'}</div><div class="hero-result-row"><span>{'Text | 26B' if english else '文字｜26B'}</span><strong>{display_number(best_text['text_score'])}</strong></div><div class="hero-result-row"><span>{'Image | 31B QAT' if english else '圖片｜31B QAT'}</span><strong>{display_number(best_image['image_score'])}</strong></div><div class="hero-result-row"><span>{'Fastest shared text | 26B' if english else '共同文字最快｜26B'}</span><strong>{display_number(best_text['text_warm_median'])} s</strong></div><div class="hero-result-note"><a href="#judge-rubric">{'A 98 score is not 98% accuracy; see how it is scored ↓' if english else '98 分不等於 98% 正確；看評分方法 ↓'}</a><span>{'Time is after model loading.' if english else '時間是模型載入後回應。'}</span></div></div>
+    """
+
+
+def reliability_metric(dataset: dict[str, Any], track: str) -> dict[str, Any]:
+    metrics = dataset.get("independent_review", {}).get("reliability_metrics", [])
+    if not isinstance(metrics, list):
+        return {}
+    return next((item for item in metrics if isinstance(item, dict) and item.get("track") == track), {})
+
+
+def judge_explainer(dataset: dict[str, Any], lang: str = "zh") -> str:
+    english = lang == "en"
+    text_metric = reliability_metric(dataset, "text")
+    text_one = display_number(text_metric.get("icc_2_1_absolute_agreement"))
+    text_k = display_number(text_metric.get("icc_2_k_absolute_agreement"))
+    if english:
+        return f"""
+    <section class="section-shell judge-explainer" id="judge-rubric"><div class="judge-explainer-panel"><div class="eyebrow">How the scores are made</div><h2>What does a score in the 90s mean?</h2><p>The score is not just about fluency: 80 points cover terminology, meaning and completeness; 20 cover fluency. Five different AI reviewers — Qwen, Nemotron, Mistral, GPT and Gemini — scored the source and translation without knowing the model name. Each item first averages valid reviewer scores; text then averages the 29 shared cases. Images use four reviewers, excluding Mistral, across four cases.</p><div class="rubric-mini-grid"><div class="rubric-mini-item"><b>30 · Terminology &amp; Taiwan usage</b><span>Terms and Taiwan Traditional Chinese; catches Simplified/non-Taiwan terms.</span></div><div class="rubric-mini-item"><b>30 · Meaning &amp; safety facts</b><span>Negation, medication, dose, numbers and conditions.</span></div><div class="rubric-mini-item"><b>20 · Fluency</b><span>Natural, clear Taiwan Traditional Chinese.</span></div><div class="rubric-mini-item"><b>20 · Completeness &amp; format</b><span>Omissions, additions, format and visible structure.</span></div></div><div class="judge-icc-mini"><span>ICC (intraclass correlation) checks reviewer reliability: one reviewer {text_one}, five-reviewer mean {text_k}; averaging can make scores more stable. This is agreement in scoring, not accuracy or clinical safety.</span><small>The four subscores add to the total; errors do not use a fixed penalty schedule.</small><a class="text-link" href="models/gemma4-26b-en.html#img-04-example">High scores still need medication/dose checks: img-04 →</a><a class="text-link" href="methods-en.html#rubric-icc">Full rubric and ICC notes →</a></div></div></section>
+        """
+    return f"""
+    <section class="section-shell judge-explainer" id="judge-rubric"><div class="judge-explainer-panel"><div class="eyebrow">評審與分數</div><h2>九十幾分，代表什麼？</h2><p>不只看語感：80 分看術語、原意與完整性，20 分看流暢度。五位不同的 AI 評審——Qwen、Nemotron、Mistral、GPT、Gemini——在不知道翻譯模型名稱的情況下，對照原文評分。每筆先取有效評審分數平均，再對 29 個共同文字題目取平均。圖片使用 4 位評審（不含 Mistral），共 4 張。</p><div class="rubric-mini-grid"><div class="rubric-mini-item"><b>30｜術語與台灣用語</b><span>檢查術語誤用、簡體字與不合台灣用語。</span></div><div class="rubric-mini-item"><b>30｜語意與安全事實</b><span>否定、藥名、劑量、數字與條件。</span></div><div class="rubric-mini-item"><b>20｜流暢度</b><span>自然、清楚的台灣繁中。</span></div><div class="rubric-mini-item"><b>20｜完整與格式</b><span>漏譯、增譯、格式與可見結構。</span></div></div><div class="judge-icc-mini"><span>再用 ICC（組內相關係數）檢查評審間信度：單一評審 {text_one}，五位平均 {text_k}，顯示取平均後的給分較穩定。這是給分一致性，不是正確率，也不能證明臨床安全。</span><small>四項分數相加，不是每個錯誤固定扣分。</small><a class="text-link" href="models/gemma4-26b.html#img-04-example">高分仍要檢查藥名、劑量等重大錯誤：看 img-04 →</a><a class="text-link" href="methods.html#rubric-icc">完整 rubric 與 ICC 說明 →</a></div></div></section>
+    """
+
+
+def rubric_reliability_section(dataset: dict[str, Any], lang: str = "zh") -> str:
+    english = lang == "en"
+    text_metric = reliability_metric(dataset, "text")
+    image_metric = reliability_metric(dataset, "image")
+    text_one = display_number(text_metric.get("icc_2_1_absolute_agreement"))
+    text_k = display_number(text_metric.get("icc_2_k_absolute_agreement"))
+    image_one = display_number(image_metric.get("icc_2_1_absolute_agreement"))
+    image_k = display_number(image_metric.get("icc_2_k_absolute_agreement"))
+    text_units = display_integer(text_metric.get("complete_balanced_units"))
+    image_units = display_integer(image_metric.get("complete_balanced_units"))
+    if english:
+        return f"""
+    <section class="section-shell rubric-detail" id="rubric-icc"><div class="section-heading"><div><div class="eyebrow">Traceable rubric and reliability</div><h2>What each reviewer score means</h2><p class="section-intro">The public instructions define four integer subscores for text and image jobs. They must sum exactly to the 0–100 score; this is not a fixed error-penalty table.</p></div></div><div class="rubric-table-wrap"><table class="rubric-table"><thead><tr><th>Dimension</th><th>Points</th><th>Reviewers inspect</th></tr></thead><tbody><tr><td>Terminology &amp; Taiwan usage</td><td>0–30</td><td>Medical/psychological terms and Taiwan Traditional Chinese, not Simplified Chinese.</td></tr><tr><td>Meaning &amp; safety facts</td><td>0–30</td><td>Meaning, negation, medication, dose/number/unit, frequency, timing, conditions and suicide/self-harm meaning.</td></tr><tr><td>Fluency</td><td>0–20</td><td>Natural, clear Taiwan Traditional Chinese register.</td></tr><tr><td>Completeness &amp; format</td><td>0–20</td><td>No omission/addition; preserve visible content, paragraph/list structure and relevant layout cues.</td></tr></tbody></table></div><div class="icc-detail-grid"><article><h3>Text · {text_units} translations · 29 shared cases · k=5</h3><p><b>ICC(2,1) = {text_one}</b><br><span>Absolute-agreement point estimate for one reviewer.</span></p><p><b>ICC(2,5) = {text_k}</b><br><span>Point estimate after averaging the actual five-reviewer panel.</span></p></article><article><h3>Images · {image_units} translations · 4 cases · k=4</h3><p><b>ICC(2,1) = {image_one}</b><br><span>Absolute-agreement point estimate for one reviewer.</span></p><p><b>ICC(2,4) = {image_k}</b><br><span>Point estimate after averaging four reviewers; Mistral is excluded.</span></p></article></div><p class="rubric-note">ICC is computed across {text_units} text translation units (29 cases × 7 models), each with five reviewer scores, and {image_units} image units (4 cases × 7 models), each with four scores—not across seven model means. ICC values describe agreement in reviewer scoring, not translation accuracy, an 87.4% correctness rate, or clinical safety. No confidence intervals are reported here; these are point estimates.</p><div class="source-links rubric-sources"><a class="text-link" href="https://github.com/gregorytsai/psych-translation-benchmark/blob/main/benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/public/instructions.md" target="_blank" rel="noopener">Open the public repository rubric ↗</a><a class="text-link" href="data/independent_review.json">Open the public ICC/audit data ↗</a><a class="text-link" href="https://pubmed.ncbi.nlm.nih.gov/27330520/" target="_blank" rel="noopener">ICC reference (Koo &amp; Li) ↗</a></div></section>
+        """
+    return f"""
+    <section class="section-shell rubric-detail" id="rubric-icc"><div class="section-heading"><div><div class="eyebrow">可追溯 rubric 與信度</div><h2>每一項評審分數代表什麼？</h2><p class="section-intro">公開 instructions.md 對文字與圖片都定義四項整數分數，必須加總為 0–100；rubric 不是固定錯誤扣分表。</p></div></div><div class="rubric-table-wrap"><table class="rubric-table"><thead><tr><th>項目</th><th>配分</th><th>評審查看什麼</th></tr></thead><tbody><tr><td>術語與台灣用語</td><td>0–30</td><td>醫療/心理術語與台灣繁體中文，不使用簡體中文。</td></tr><tr><td>語意與安全事實</td><td>0–30</td><td>原意、否定、藥名、劑量/數字/單位、頻率、時間、條件，以及自殺/自傷意義。</td></tr><tr><td>流暢度</td><td>0–20</td><td>自然、清楚的台灣繁中語域。</td></tr><tr><td>完整與格式</td><td>0–20</td><td>不漏譯、不增譯，保留可見內容、段落/清單結構與版面線索。</td></tr></tbody></table></div><div class="icc-detail-grid"><article><h3>文字｜{text_units} 份翻譯｜29 個共同題目｜k=5</h3><p><b>ICC(2,1) = {text_one}</b><br><span>單一評審的絕對一致性點估計。</span></p><p><b>ICC(2,5) = {text_k}</b><br><span>平均當次 5 位評審後的點估計。</span></p></article><article><h3>圖片｜{image_units} 份翻譯｜4 張｜k=4</h3><p><b>ICC(2,1) = {image_one}</b><br><span>單一評審的絕對一致性點估計。</span></p><p><b>ICC(2,4) = {image_k}</b><br><span>平均 4 位評審後的點估計；不含 Mistral。</span></p></article></div><p class="rubric-note">ICC 是在 {text_units} 份文字翻譯（29 題 × 7 模型、每份 5 位評審）與 {image_units} 份圖片翻譯（4 題 × 7 模型、每份 4 位評審）上計算，不是對 7 個模型平均分計算。它衡量給分一致，不是翻譯正確率、87.4% 正確率或臨床安全；本頁未報告信賴區間，數字是點估計。</p><div class="source-links rubric-sources"><a class="text-link" href="https://github.com/gregorytsai/psych-translation-benchmark/blob/main/benchmark_code/translation_benchmark_20261023_new_materials/judge_evaluation/public/instructions.md" target="_blank" rel="noopener">開啟公開 repo 原始 rubric ↗</a><a class="text-link" href="data/independent_review.json">開啟公開 ICC／audit data ↗</a><a class="text-link" href="https://pubmed.ncbi.nlm.nih.gov/27330520/" target="_blank" rel="noopener">ICC 參考文獻（Koo &amp; Li）↗</a></div></section>
     """
 
 
@@ -606,8 +662,8 @@ def home_body(dataset: dict[str, Any]) -> str:
     return f"""
     <section class="hero section-shell">
       <div class="hero-copy">
-        <div class="eyebrow">2026-10-25 · frozen review · 繁體中文</div>
-        <h1>心理健康英中翻譯，<br><span class="accent-text">七款模型實測。</span></h1>
+        <div class="eyebrow">心理健康英中翻譯 · 2026-10-25 凍結檢視 · 繁體中文</div>
+        <h1>七款地端模型實測</h1>
         <p class="hero-lede">一批 30 篇文字與 4 張圖片，整理出翻譯品質、模型載入後回應時間，以及每一筆可回看的翻譯。</p>
         <div class="hero-actions"><a class="button primary" href="results.html">瀏覽 238 筆翻譯 <span aria-hidden="true">→</span></a><a class="button ghost" href="methods.html">先看方法與限制</a></div>
       </div>
@@ -625,6 +681,7 @@ def home_body(dataset: dict[str, Any]) -> str:
       <div class="callout-icon">i</div><div><strong>先讀懂這句話</strong><p>分數是本批資料的描述性評審觀察，只代表本次條件，不是通用排行榜或臨床安全證明。回應時間是模型已載入後的回應時間，只描述這次固定環境。</p></div>
     </section>
 
+    {judge_explainer(dataset)}
     {overview_chart(dataset)}
     {image_case_highlight()}
 
@@ -738,12 +795,13 @@ def home_body_en(dataset: dict[str, Any]) -> str:
     cards = "\n".join(model_card_en(model) for model in models)
     return f"""
     <section class="hero section-shell">
-      <div class="hero-copy"><div class="eyebrow">2026-10-25 · frozen review · English guide</div><h1>Psychological health translation,<br><span class="accent-text">seven models tested.</span></h1><p class="hero-lede">The same 30 text cases and 4 images, summarized with translation quality observations, response time after model loading, and every reviewable output.</p><div class="hero-actions"><a class="button primary" href="results-en.html">Browse 238 translations <span aria-hidden="true">→</span></a><a class="button ghost" href="methods-en.html">Read methods &amp; limits</a></div></div>
+      <div class="hero-copy"><div class="eyebrow">Psychological health English → Traditional Chinese · 2026-10-25 frozen review</div><h1>Seven local models tested.</h1><p class="hero-lede">The same 30 text cases and 4 images, summarized with translation quality observations, response time after model loading, and every reviewable output.</p><div class="hero-actions"><a class="button primary" href="results-en.html">Browse 238 translations <span aria-hidden="true">→</span></a><a class="button ghost" href="methods-en.html">Read methods &amp; limits</a></div></div>
       <div class="hero-aside" aria-label="Key results">{hero_result_panel(dataset, "en")}</div>
     </section>
 
     <section class="section-shell stats-grid" aria-label="Scope summary">{metric_card("Shared text cases", "29 / 30", "5 AI reviewers; 1 excluded from the shared comparison", "teal")}{metric_card("Shared image cases", "4 / 4", "4 fixed AI reviewers; not OCR character accuracy", "coral")}{metric_card("Candidate translations", "238", "30×7 text + 4×7 image cells", "purple")}{metric_card("Excluded case", "1", "text-15: one reviewer cell was invalid", "amber")}</section>
     <section class="section-shell callout caution"><div class="callout-icon">i</div><div><strong>How to read this</strong><p>Scores are descriptive reviewer observations for this run. They describe these conditions, not a universal leaderboard or clinical-safety certification. Response time means the time after the model was loaded.</p></div></section>
+    {judge_explainer(dataset, "en")}
     {overview_chart(dataset, "en")}
     {image_case_highlight("en")}
     <section class="section-shell"><div class="section-heading"><div><div class="eyebrow">Three takeaways from this test</div><h2>Sample size matters when differences are small.</h2></div><a class="text-link" href="methods-en.html">Read the full method →</a></div><div class="finding-grid"><article class="finding"><span class="finding-no">01</span><h3>26B and 31B are close</h3><p>The shared text scores are <b>{display_number(best_26['text_score'])}</b> and <b>{display_number(best_31['text_score'])}</b>, a difference of about <b>{display_number(diff)}</b> points. This run does not establish a clear winner.</p></article><article class="finding"><span class="finding-no">02</span><h3>31B leads on images, with only four images</h3><p>Gemma 4 31B QAT scores <b>{display_number(best_31['image_score'])}</b> on the image set. It is a small descriptive sample, not a general visual claim.</p></article><article class="finding"><span class="finding-no">03</span><h3>26B has the shortest text response median</h3><p>Its text response median is <b>{display_number(best_26['text_warm_median'])} seconds</b> after loading in this fixed environment; it is not a hardware-independent promise.</p></article></div></section>
@@ -951,6 +1009,7 @@ def methods_body(dataset: dict[str, Any]) -> str:
     <section class="section-shell split-panel"><div><div class="eyebrow">為什麼是 29？</div><h2>1 筆無效，不補 0 分。</h2><p>文字共同題目要求同一案例有完整的 5 位 AI 評審結果。text-15 有一個評審欄位無效，因此共同比較集為 29 篇；仍保留候選翻譯與原始有效資訊。</p><p>圖片共同題目為 4 張、每張使用 4 位固定 AI 評審。Mistral 的圖片路徑屬於設計上不支援，因此不把它補成低分。</p></div><div class="big-number"><strong>29</strong><span>共同文字案例</span><small>12 個來源頁面</small></div></section>
 
     <section class="section-shell"><div class="section-heading"><div><div class="eyebrow">分數怎麼算？</div><h2>共同案例評審均分</h2></div></div><div class="definition-grid"><div class="definition"><h3>分母</h3><p>每類題目的完整共同題目；文字 29、圖片 4。</p></div><div class="definition"><h3>分數</h3><p>每筆有效 AI 評審分數先取題內平均，再對共同題目做描述性算術平均。</p></div><div class="definition"><h3>不代表</h3><p>不是翻譯正確率、不是臨床安全分數，也不是跨模型通用排行榜。</p></div></div></section>
+    {rubric_reliability_section(dataset)}
     {image_sources_panel(dataset)}
 
     <section class="section-shell table-section"><div class="section-heading"><div><div class="eyebrow">AI 評審摘要</div><h2>觀察來源與速度分開。</h2><p class="section-intro">下表的 latency 是 AI 評審回覆的摘要；首頁與模型頁的載入後回應秒數只來自翻譯測試，兩者不可混用。</p></div></div><div class="table-wrap"><table><thead><tr><th>欄位</th><th>標籤</th><th>有效 / 預期</th><th>評審回覆中位（秒）</th></tr></thead><tbody>{judge_rows}</tbody></table></div></section>
@@ -980,6 +1039,7 @@ def methods_body_en(dataset: dict[str, Any]) -> str:
     <section class="section-shell method-flow"><article><span>01</span><h2>Fixed materials</h2><p>30 English text cases and 4 images; every candidate model produced one translation per case, for 238 model-case cells.</p></article><article><span>02</span><h2>Fixed settings</h2><p>The frozen translation run used fixed context, temperature 0, thinking off, and one request at a time. Full settings remain in the reproducible source bundle.</p></article><article><span>03</span><h2>Fixed panel</h2><p>Text used five reviewers; images used four fixed reviewers. This is an observed panel, not a human gold standard.</p></article></section>
     <section class="section-shell split-panel"><div><div class="eyebrow">Why 29?</div><h2>One invalid cell is not a zero.</h2><p>A text shared-case item requires a complete five-reviewer panel. text-15 had one invalid reviewer cell, so the shared text comparison contains 29 items. The candidate translation and valid information remain available.</p><p>The image shared set contains four images and four fixed reviewers per image. Mistral's image route was unsupported by design, so it was not filled with a low score.</p></div><div class="big-number"><strong>29</strong><span>shared text cases</span><small>12 source pages</small></div></section>
     <section class="section-shell"><div class="section-heading"><div><div class="eyebrow">How scores are formed</div><h2>Shared-case reviewer means</h2></div></div><div class="definition-grid"><div class="definition"><h3>Denominator</h3><p>Complete shared-case items per track: 29 text items and 4 image items.</p></div><div class="definition"><h3>Score</h3><p>Valid reviewer scores are averaged within each item, then averaged descriptively across shared items.</p></div><div class="definition"><h3>Not a claim of</h3><p>Translation accuracy, clinical safety, or a universal cross-model leaderboard.</p></div></div></section>
+    {rubric_reliability_section(dataset, "en")}
     {image_sources_panel(dataset, "en")}
     <section class="section-shell table-section"><div class="section-heading"><div><div class="eyebrow">Reviewer summary</div><h2>Review and speed stay separate.</h2><p class="section-intro">The latency below is reviewer-response latency. Homepage and model-page response times come from translation generation; the two must not be mixed.</p></div></div><div class="table-wrap"><table><thead><tr><th>Slot</th><th>Label</th><th>Valid / expected</th><th>Reviewer latency median (s)</th></tr></thead><tbody>{judge_rows}</tbody></table></div></section>
     <section class="section-shell limitations"><div class="eyebrow">Limits</div><h2>What this dataset cannot answer</h2><div class="limit-list"><div><b>Small sample</b><span>30 text cases and 4 images; a top image score is not a general visual claim.</span></div><div><b>Panel is not gold</b><span>Reviewer agreement does not establish translation truth or clinical safety.</span></div><div><b>Images are not OCR</b><span>Image results are end-to-end translation observations, not character-level OCR CER.</span></div><div><b>Speed is local</b><span>Generation medians depend on hardware, runtime, settings, and request content.</span></div><div><b>No full win rate</b><span>Pairwise comparisons are not a complete round-robin, so no full ranking is inferred.</span></div><div><b>Raw files stay private</b><span>The site excludes raw attempts, absolute paths, PIDs, private bindings, and unprocessed logs.</span></div></div></section>
@@ -1112,6 +1172,9 @@ STYLE_CSS = r"""
  @media (max-width:900px){.runtime-grid{grid-template-columns:1fr}.source-card-grid{grid-template-columns:repeat(2,1fr)}}
  @media (max-width:560px){.hero-result-panel{width:100%;padding:16px}.hero-result-row{padding:7px 0}.hero-result-row strong{font-size:1.25rem}.overview-section{padding-left:0;padding-right:0}.overview-section>.section-heading{padding-left:18px;padding-right:18px}.overview-chart{border-radius:0;border-left:0;border-right:0;padding-left:8px;padding-right:8px}.overview-row{grid-template-columns:150px minmax(410px,1fr) 205px;gap:10px;min-width:800px;padding:10px 6px}.overview-line{grid-template-columns:40px 1fr 56px}.source-card-grid{grid-template-columns:1fr}.source-card{min-height:0}.runtime-facts>div{grid-template-columns:1fr;gap:2px}.runtime-facts span,.runtime-facts strong{text-align:left}.quick-compare-section{padding-left:0;padding-right:0}.quick-compare-section>.section-heading{padding-left:18px;padding-right:18px}.quick-compare-wrap{border-radius:0;border-left:0;border-right:0}.models-grid{gap:10px}.model-card{padding:17px}.table-wrap{max-width:100%;-webkit-overflow-scrolling:touch}}
  @media (max-width:560px){.overview-chart{overflow-x:visible;padding:8px 6px}.overview-row{grid-template-columns:105px minmax(0,1fr);gap:5px;min-width:0;padding:9px 3px}.overview-name{font-size:.76rem;line-height:1.3;overflow-wrap:anywhere}.overview-scores{min-width:0}.overview-line{grid-template-columns:34px minmax(0,1fr) 52px;gap:5px}.overview-line b{font-size:.73rem}.overview-key{font-size:.68rem}.overview-track{height:7px}.overview-speed{grid-column:2;display:flex;flex-wrap:wrap;gap:3px 10px;padding-left:0}.speed-line{display:block;font-size:.68rem;margin:1px 0 0}.speed-track{display:none}.overview-legend{font-size:.7rem;gap:6px}.overview-legend>span{white-space:normal}.speed-legend i{width:7px;height:7px}}
+.judge-explainer{padding-top:24px;padding-bottom:30px;scroll-margin-top:84px}.judge-explainer-panel{border:1px solid #cfe3df;border-radius:18px;background:linear-gradient(145deg,#fff,#f0f9f7);padding:22px 24px;box-shadow:0 10px 28px rgba(27,45,49,.05)}.judge-explainer h2{font-size:clamp(1.55rem,2.5vw,2.2rem)!important;max-width:820px}.judge-explainer-panel>p{max-width:900px;color:#52616a}.rubric-mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:18px 0 14px}.rubric-mini-item{border:1px solid #dcebe8;border-radius:12px;background:#fff;padding:12px 13px;min-height:94px}.rubric-mini-item b{display:block;color:var(--teal);font-size:.94rem;line-height:1.35;margin-bottom:5px}.rubric-mini-item span{display:block;color:#52616a;font-size:.87rem;line-height:1.45}.judge-icc-mini{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;border-top:1px solid #cfe3df;padding-top:13px;font-size:.9rem;color:#52616a}.judge-icc-mini span{line-height:1.55}.judge-icc-mini small{color:var(--muted);line-height:1.45}.judge-icc-mini .text-link{font-size:.78rem}.hero-result-note{display:grid;gap:4px}.hero-result-note a{color:var(--teal);font-weight:800;text-decoration:none}.hero-result-note a:hover{text-decoration:underline}.rubric-detail{padding-top:30px;scroll-margin-top:84px}.rubric-table-wrap{overflow:auto;border:1px solid var(--line);border-radius:15px;background:var(--card)}.rubric-table{min-width:760px}.rubric-table th,.rubric-table td{font-size:.82rem}.icc-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}.icc-detail-grid article{border:1px solid var(--line);border-radius:15px;background:var(--card);padding:18px}.icc-detail-grid h3{font-size:1.05rem;margin:0 0 10px}.icc-detail-grid p{font-size:.86rem;color:#52616a}.icc-detail-grid p b{color:var(--teal)}.rubric-note{margin:17px 0;color:#52616a;font-size:.84rem}.rubric-sources{gap:14px}
+@media (max-width:900px){.rubric-mini-grid{grid-template-columns:repeat(2,1fr)}.judge-icc-mini{grid-template-columns:1fr auto}.icc-detail-grid{grid-template-columns:1fr}}
+@media (max-width:560px){.judge-explainer-panel{padding:18px}.rubric-mini-grid{grid-template-columns:1fr 1fr;gap:7px}.rubric-mini-item{padding:10px;min-height:0}.rubric-mini-item b{font-size:.88rem}.rubric-mini-item span{font-size:.82rem}.judge-icc-mini{grid-template-columns:1fr;gap:8px}.judge-icc-mini .text-link{white-space:normal}.rubric-detail{padding-top:20px}.icc-detail-grid{grid-template-columns:1fr}}
 """
 
 
@@ -1189,7 +1252,7 @@ def build_site(results_dir: Path, materials_dir: Path, output_dir: Path) -> dict
     }
     write_text(docs / "data" / "translation_results.json", json.dumps(public_manifest, ensure_ascii=False, indent=2) + "\n")
 
-    write_page("index.html", page_html("首頁", "home", home_body(dataset), self_href="index.html", switch_href="index-en.html", verification_meta=verification_meta))
+    write_page("index.html", page_html("七款地端模型實測 · 心理健康英中翻譯", "home", home_body(dataset), self_href="index.html", switch_href="index-en.html", verification_meta=verification_meta))
     write_page("results.html", page_html("238 筆翻譯", "results", results_body(dataset), self_href="results.html", switch_href="results-en.html"))
     write_page("methods.html", page_html("方法與限制", "methods", methods_body(dataset), self_href="methods.html", switch_href="methods-en.html"))
     write_page("downloads.html", page_html("下載", "downloads", downloads_body(), self_href="downloads.html", switch_href="downloads-en.html"))
@@ -1204,7 +1267,7 @@ def build_site(results_dir: Path, materials_dir: Path, output_dir: Path) -> dict
 
     # English pages are generated from the same public data projection. Source
     # and target experiment text remains byte-for-byte as supplied in the CSV.
-    write_page("index-en.html", page_html("Home", "home", home_body_en(dataset), lang="en", self_href="index-en.html", switch_href="index.html", verification_meta=verification_meta))
+    write_page("index-en.html", page_html("Seven local models tested · Psychological health English–Traditional Chinese", "home", home_body_en(dataset), lang="en", self_href="index-en.html", switch_href="index.html", verification_meta=verification_meta))
     write_page("results-en.html", page_html("238 translations", "results", results_body_en(dataset), lang="en", self_href="results-en.html", switch_href="results.html"))
     write_page("methods-en.html", page_html("Methods & limits", "methods", methods_body_en(dataset), lang="en", self_href="methods-en.html", switch_href="methods.html"))
     write_page("downloads-en.html", page_html("Downloads", "downloads", downloads_body_en(), lang="en", self_href="downloads-en.html", switch_href="downloads.html"))
