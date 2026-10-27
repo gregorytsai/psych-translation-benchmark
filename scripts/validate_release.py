@@ -462,6 +462,62 @@ def validate_translation_data(report: Report):
         report.fail("translation_status", f"non-ok statuses: {dict(bad_status)}")
 
 
+def validate_criterion_scores(report: Report):
+    path = DATA / "criterion_scores.json"
+    payload = read_json(path, {}) or {}
+    if not isinstance(payload, dict) or payload.get("available") is not True:
+        report.fail("criterion_scores_unavailable", "criterion_scores.json is missing or unavailable", path)
+        return
+    if payload.get("schema_version") != "criterion-scores-v1":
+        report.fail("criterion_scores_schema", "unexpected criterion_scores.json schema", path)
+    tracks = payload.get("tracks", {})
+    expected_tracks = {"text": (29, 5), "image": (4, 4)}
+    for track, (item_count, judge_count) in expected_tracks.items():
+        record = tracks.get(track, {}) if isinstance(tracks, dict) else {}
+        if record.get("eligible_items") != item_count or record.get("judge_count") != judge_count:
+            report.fail("criterion_scores_shape", f"{track} criterion shape does not match {item_count} items × {judge_count} judges", path)
+
+    dimensions = {
+        "terminology_locale": 30,
+        "semantic_safety": 30,
+        "fluency": 20,
+        "completeness_format": 20,
+    }
+    common = read_csv(DATA / "common_case_model_summary.csv")
+    common_by_key = {(row.get("model_id"), row.get("track")): num(row.get("common_case_panel_mean")) for row in common}
+    models = payload.get("models", {})
+    model_ids = sorted({row.get("model_id") for row in common})
+    if not isinstance(models, dict) or set(models) != set(model_ids):
+        report.fail("criterion_scores_models", "criterion model IDs do not match common-case summaries", path)
+        return
+    failures = []
+    for model_id in model_ids:
+        model = models.get(model_id, {})
+        for track, (_items, _judges) in expected_tracks.items():
+            record = model.get(track, {}) if isinstance(model, dict) else {}
+            total = record.get("total", {}) if isinstance(record, dict) else {}
+            dim_records = record.get("dimensions", {}) if isinstance(record, dict) else {}
+            raw_sum = 0.0
+            for key, maximum in dimensions.items():
+                item = dim_records.get(key, {}) if isinstance(dim_records, dict) else {}
+                raw = num(item.get("raw_mean"))
+                normalized = num(item.get("normalized"))
+                if raw is None or normalized is None or not same_num(normalized, raw / maximum * 100.0, 0.00001):
+                    failures.append(f"{model_id}/{track}/{key}")
+                else:
+                    raw_sum += raw
+            if not same_num(total.get("raw_mean"), raw_sum, 0.00001):
+                failures.append(f"{model_id}/{track}/sum")
+            if not same_num(total.get("normalized"), total.get("raw_mean"), 0.00001):
+                failures.append(f"{model_id}/{track}/total-scale")
+            if not same_num(total.get("normalized"), common_by_key.get((model_id, track)), 0.0011):
+                failures.append(f"{model_id}/{track}/published-total")
+    if failures:
+        report.fail("criterion_scores_parity", f"criterion numeric parity failures: {failures[:5]}", path)
+    else:
+        report.note("criterion_scores_parity", "7 models × 2 tracks × 4 dimensions match raw-scale sums and published totals")
+
+
 def validate_numeric_charts(report: Report, pages: list[Path]):
     common = read_csv(DATA / "common_case_model_summary.csv")
     generation = read_csv(DATA / "translation_generation_summary.csv")
@@ -481,7 +537,7 @@ def validate_numeric_charts(report: Report, pages: list[Path]):
     model_ids = sorted({r.get("model_id") for r in common})
 
     def overview_snippets(html: str) -> list[str]:
-        starts = [m.start() for m in re.finditer(r'<div class="overview-row">', html)]
+        starts = [m.start() for m in re.finditer(r'<div class="overview-row"(?:\s|>)', html)]
         snippets = []
         for index, start in enumerate(starts):
             next_start = starts[index + 1] if index + 1 < len(starts) else len(html)
@@ -512,6 +568,11 @@ def validate_numeric_charts(report: Report, pages: list[Path]):
         overview = overview_snippets(html)
         if len(overview) != EXPECTED_MODEL_COUNT:
             report.fail("overview_row_count", f"expected {EXPECTED_MODEL_COUNT} overview rows, found {len(overview)}", path)
+        metrics = re.findall(r'data-overview-metric="([^"]+)"', html)
+        if metrics != ["total", "terminology_locale", "semantic_safety", "fluency", "completeness_format"]:
+            report.fail("overview_metric_controls", f"overview controls differ: {metrics!r}", path)
+        if "data-text-terminology-locale" not in html or "data-image-completeness-format" not in html:
+            report.fail("overview_criterion_data", "overview is missing criterion data attributes", path)
         overview_seen = set()
         for snippet in overview:
             model_match = re.search(r'href="models/([^"/]+)\.html"', snippet)
@@ -519,7 +580,7 @@ def validate_numeric_charts(report: Report, pages: list[Path]):
             if model_id.endswith("-en"):
                 model_id = model_id[:-3]
             overview_seen.add(model_id)
-            scores = [num(x) for x in re.findall(r'<div class="overview-line">.*?<b>([0-9.]+)</b>', snippet, re.S)]
+            scores = [num(x) for x in re.findall(r'<span class="overview-value">([0-9.]+)</span>', snippet)]
             speeds = [num(x) for x in re.findall(r'<span>(?:文字|圖片|Text|Image) ([0-9.]+)s</span>', snippet)]
             speed_positions = [num(x) for x in re.findall(r'<i style="left:([0-9.]+)%"></i>', snippet)]
             expected_scores = [common_by_model.get((model_id, track)) for track in ("text", "image")]
@@ -554,7 +615,7 @@ def validate_numeric_charts(report: Report, pages: list[Path]):
         page.feed(read_text(path))
         if page.result_rows != 238:
             report.fail("results_row_count", f"expected 238 result rows, found {page.result_rows}", path)
-    report.note("numeric_chart_fields", "validated single-card bars, 7-row overview dual scores/times, generation medians, and 238 result rows")
+    report.note("numeric_chart_fields", "validated single-card bars, 7-row overview total/criterion data and times, generation medians, and 238 result rows")
 
 
 def scan_public_text(report: Report):
@@ -621,6 +682,7 @@ def run() -> tuple[Report, dict]:
     validate_links(report, pages, parsed)
     validate_downloads(report)
     validate_translation_data(report)
+    validate_criterion_scores(report)
     validate_numeric_charts(report, pages)
     scan_public_text(report)
     result = {

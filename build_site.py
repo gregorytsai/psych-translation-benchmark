@@ -59,6 +59,14 @@ JUDGE_LABELS = {
 
 PUBLIC_SITE_BASE = "https://gregorytsai.github.io/psych-translation-benchmark/"
 
+CRITERION_DIMENSIONS = (
+    ("terminology_locale", "術語與台灣用語", "Terminology & Taiwan usage", 30),
+    ("semantic_safety", "語意與安全", "Meaning & safety", 30),
+    ("fluency", "流暢度", "Fluency", 20),
+    ("completeness_format", "完整性與格式", "Completeness & format", 20),
+)
+CRITERION_KEYS = tuple(item[0] for item in CRITERION_DIMENSIONS)
+
 
 def esc(value: Any) -> str:
     """HTML-escape every value that enters markup."""
@@ -322,6 +330,134 @@ def load_image_sources(materials_dir: Path) -> dict[str, dict[str, Any]]:
     return {**fallback, **out}
 
 
+def _criterion_value(value: float, maximum: int) -> dict[str, float | int]:
+    raw_mean = round(float(value), 6)
+    return {
+        "raw_mean": raw_mean,
+        "normalized": round(raw_mean / maximum * 100.0, 6),
+        "max_raw": maximum,
+    }
+
+
+def calculate_criterion_scores(results_dir: Path, models: list[dict[str, Any]]) -> dict[str, Any]:
+    """Calculate safe numeric criterion summaries from the public long CSV.
+
+    Each complete item is first averaged across its valid reviewer cells, then
+    item means are averaged within model and track.  Text excludes text-15;
+    image excludes the deliberately unsupported Mistral image cells.  The
+    returned object contains no source text, paths, hashes, prompts or logs.
+    """
+
+    path = results_dir / "pointwise_results_long.csv"
+    if not path.is_file():
+        return {
+            "schema_version": "criterion-scores-v1",
+            "available": False,
+            "reason": "pointwise_results_long.csv is not present in the selected public snapshot",
+            "models": {},
+        }
+
+    rows = read_csv(path)
+    expected_judges = {"text": 5, "image": 4}
+    item_rows: dict[tuple[str, str, str], list[dict[str, float]]] = {}
+    observed_items: dict[str, set[str]] = {"text": set(), "image": set()}
+    invalid_sum_rows: list[tuple[str, str, str]] = []
+
+    for row in rows:
+        material_id = str(row.get("material_id") or "")
+        if material_id.startswith("text-"):
+            track = "text"
+        elif material_id.startswith("img-"):
+            track = "image"
+        else:
+            continue
+        if material_id == "text-15":
+            continue
+        if track == "image" and row.get("judge_slot") == "judge-03":
+            continue
+        if row.get("status") != "ok" or str(row.get("scalar_valid") or "").lower() != "true":
+            continue
+        model_id = str(row.get("model_id") or "")
+        if model_id not in MODEL_ORDER:
+            continue
+        values: dict[str, float] = {}
+        for key in CRITERION_KEYS:
+            value = as_float(row.get(key))
+            if value is None:
+                raise ValueError(f"Missing public criterion value: {material_id}/{model_id}/{row.get('judge_slot')}/{key}")
+            values[key] = value
+        total = as_float(row.get("score_0_100"))
+        if total is None or abs(sum(values.values()) - total) > 1e-9:
+            invalid_sum_rows.append((material_id, model_id, str(row.get("judge_slot") or "")))
+        values["total"] = total if total is not None else sum(values.values())
+        item_rows.setdefault((track, material_id, model_id), []).append(values)
+        observed_items[track].add(material_id)
+
+    expected_items = {
+        "text": sorted(observed_items["text"], key=material_number),
+        "image": sorted(observed_items["image"], key=material_number),
+    }
+    if len(expected_items["text"]) != 29 or len(expected_items["image"]) != 4:
+        raise ValueError(
+            "Unexpected complete criterion set: "
+            f"text={len(expected_items['text'])}, image={len(expected_items['image'])}"
+        )
+    if invalid_sum_rows:
+        raise ValueError(
+            "Criterion subscores do not sum to score_0_100: "
+            + ", ".join("/".join(item) for item in invalid_sum_rows[:5])
+        )
+
+    models_by_id = {str(model["model_id"]): model for model in models}
+    result_models: dict[str, dict[str, Any]] = {}
+    for model_id in MODEL_ORDER:
+        model_result: dict[str, Any] = {}
+        for track in ("text", "image"):
+            item_means: dict[str, list[float]] = {key: [] for key in (*CRITERION_KEYS, "total")}
+            for material_id in expected_items[track]:
+                cells = item_rows.get((track, material_id, model_id), [])
+                if len(cells) != expected_judges[track]:
+                    raise ValueError(
+                        f"Incomplete criterion panel: {track}/{material_id}/{model_id} "
+                        f"has {len(cells)} cells, expected {expected_judges[track]}"
+                    )
+                for key in item_means:
+                    item_means[key].append(statistics.fmean(cell[key] for cell in cells))
+            dimensions = {
+                key: _criterion_value(statistics.fmean(item_means[key]), maximum)
+                for key, _zh, _en, maximum in CRITERION_DIMENSIONS
+            }
+            total_raw = statistics.fmean(item_means["total"])
+            expected_total = as_float(models_by_id.get(model_id, {}).get(f"{track}_score"))
+            if expected_total is not None and abs(total_raw - expected_total) > 0.0011:
+                raise ValueError(
+                    f"Criterion total differs from published {track} mean for {model_id}: "
+                    f"{total_raw:.6f} vs {expected_total:.6f}"
+                )
+            model_result[track] = {
+                "eligible_items": len(expected_items[track]),
+                "judge_count": expected_judges[track],
+                "total": _criterion_value(total_raw, 100),
+                "dimensions": dimensions,
+            }
+        result_models[model_id] = model_result
+
+    return {
+        "schema_version": "criterion-scores-v1",
+        "available": True,
+        "scale": {
+            "normalized_min": 0,
+            "normalized_max": 100,
+            "note": "Criterion means are converted from their 30/30/20/20 raw scales; normalized values are not accuracy percentages.",
+        },
+        "tracks": {
+            "text": {"eligible_items": 29, "judge_count": 5, "excluded_items": ["text-15"]},
+            "image": {"eligible_items": 4, "judge_count": 4, "excluded_judges": ["judge-03"]},
+        },
+        "models": result_models,
+    }
+
+
 def load_dataset(results_dir: Path) -> dict[str, Any]:
     model_summary = read_csv(results_dir / "model_summary.csv")
     common_summary = read_csv(results_dir / "common_case_model_summary.csv")
@@ -388,6 +524,10 @@ def load_dataset(results_dir: Path) -> dict[str, Any]:
             }
         )
 
+    criterion_scores = calculate_criterion_scores(results_dir, models)
+    for model in models:
+        model["criteria"] = criterion_scores.get("models", {}).get(model["model_id"], {})
+
     return {
         "models": models,
         "rows": public_rows,
@@ -398,6 +538,7 @@ def load_dataset(results_dir: Path) -> dict[str, Any]:
         "curated_examples": curated_examples,
         "independent_review": independent_review,
         "runtime_inventory": runtime_inventory,
+        "criterion_scores": criterion_scores,
     }
 
 
@@ -490,11 +631,11 @@ def page_html(
     if english:
         zh_href = switch_href
         en_href = self_href
-        brand = '<span class="brand-mark">譯</span><span>Psychological Health<br><em>Translation benchmark 2026</em></span>'
+        brand = '<span class="brand-mark">譯</span><span class="brand-label">Local Model Translation Quality<br>Mental Health · Traditional Chinese<em>Benchmark 2026</em></span>'
     else:
         zh_href = self_href
         en_href = switch_href
-        brand = '<span class="brand-mark">譯</span><span>心理健康翻譯<br><em>Benchmark 2026</em></span>'
+        brand = '<span class="brand-mark">譯</span><span class="brand-label">地端模型心理領域中文翻譯品質測量<em>Benchmark 2026</em></span>'
     zh_url = absolute_url(zh_href)
     en_url = absolute_url(en_href)
     verification_html = f'\n  <meta name="google-site-verification" content="{esc(verification_meta)}">' if verification_meta else ""
@@ -509,7 +650,7 @@ def page_html(
   <link rel="alternate" hreflang="en" href="{esc(en_url)}">
   <link rel="alternate" hreflang="x-default" href="{esc(zh_url)}">{verification_html}
   <title>{esc(title if current == 'home' else title + (' · Psychological Health Translation Benchmark' if english else ' · 心理健康翻譯基準'))}</title>
-  <link rel="stylesheet" href="{prefix}assets/style.css?v=20261026-2">
+  <link rel="stylesheet" href="{prefix}assets/style.css?v=20261027">
 </head>
 <body>
   <a class="skip-link" href="#main">{'Skip to main content' if english else '跳到主要內容'}</a>
@@ -522,7 +663,7 @@ def page_html(
   </header>
   <main id="main">{body}</main>
   {footer_html(depth, lang)}
-  <script src="{prefix}assets/site.js" defer></script>
+  <script src="{prefix}assets/site.js?v=20261027" defer></script>
 </body>
 </html>
 """
@@ -600,10 +741,10 @@ def judge_explainer(dataset: dict[str, Any], lang: str = "zh") -> str:
     text_k = display_number(text_metric.get("icc_2_k_absolute_agreement"))
     if english:
         return f"""
-    <section class="section-shell judge-explainer" id="judge-rubric"><div class="judge-explainer-panel"><div class="eyebrow">How the scores are made</div><h2>What does a score in the 90s mean?</h2><p>The score is not just about fluency: 80 points cover terminology, meaning and completeness; 20 cover fluency. Five different AI reviewers — Qwen, Nemotron, Mistral, GPT and Gemini — scored the source and translation without knowing the model name. Each item first averages valid reviewer scores; text then averages the 29 shared cases. Images use four reviewers, excluding Mistral, across four cases.</p><div class="rubric-mini-grid"><div class="rubric-mini-item"><b>30 · Terminology &amp; Taiwan usage</b><span>Terms and Taiwan Traditional Chinese; catches Simplified/non-Taiwan terms.</span></div><div class="rubric-mini-item"><b>30 · Meaning &amp; safety facts</b><span>Negation, medication, dose, numbers and conditions.</span></div><div class="rubric-mini-item"><b>20 · Fluency</b><span>Natural, clear Taiwan Traditional Chinese.</span></div><div class="rubric-mini-item"><b>20 · Completeness &amp; format</b><span>Omissions, additions, format and visible structure.</span></div></div><div class="judge-icc-mini"><span>ICC (intraclass correlation) checks reviewer reliability: one reviewer {text_one}, five-reviewer mean {text_k}; averaging can make scores more stable. This is agreement in scoring, not accuracy or clinical safety.</span><small>The four subscores add to the total; errors do not use a fixed penalty schedule.</small><a class="text-link" href="models/gemma4-26b-en.html#img-04-example">High scores still need medication/dose checks: img-04 →</a><a class="text-link" href="methods-en.html#rubric-icc">Full rubric and ICC notes →</a></div></div></section>
+    <section class="section-shell judge-explainer" id="judge-rubric"><div class="judge-explainer-panel"><div class="eyebrow">How the scores are made</div><h2>How this run uses LLMs to assist scoring</h2><p>The score is not just about fluency: 80 points cover terminology, meaning and completeness; 20 cover fluency. Five different AI reviewers — Qwen, Nemotron, Mistral, GPT and Gemini — scored the source and translation without knowing the model name. Each item first averages valid reviewer scores; text then averages the 29 shared cases. Images use four reviewers, excluding Mistral, across four cases. This run was not reviewed and scored line by line by humans; for actual translation quality, read the <a class="text-link" href="results-en.html">source/output rows</a> and <a class="text-link" href="models/gemma4-26b-en.html">model pages</a>.</p><div class="rubric-mini-grid"><div class="rubric-mini-item"><b>30 · Terminology &amp; Taiwan usage</b><span>Terms and Taiwan Traditional Chinese; catches Simplified/non-Taiwan terms.</span></div><div class="rubric-mini-item"><b>30 · Meaning &amp; safety facts</b><span>Negation, medication, dose, numbers and conditions.</span></div><div class="rubric-mini-item"><b>20 · Fluency</b><span>Natural, clear Taiwan Traditional Chinese.</span></div><div class="rubric-mini-item"><b>20 · Completeness &amp; format</b><span>Omissions, additions, format and visible structure.</span></div></div><div class="judge-icc-mini"><span>ICC (intraclass correlation) checks reviewer reliability: one reviewer {text_one}, five-reviewer mean {text_k}; averaging can make scores more stable. This is agreement in scoring, not accuracy or clinical safety.</span><small>The four subscores add to the total; errors do not use a fixed penalty schedule.</small><a class="text-link" href="models/gemma4-26b-en.html#img-04-example">High scores still need medication/dose checks: img-04 →</a><a class="text-link" href="methods-en.html#rubric-icc">Full rubric and ICC notes →</a></div></div></section>
         """
     return f"""
-    <section class="section-shell judge-explainer" id="judge-rubric"><div class="judge-explainer-panel"><div class="eyebrow">評審與分數</div><h2>九十幾分，代表什麼？</h2><p>不只看語感：80 分看術語、原意與完整性，20 分看流暢度。五位不同的 AI 評審——Qwen、Nemotron、Mistral、GPT、Gemini——在不知道翻譯模型名稱的情況下，對照原文評分。每筆先取有效評審分數平均，再對 29 個共同文字題目取平均。圖片使用 4 位評審（不含 Mistral），共 4 張。</p><div class="rubric-mini-grid"><div class="rubric-mini-item"><b>30｜術語與台灣用語</b><span>檢查術語誤用、簡體字與不合台灣用語。</span></div><div class="rubric-mini-item"><b>30｜語意與安全事實</b><span>否定、藥名、劑量、數字與條件。</span></div><div class="rubric-mini-item"><b>20｜流暢度</b><span>自然、清楚的台灣繁中。</span></div><div class="rubric-mini-item"><b>20｜完整與格式</b><span>漏譯、增譯、格式與可見結構。</span></div></div><div class="judge-icc-mini"><span>再用 ICC（組內相關係數）檢查評審間信度：單一評審 {text_one}，五位平均 {text_k}，顯示取平均後的給分較穩定。這是給分一致性，不是正確率，也不能證明臨床安全。</span><small>四項分數相加，不是每個錯誤固定扣分。</small><a class="text-link" href="models/gemma4-26b.html#img-04-example">高分仍要檢查藥名、劑量等重大錯誤：看 img-04 →</a><a class="text-link" href="methods.html#rubric-icc">完整 rubric 與 ICC 說明 →</a></div></div></section>
+    <section class="section-shell judge-explainer" id="judge-rubric"><div class="judge-explainer-panel"><div class="eyebrow">評審與分數</div><h2>本實測如何用LLM協助評分</h2><p>不只看語感：80 分看術語、原意與完整性，20 分看流暢度。五位不同的 AI 評審——Qwen、Nemotron、Mistral、GPT、Gemini——在不知道翻譯模型名稱的情況下，對照原文評分。每筆先取有效評審分數平均，再對 29 個共同文字題目取平均。圖片使用 4 位評審（不含 Mistral），共 4 張。本實測未經人工逐筆審閱與評分；實際翻譯品質請參考<a class="text-link" href="results.html">逐筆原文與翻譯結果</a>及<a class="text-link" href="models/gemma4-26b.html">各模型頁</a>。</p><div class="rubric-mini-grid"><div class="rubric-mini-item"><b>30｜術語與台灣用語</b><span>檢查術語誤用、簡體字與不合台灣用語。</span></div><div class="rubric-mini-item"><b>30｜語意與安全事實</b><span>否定、藥名、劑量、數字與條件。</span></div><div class="rubric-mini-item"><b>20｜流暢度</b><span>自然、清楚的台灣繁中。</span></div><div class="rubric-mini-item"><b>20｜完整與格式</b><span>漏譯、增譯、格式與可見結構。</span></div></div><div class="judge-icc-mini"><span>再用 ICC（組內相關係數）檢查評審間信度：單一評審 {text_one}，五位平均 {text_k}，顯示取平均後的給分較穩定。這是給分一致性，不是正確率，也不能證明臨床安全。</span><small>四項分數相加，不是每個錯誤固定扣分。</small><a class="text-link" href="models/gemma4-26b.html#img-04-example">高分仍要檢查藥名、劑量等重大錯誤：看 img-04 →</a><a class="text-link" href="methods.html#rubric-icc">完整 rubric 與 ICC 說明 →</a></div></div></section>
     """
 
 
@@ -626,21 +767,91 @@ def rubric_reliability_section(dataset: dict[str, Any], lang: str = "zh") -> str
     """
 
 
-def overview_chart(dataset: dict[str, Any], lang: str = "zh") -> str:
+def overview_chart_interactive(dataset: dict[str, Any], lang: str = "zh") -> str:
     english = lang == "en"
-    models = sorted(dataset["models"], key=lambda item: (-(item["text_score"] or -1), item["model_name"]))
+    metric_specs = (
+        ("total", "全部指標總分", "All criteria total"),
+        ("terminology_locale", "術語與台灣用語", "Terminology & Taiwan usage"),
+        ("semantic_safety", "語意與安全", "Meaning & safety"),
+        ("fluency", "流暢度", "Fluency"),
+        ("completeness_format", "完整性與格式", "Completeness & format"),
+    )
+
+    def metric_value(model: dict[str, Any], track: str, metric: str) -> float | None:
+        if metric == "total":
+            return as_float(model.get(f"{track}_score"))
+        return as_float(
+            model.get("criteria", {})
+            .get(track, {})
+            .get("dimensions", {})
+            .get(metric, {})
+            .get("normalized")
+        )
+
+    def raw_value(model: dict[str, Any], track: str, metric: str) -> float | None:
+        if metric == "total":
+            return None
+        return as_float(
+            model.get("criteria", {})
+            .get(track, {})
+            .get("dimensions", {})
+            .get(metric, {})
+            .get("raw_mean")
+        )
+
+    default_metric = "total"
+    models = sorted(
+        dataset["models"],
+        key=lambda item: (-(metric_value(item, "text", default_metric) or -1), item["model_name"]),
+    )
+    buttons = "".join(
+        f'<button type="button" class="overview-tab{" is-active" if metric == default_metric else ""}" aria-pressed="{"true" if metric == default_metric else "false"}" data-overview-metric="{metric}">{esc(zh_label if not english else en_label)}</button>'
+        for metric, zh_label, en_label in metric_specs
+    )
     rows: list[str] = []
-    for model in models:
-        text_score = max(0.0, min(100.0, float(model["text_score"] or 0)))
-        image_score = max(0.0, min(100.0, float(model["image_score"] or 0)))
+    for rank, model in enumerate(models, 1):
+        attrs: list[str] = []
+        for track in ("text", "image"):
+            for metric, _zh_label, _en_label in metric_specs:
+                metric_name = metric.replace("_", "-")
+                value = metric_value(model, track, metric)
+                attrs.append(f'data-{track}-{metric_name}="{esc("" if value is None else f"{value:.6f}")}"')
+                attrs.append(f'data-{track}-{metric_name}-display="{esc("" if value is None else display_number(value))}"')
+                if metric != "total":
+                    raw = raw_value(model, track, metric)
+                    maximum = next(item[3] for item in CRITERION_DIMENSIONS if item[0] == metric)
+                    attrs.append(f'data-{track}-{metric_name}-raw="{esc("" if raw is None else f"{raw:.6f}")}"')
+                    attrs.append(f'data-{track}-{metric_name}-max="{maximum}"')
+        text_value = metric_value(model, "text", default_metric) or 0
+        image_value = metric_value(model, "image", default_metric) or 0
+        text_value_text = display_number(text_value)
+        image_value_text = display_number(image_value)
         text_time = max(0.0, min(6.0, float(model["text_warm_median"] or 0)))
         image_time = max(0.0, min(6.0, float(model["image_warm_median"] or 0)))
+        text_label = "Text" if english else "文字"
+        image_label = "Image" if english else "圖片"
+        text_aria = f"{text_label} score {text_value_text} (0–100)" if english else f"{text_label}分數 {text_value_text}（0–100）"
+        image_aria = f"{image_label} score {image_value_text} (0–100)" if english else f"{image_label}分數 {image_value_text}（0–100）"
+        model_href = f"models/{esc(model['model_id'])}{'-en.html' if english else '.html'}"
         rows.append(
-            f"<div class=\"overview-row\"><div class=\"overview-name\"><a href=\"models/{esc(model['model_id'])}{'-en.html' if english else '.html'}\">{esc(model['model_name'])}</a></div><div class=\"overview-scores\"><div class=\"overview-line\"><span class=\"overview-key text-key\">{'Text' if english else '文字'}</span><div class=\"overview-track\"><i class=\"overview-fill text-fill\" style=\"width:{text_score:.3f}%\"></i></div><b>{display_number(model['text_score'])}</b></div><div class=\"overview-line\"><span class=\"overview-key image-key\">{'Image' if english else '圖片'}</span><div class=\"overview-track\"><i class=\"overview-fill image-fill\" style=\"width:{image_score:.3f}%\"></i></div><b>{display_number(model['image_score'])}</b></div></div><div class=\"overview-speed\"><div class=\"speed-line\"><span>{'Text' if english else '文字'} {display_number(model['text_warm_median'])}s</span><div class=\"speed-track\" aria-label=\"{'Text response time, 0 to 6 seconds' if english else '文字回應時間，0 到 6 秒'}\"><i style=\"left:{(text_time / 6) * 100:.2f}%\"></i></div></div><div class=\"speed-line\"><span>{'Image' if english else '圖片'} {display_number(model['image_warm_median'])}s</span><div class=\"speed-track\" aria-label=\"{'Image response time, 0 to 6 seconds' if english else '圖片回應時間，0 到 6 秒'}\"><i style=\"left:{(image_time / 6) * 100:.2f}%\"></i></div></div></div></div>"
+            f'<div class="overview-row" data-model-id="{esc(model["model_id"])}" data-default-order="{rank}" {" ".join(attrs)}>'
+            f'<div class="overview-name"><span class="overview-rank" title="{esc("Descriptive order for this run" if english else "本次條件下的描述性排序")}">{rank}</span><a href="{model_href}">{esc(model["model_name"])}</a></div>'
+            f'<div class="overview-scores">'
+            f'<div class="overview-line"><span class="overview-key text-key">{text_label}</span><div class="overview-track" role="img" aria-label="{esc(text_aria)}"><i class="overview-fill text-fill" style="width:{float(text_value):.3f}%"></i></div><b><span class="overview-value">{text_value_text}</span><small class="overview-raw"></small></b></div>'
+            f'<div class="overview-line"><span class="overview-key image-key">{image_label}</span><div class="overview-track" role="img" aria-label="{esc(image_aria)}"><i class="overview-fill image-fill" style="width:{float(image_value):.3f}%"></i></div><b><span class="overview-value">{image_value_text}</span><small class="overview-raw"></small></b></div>'
+            f'</div><div class="overview-speed">'
+            f'<div class="speed-line"><span>{text_label} {display_number(model["text_warm_median"])}s</span><div class="speed-track" aria-label="{esc("Text response time, 0 to 6 seconds" if english else "文字回應時間，0 到 6 秒")}"><i style="left:{(text_time / 6) * 100:.2f}%"></i></div></div>'
+            f'<div class="speed-line"><span>{image_label} {display_number(model["image_warm_median"])}s</span><div class="speed-track" aria-label="{esc("Image response time, 0 to 6 seconds" if english else "圖片回應時間，0 到 6 秒")}"><i style="left:{(image_time / 6) * 100:.2f}%"></i></div></div>'
+            f'</div></div>'
         )
-    return f"""
-    <section class="section-shell overview-section"><div class="section-heading"><div><div class="eyebrow">{'Seven-model visual overview' if english else '七款模型視覺總覽'}</div><h2>{'Scores and response times in one view.' if english else '分數與回應時間，一張圖看懂。'}</h2><p class="section-intro">{'Rows are sorted by text score. Score bars use 0–100; response dots use a fixed 0–6 seconds scale, so a dot further left is faster.' if english else '依文字平均分數排序。分數條固定 0–100；回應時間點固定 0–6 秒，越靠左代表越快。'}</p></div><div class="overview-legend"><span><i class="legend-dot teal"></i>{'Text score' if english else '文字分數'}</span><span><i class="legend-dot coral"></i>{'Image score' if english else '圖片分數'}</span><span class="speed-legend"><i></i>{'Response time, 0–6s' if english else '回應時間，0–6 秒'}</span></div></div><div class="overview-chart">{''.join(rows)}</div></section>
-    """
+    default_note = (
+        "總分由四項原始配分相加，再取評審與題目平均；分數固定 0–100。依所選文字指標排序；圖片分數並列參考，不代表顯著差異。"
+        if not english
+        else "The total adds the four raw rubric components before averaging reviewers and cases; scores use a fixed 0–100 scale. Rows are ordered by the selected text metric; image scores are side-by-side reference and do not imply a significant difference."
+    )
+    return f'''
+    <section class="section-shell overview-section"><div class="section-heading"><div><div class="eyebrow">{'Seven-model visual overview' if english else '七款模型視覺總覽'}</div><h2>{'Scores and response times in one view.' if english else '分數與回應時間，一張圖看懂。'}</h2><p class="section-intro">{'Use the five buttons to switch between the total and four rubric dimensions. Score bars use a fixed 0–100 scale; response dots use 0–6 seconds, so a dot further left is faster.' if english else '用 5 個按鈕切換總分與四個評分分項。分數條固定 0–100；回應時間點固定 0–6 秒，越靠左代表越快。'}</p><div class="overview-controls" role="group" aria-label="{'Score dimensions' if english else '分數指標'}">{buttons}</div><p class="overview-scale-note" id="overview-scale-note" aria-live="polite">{default_note}</p><noscript><p class="overview-noscript">切換分項需要 JavaScript；未啟用時仍顯示預設總分。 JavaScript is needed to switch metrics; the total is shown by default.</p></noscript></div><div class="overview-legend"><span><i class="legend-dot teal"></i>{'Text score' if english else '文字分數'}</span><span><i class="legend-dot coral"></i>{'Image score' if english else '圖片分數'}</span><span class="speed-legend"><i></i>{'Response time, 0–6s' if english else '回應時間，0–6 秒'}</span></div></div><div class="overview-chart" id="overview-chart">{"".join(rows)}</div></section>
+    '''
 
 
 def image_case_highlight(lang: str = "zh") -> str:
@@ -678,11 +889,11 @@ def home_body(dataset: dict[str, Any]) -> str:
     </section>
 
     <section class="section-shell callout caution">
-      <div class="callout-icon">i</div><div><strong>先讀懂這句話</strong><p>分數是本批資料的描述性評審觀察，只代表本次條件，不是通用排行榜或臨床安全證明。回應時間是模型已載入後的回應時間，只描述這次固定環境。</p></div>
+      <div class="callout-icon">i</div><div><strong>本測驗的限制</strong><p>分數是本批資料的描述性評審觀察，只代表本次條件，不是通用排行榜或臨床安全證明。回應時間是模型已載入後的回應時間，只描述這次固定環境。本實測未經人工逐筆審閱與評分；請參考<a class="text-link" href="results.html">逐筆原文與翻譯結果</a>及<a class="text-link" href="models/gemma4-26b.html">各模型頁</a>了解實際輸出。</p></div>
     </section>
 
     {judge_explainer(dataset)}
-    {overview_chart(dataset)}
+    {overview_chart_interactive(dataset)}
     {image_case_highlight()}
 
     <section class="section-shell">
@@ -800,9 +1011,9 @@ def home_body_en(dataset: dict[str, Any]) -> str:
     </section>
 
     <section class="section-shell stats-grid" aria-label="Scope summary">{metric_card("Shared text cases", "29 / 30", "5 AI reviewers; 1 excluded from the shared comparison", "teal")}{metric_card("Shared image cases", "4 / 4", "4 fixed AI reviewers; not OCR character accuracy", "coral")}{metric_card("Candidate translations", "238", "30×7 text + 4×7 image cells", "purple")}{metric_card("Excluded case", "1", "text-15: one reviewer cell was invalid", "amber")}</section>
-    <section class="section-shell callout caution"><div class="callout-icon">i</div><div><strong>How to read this</strong><p>Scores are descriptive reviewer observations for this run. They describe these conditions, not a universal leaderboard or clinical-safety certification. Response time means the time after the model was loaded.</p></div></section>
+    <section class="section-shell callout caution"><div class="callout-icon">i</div><div><strong>Test limitations</strong><p>Scores are descriptive reviewer observations for this run. They describe these conditions, not a universal leaderboard or clinical-safety certification. Response time means the time after the model was loaded. This run was not reviewed and scored line by line by humans; read the <a class="text-link" href="results-en.html">source/output rows</a> and <a class="text-link" href="models/gemma4-26b-en.html">model pages</a> for the actual outputs.</p></div></section>
     {judge_explainer(dataset, "en")}
-    {overview_chart(dataset, "en")}
+    {overview_chart_interactive(dataset, "en")}
     {image_case_highlight("en")}
     <section class="section-shell"><div class="section-heading"><div><div class="eyebrow">Three takeaways from this test</div><h2>Sample size matters when differences are small.</h2></div><a class="text-link" href="methods-en.html">Read the full method →</a></div><div class="finding-grid"><article class="finding"><span class="finding-no">01</span><h3>26B and 31B are close</h3><p>The shared text scores are <b>{display_number(best_26['text_score'])}</b> and <b>{display_number(best_31['text_score'])}</b>, a difference of about <b>{display_number(diff)}</b> points. This run does not establish a clear winner.</p></article><article class="finding"><span class="finding-no">02</span><h3>31B leads on images, with only four images</h3><p>Gemma 4 31B QAT scores <b>{display_number(best_31['image_score'])}</b> on the image set. It is a small descriptive sample, not a general visual claim.</p></article><article class="finding"><span class="finding-no">03</span><h3>26B has the shortest text response median</h3><p>Its text response median is <b>{display_number(best_26['text_warm_median'])} seconds</b> after loading in this fixed environment; it is not a hardware-independent promise.</p></article></div></section>
     <section class="section-shell model-section"><div class="section-heading"><div><div class="eyebrow">Seven candidate models</div><h2>Read text and image tracks separately.</h2><p class="section-intro">Bars use a fixed 0–100 scale. Scores use shared cases; response times are a separate generation summary.</p></div><span class="legend"><i class="legend-dot teal"></i>Text <i class="legend-dot coral"></i>Image</span></div><div class="models-grid">{cards}</div></section>
@@ -1024,7 +1235,7 @@ python build_site.py --results &lt;latest_results&gt; --materials &lt;materials&
 def downloads_body() -> str:
     return """
     <section class="section-shell page-hero compact"><div class="eyebrow">下載</div><h1>可讀資料先行，完整套件研究中。</h1><p>這個頁面先保留公開資料的清楚入口；完整結果包、素材與程式碼的發布格式正在獨立檢查。</p></section>
-    <section class="section-shell download-grid"><article class="download-card ready"><span class="download-status">目前可用</span><h2>安全翻譯資料</h2><p>238 筆翻譯的 allow-list JSON；含來源文字、繁中輸出、評審摘要與翻譯秒數，不含 raw paths 或 logs。</p><a class="button primary" href="data/translation_results.json" download>下載 translation_results.json</a><a class="text-link" href="data/translation_comparison.csv">下載完整比較 CSV →</a></article><article class="download-card pending"><span class="download-status">研究中</span><h2>完整結果包</h2><p>CSV、方法報告、可重建程式與素材的分層下載仍待主發布者完成授權與隱私檢查。</p><span class="muted">尚未公開連結</span></article><article class="download-card pending"><span class="download-status">研究中</span><h2>原始輸出 / logs</h2><p>原始 AI 評審回覆、模型路徑、PID 與 request logs 不在公開站內；不會因為下載方便而直接打包。</p><span class="muted">不公開</span></article></section>
+    <section class="section-shell download-grid"><article class="download-card ready"><span class="download-status">目前可用</span><h2>安全翻譯資料</h2><p>238 筆翻譯的 allow-list JSON；含來源文字、繁中輸出、評審摘要與翻譯秒數，不含 raw paths 或 logs。</p><a class="button primary" href="data/translation_results.json" download>下載 translation_results.json</a><a class="text-link" href="data/translation_comparison.csv">下載完整比較 CSV →</a><a class="text-link" href="data/criterion_scores.json">下載分項數值 JSON →</a></article><article class="download-card pending"><span class="download-status">研究中</span><h2>完整結果包</h2><p>CSV、方法報告、可重建程式與素材的分層下載仍待主發布者完成授權與隱私檢查。</p><span class="muted">尚未公開連結</span></article><article class="download-card pending"><span class="download-status">研究中</span><h2>原始輸出 / logs</h2><p>原始 AI 評審回覆、模型路徑、PID 與 request logs 不在公開站內；不會因為下載方便而直接打包。</p><span class="muted">不公開</span></article></section>
     <section class="section-shell callout caution"><div class="callout-icon">i</div><div><strong>下載前請看授權頁</strong><p>資料欄位可讀不等於第三方素材、模型權重或原始來源都可再散布。<a class="text-link" href="licenses.html">查看授權與來源狀態 →</a></p></div></section>
     """
 
@@ -1051,7 +1262,7 @@ python build_site.py --results &lt;latest_results&gt; --materials &lt;materials&
 def downloads_body_en() -> str:
     return """
     <section class="section-shell page-hero compact"><div class="eyebrow">Downloads</div><h1>Readable data first; the full bundle is under review.</h1><p>This page provides clear entry points for public data while the complete result package, materials, and code undergo separate licensing and privacy checks.</p></section>
-    <section class="section-shell download-grid"><article class="download-card ready"><span class="download-status">Available now</span><h2>Safe translation data</h2><p>The allow-listed JSON contains 238 translations with source text, Traditional Chinese outputs, panel summaries, and generation seconds. It excludes raw paths and logs.</p><a class="button primary" href="data/translation_results.json" download>Download translation_results.json</a><a class="text-link" href="data/translation_comparison.csv">Open complete comparison CSV →</a></article><article class="download-card pending"><span class="download-status">Under review</span><h2>Complete result bundle</h2><p>The layered package of CSVs, method reports, rebuild code, and materials is waiting for the publisher's licensing and privacy review.</p><span class="muted">Link not published yet</span></article><article class="download-card pending"><span class="download-status">Under review</span><h2>Raw outputs and logs</h2><p>Raw reviewer responses, model paths, PIDs, and request logs are not part of the public site and will not be bundled just for convenience.</p><span class="muted">Not public</span></article></section>
+    <section class="section-shell download-grid"><article class="download-card ready"><span class="download-status">Available now</span><h2>Safe translation data</h2><p>The allow-listed JSON contains 238 translations with source text, Traditional Chinese outputs, panel summaries, and generation seconds. It excludes raw paths and logs.</p><a class="button primary" href="data/translation_results.json" download>Download translation_results.json</a><a class="text-link" href="data/translation_comparison.csv">Open complete comparison CSV →</a><a class="text-link" href="data/criterion_scores.json">Download criterion score JSON →</a></article><article class="download-card pending"><span class="download-status">Under review</span><h2>Complete result bundle</h2><p>The layered package of CSVs, method reports, rebuild code, and materials is waiting for the publisher's licensing and privacy review.</p><span class="muted">Link not published yet</span></article><article class="download-card pending"><span class="download-status">Under review</span><h2>Raw outputs and logs</h2><p>Raw reviewer responses, model paths, PIDs, and request logs are not part of the public site and will not be bundled just for convenience.</p><span class="muted">Not public</span></article></section>
     <section class="section-shell callout caution"><div class="callout-icon">i</div><div><strong>Read licensing before reuse</strong><p>Readable data is not the same as permission to redistribute third-party source material, model weights, or raw assets. <a class="text-link" href="licenses-en.html">See licensing and source status →</a></p></div></section>
     """
 
@@ -1175,6 +1386,9 @@ STYLE_CSS = r"""
 .judge-explainer{padding-top:24px;padding-bottom:30px;scroll-margin-top:84px}.judge-explainer-panel{border:1px solid #cfe3df;border-radius:18px;background:linear-gradient(145deg,#fff,#f0f9f7);padding:22px 24px;box-shadow:0 10px 28px rgba(27,45,49,.05)}.judge-explainer h2{font-size:clamp(1.55rem,2.5vw,2.2rem)!important;max-width:820px}.judge-explainer-panel>p{max-width:900px;color:#52616a}.rubric-mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:18px 0 14px}.rubric-mini-item{border:1px solid #dcebe8;border-radius:12px;background:#fff;padding:12px 13px;min-height:94px}.rubric-mini-item b{display:block;color:var(--teal);font-size:.94rem;line-height:1.35;margin-bottom:5px}.rubric-mini-item span{display:block;color:#52616a;font-size:.87rem;line-height:1.45}.judge-icc-mini{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;border-top:1px solid #cfe3df;padding-top:13px;font-size:.9rem;color:#52616a}.judge-icc-mini span{line-height:1.55}.judge-icc-mini small{color:var(--muted);line-height:1.45}.judge-icc-mini .text-link{font-size:.78rem}.hero-result-note{display:grid;gap:4px}.hero-result-note a{color:var(--teal);font-weight:800;text-decoration:none}.hero-result-note a:hover{text-decoration:underline}.rubric-detail{padding-top:30px;scroll-margin-top:84px}.rubric-table-wrap{overflow:auto;border:1px solid var(--line);border-radius:15px;background:var(--card)}.rubric-table{min-width:760px}.rubric-table th,.rubric-table td{font-size:.82rem}.icc-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}.icc-detail-grid article{border:1px solid var(--line);border-radius:15px;background:var(--card);padding:18px}.icc-detail-grid h3{font-size:1.05rem;margin:0 0 10px}.icc-detail-grid p{font-size:.86rem;color:#52616a}.icc-detail-grid p b{color:var(--teal)}.rubric-note{margin:17px 0;color:#52616a;font-size:.84rem}.rubric-sources{gap:14px}
 @media (max-width:900px){.rubric-mini-grid{grid-template-columns:repeat(2,1fr)}.judge-icc-mini{grid-template-columns:1fr auto}.icc-detail-grid{grid-template-columns:1fr}}
 @media (max-width:560px){.judge-explainer-panel{padding:18px}.rubric-mini-grid{grid-template-columns:1fr 1fr;gap:7px}.rubric-mini-item{padding:10px;min-height:0}.rubric-mini-item b{font-size:.88rem}.rubric-mini-item span{font-size:.82rem}.judge-icc-mini{grid-template-columns:1fr;gap:8px}.judge-icc-mini .text-link{white-space:normal}.rubric-detail{padding-top:20px}.icc-detail-grid{grid-template-columns:1fr}}
+.brand{min-width:0}.brand-label{display:block;max-width:300px;overflow-wrap:anywhere}.brand-label em{display:block;font-size:.7rem;font-style:normal;letter-spacing:.14em;color:var(--muted);font-weight:600;margin-top:3px}.overview-controls{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0 9px}.overview-tab{border:1px solid #c7dcda;border-radius:999px;background:var(--card);color:#52616a;font:inherit;font-size:.78rem;font-weight:800;padding:8px 11px;cursor:pointer}.overview-tab:hover,.overview-tab:focus-visible{border-color:var(--teal);color:var(--teal);outline:3px solid rgba(10,141,134,.16);outline-offset:1px}.overview-tab.is-active{background:var(--teal);border-color:var(--teal);color:#fff}.overview-scale-note{margin:0 0 12px;color:#52616a;font-size:.78rem;line-height:1.5}.overview-rank{display:inline-grid;place-items:center;flex:0 0 25px;width:25px;height:25px;border-radius:8px;background:var(--teal-soft);color:var(--teal);font-size:.72rem;font-weight:850}.overview-name{display:flex;align-items:flex-start;gap:8px}.overview-line b{display:flex;flex-direction:column;align-items:flex-end;line-height:1.1}.overview-raw{display:block;color:var(--muted);font-size:.58rem;font-weight:600;white-space:nowrap}.overview-raw:empty{display:none}.overview-noscript{margin:0 0 10px;color:var(--muted);font-size:.75rem}.judge-explainer-panel p .text-link{white-space:normal}
+@media (max-width:900px){.brand-label{max-width:260px}.overview-controls{gap:6px}}
+@media (max-width:560px){.header-inner{gap:10px}.brand{font-size:.82rem;gap:8px}.brand-label{max-width:210px;font-size:.75rem;line-height:1.2}.overview-controls{gap:5px}.overview-tab{font-size:.69rem;padding:7px 8px}.overview-scale-note{font-size:.72rem}.overview-rank{flex-basis:20px;width:20px;height:20px;font-size:.65rem}.overview-name{gap:4px}.overview-name a{overflow-wrap:anywhere}.overview-line b{font-size:.72rem}.overview-raw{font-size:.56rem}}
 """
 
 
@@ -1187,6 +1401,84 @@ SITE_JS = r"""
       const open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', String(open));
     });
+  }
+
+  const overview = document.querySelector('.overview-section');
+  if (overview) {
+    const chart = overview.querySelector('#overview-chart');
+    const rows = chart ? Array.from(chart.querySelectorAll('.overview-row')) : [];
+    const buttons = Array.from(overview.querySelectorAll('[data-overview-metric]'));
+    const note = overview.querySelector('#overview-scale-note');
+    const isEnglish = document.documentElement.lang === 'en';
+    const notes = isEnglish ? {
+      total: 'The total adds the four raw rubric components before averaging reviewers and cases; scores use a fixed 0–100 scale. Rows are ordered by the selected text metric; image scores are side-by-side reference and do not imply a significant difference.',
+      terminology_locale: 'Converted to 0–100 from the 0–30 terminology and Taiwan-usage component; this is not an accuracy percentage. Rows are ordered by the selected text metric; image scores are side-by-side reference.',
+      semantic_safety: 'Converted to 0–100 from the 0–30 meaning and safety component; this is not an accuracy percentage. Rows are ordered by the selected text metric; image scores are side-by-side reference.',
+      fluency: 'Converted to 0–100 from the 0–20 fluency component; this is not an accuracy percentage. Rows are ordered by the selected text metric; image scores are side-by-side reference.',
+      completeness_format: 'Converted to 0–100 from the 0–20 completeness and format component; this is not an accuracy percentage. Rows are ordered by the selected text metric; image scores are side-by-side reference.'
+    } : {
+      total: '總分由四項原始配分相加，再取評審與題目平均；分數固定 0–100。依所選文字指標排序；圖片分數並列參考，不代表顯著差異。',
+      terminology_locale: '由原始 0–30 的術語與台灣用語分數換算為 0–100；不是百分正確率。依所選文字指標排序；圖片分數並列參考。',
+      semantic_safety: '由原始 0–30 的語意與安全分數換算為 0–100；不是百分正確率。依所選文字指標排序；圖片分數並列參考。',
+      fluency: '由原始 0–20 的流暢度分數換算為 0–100；不是百分正確率。依所選文字指標排序；圖片分數並列參考。',
+      completeness_format: '由原始 0–20 的完整性與格式分數換算為 0–100；不是百分正確率。依所選文字指標排序；圖片分數並列參考。'
+    };
+    function dataValue(row, track, metric, suffix) {
+      const key = metric.replace(/_/g, '-');
+      const raw = row.getAttribute('data-' + track + '-' + key + (suffix ? '-' + suffix : ''));
+      if (raw === null || raw.trim() === '') return null;
+      const value = Number(raw);
+      return Number.isFinite(value) ? value : null;
+    }
+    function displayValue(row, track, metric, value) {
+      if (value === null) return '—';
+      const key = metric.replace(/_/g, '-');
+      const rendered = row.getAttribute('data-' + track + '-' + key + '-display');
+      return rendered === null || rendered.trim() === '' ? value.toFixed(3) : rendered;
+    }
+    function applyOverview(metric) {
+      buttons.forEach(function (button) {
+        const active = button.dataset.overviewMetric === metric;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+      rows.forEach(function (row) {
+        ['text', 'image'].forEach(function (track, index) {
+          const value = dataValue(row, track, metric, '');
+          const line = row.querySelectorAll('.overview-line')[index];
+          if (!line) return;
+          const valueNode = line.querySelector('.overview-value');
+          const rawNode = line.querySelector('.overview-raw');
+          const fill = line.querySelector('.overview-fill');
+          const trackNode = line.querySelector('.overview-track');
+          if (valueNode) valueNode.textContent = displayValue(row, track, metric, value);
+          if (rawNode) {
+            const raw = dataValue(row, track, metric, 'raw');
+            const maximum = dataValue(row, track, metric, 'max');
+            rawNode.textContent = metric === 'total' || raw === null || maximum === null ? '' : '(' + raw.toFixed(2) + '/' + maximum.toFixed(0) + ')';
+          }
+          if (fill) fill.style.width = Math.max(0, Math.min(100, value === null ? 0 : value)).toFixed(3) + '%';
+          if (trackNode) trackNode.setAttribute('aria-label', (isEnglish ? (track === 'text' ? 'Text' : 'Image') + ' score ' : (track === 'text' ? '文字' : '圖片') + '分數 ') + displayValue(row, track, metric, value) + (isEnglish ? ' (0–100)' : '（0–100）'));
+        });
+      });
+      rows.slice().sort(function (a, b) {
+        const av = dataValue(a, 'text', metric, '');
+        const bv = dataValue(b, 'text', metric, '');
+        if (av === null && bv === null) return Number(a.dataset.defaultOrder) - Number(b.dataset.defaultOrder);
+        if (av === null) return 1;
+        if (bv === null) return -1;
+        return bv - av || Number(a.dataset.defaultOrder) - Number(b.dataset.defaultOrder);
+      }).forEach(function (row, index) {
+        const rank = row.querySelector('.overview-rank');
+        if (rank) rank.textContent = String(index + 1);
+        if (chart) chart.appendChild(row);
+      });
+      if (note) note.textContent = notes[metric] || notes.total;
+    }
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () { applyOverview(button.dataset.overviewMetric || 'total'); });
+    });
+    applyOverview('total');
   }
 
   const search = document.querySelector('#result-search');
@@ -1251,6 +1543,7 @@ def build_site(results_dir: Path, materials_dir: Path, output_dir: Path) -> dict
         "rows": dataset["rows"],
     }
     write_text(docs / "data" / "translation_results.json", json.dumps(public_manifest, ensure_ascii=False, indent=2) + "\n")
+    write_text(docs / "data" / "criterion_scores.json", json.dumps(dataset["criterion_scores"], ensure_ascii=False, indent=2) + "\n")
 
     write_page("index.html", page_html("七款地端模型實測 · 心理健康英中翻譯", "home", home_body(dataset), self_href="index.html", switch_href="index-en.html", verification_meta=verification_meta))
     write_page("results.html", page_html("238 筆翻譯", "results", results_body(dataset), self_href="results.html", switch_href="results-en.html"))

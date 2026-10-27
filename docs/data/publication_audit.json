@@ -6,7 +6,7 @@
     "html_files": 24,
     "failures": 0,
     "warnings": 0,
-    "notes": 5
+    "notes": 6
   },
   "failures": [],
   "warnings": [],
@@ -24,12 +24,16 @@
       "message": "238 JSON rows exactly match CSV source/target/status/elapsed fields"
     },
     {
+      "code": "criterion_scores_parity",
+      "message": "7 models × 2 tracks × 4 dimensions match raw-scale sums and published totals"
+    },
+    {
       "code": "numeric_chart_fields",
-      "message": "validated single-card bars, 7-row overview dual scores/times, generation medians, and 238 result rows"
+      "message": "validated single-card bars, 7-row overview total/criterion data and times, generation medians, and 238 result rows"
     },
     {
       "code": "allowlisted_fixtures",
-      "message": "allowed synthetic fixtures: {'example.invalid': 4, 'sk-litellm-change-me': 2, 'sk-llama-local': 6, 'sk-test': 5}"
+      "message": "allowed synthetic fixtures: {'example.invalid': 4, 'sk-llama-local': 6, 'sk-test': 5, 'sk-litellm-change-me': 2}"
     }
   ]
 }

@@ -1,0 +1,475 @@
+{
+  "schema_version": "criterion-scores-v1",
+  "available": true,
+  "scale": {
+    "normalized_min": 0,
+    "normalized_max": 100,
+    "note": "Criterion means are converted from their 30/30/20/20 raw scales; normalized values are not accuracy percentages."
+  },
+  "tracks": {
+    "text": {
+      "eligible_items": 29,
+      "judge_count": 5,
+      "excluded_items": [
+        "text-15"
+      ]
+    },
+    "image": {
+      "eligible_items": 4,
+      "judge_count": 4,
+      "excluded_judges": [
+        "judge-03"
+      ]
+    }
+  },
+  "models": {
+    "gemma4-12b": {
+      "text": {
+        "eligible_items": 29,
+        "judge_count": 5,
+        "total": {
+          "raw_mean": 97.206897,
+          "normalized": 97.206897,
+          "max_raw": 100
+        },
+        "dimensions": {
+          "terminology_locale": {
+            "raw_mean": 28.993103,
+            "normalized": 96.643677,
+            "max_raw": 30
+          },
+          "semantic_safety": {
+            "raw_mean": 29.248276,
+            "normalized": 97.494253,
+            "max_raw": 30
+          },
+          "fluency": {
+            "raw_mean": 19.096552,
+            "normalized": 95.48276,
+            "max_raw": 20
+          },
+          "completeness_format": {
+            "raw_mean": 19.868966,
+            "normalized": 99.34483,
+            "max_raw": 20
+          }
+        }
+      },
+      "image": {
+        "eligible_items": 4,
+        "judge_count": 4,
+        "total": {
+          "raw_mean": 91.25,
+          "normalized": 91.25,
+          "max_raw": 100
+        },
+        "dimensions": {
+          "terminology_locale": {
+            "raw_mean": 27.4375,
+            "normalized": 91.458333,
+            "max_raw": 30
+          },
+          "semantic_safety": {
+            "raw_mean": 26.4375,
+            "normalized": 88.125,
+            "max_raw": 30
+          },
+          "fluency": {
+            "raw_mean": 18.1875,
+            "normalized": 90.9375,
+            "max_raw": 20
+          },
+          "completeness_format": {
+            "raw_mean": 19.1875,
+            "normalized": 95.9375,
+            "max_raw": 20
+          }
+        }
+      }
+    },
+    "gemma4-26b": {
+      "text": {
+        "eligible_items": 29,
+        "judge_count": 5,
+        "total": {
+          "raw_mean": 98.613793,
+          "normalized": 98.613793,
+          "max_raw": 100
+        },
+        "dimensions": {
+          "terminology_locale": {
+            "raw_mean": 29.317241,
+            "normalized": 97.724137,
+            "max_raw": 30
+          },
+          "semantic_safety": {
+            "raw_mean": 29.862069,
+            "normalized": 99.54023,
+            "max_raw": 30
+          },
+          "fluency": {
+            "raw_mean": 19.475862,
+            "normalized": 97.37931,
+            "max_raw": 20
+          },
+          "completeness_format": {
+            "raw_mean": 19.958621,
+            "normalized": 99.793105,
+            "max_raw": 20
+          }
+        }
+      },
+      "image": {
+        "eligible_items": 4,
+        "judge_count": 4,
+        "total": {
+          "raw_mean": 88.0625,
+          "normalized": 88.0625,
+          "max_raw": 100
+        },
+        "dimensions": {
+          "terminology_locale": {
+            "raw_mean": 26.3125,
+            "normalized": 87.708333,
+            "max_raw": 30
+          },
+          "semantic_safety": {
+            "raw_mean": 24.0,
+            "normalized": 80.0,
+            "max_raw": 30
+          },
+          "fluency": {
+            "raw_mean": 18.625,
+            "normalized": 93.125,
+            "max_raw": 20
+          },
+          "completeness_format": {
+            "raw_mean": 19.125,
+            "normalized": 95.625,
+            "max_raw": 20
+          }
+        }
+      }
+    },
+    "gemma4-31b-qat": {
+      "text": {
+        "eligible_items": 29,
+        "judge_count": 5,
+        "total": {
+          "raw_mean": 98.531034,
+          "normalized": 98.531034,
+          "max_raw": 100
+        },
+        "dimensions": {
+          "terminology_locale": {
+            "raw_mean": 29.37931,
+            "normalized": 97.931033,
+            "max_raw": 30
+          },
+          "semantic_safety": {
+            "raw_mean": 29.848276,
+            "normalized": 99.494253,
+            "max_raw": 30
+          },
+          "fluency": {
+            "raw_mean": 19.358621,
+            "normalized": 96.793105,
+            "max_raw": 20
+          },
+          "completeness_format": {
+            "raw_mean": 19.944828,
+            "normalized": 99.72414,
+            "max_raw": 20
+          }
+        }
+      },
+      "image": {
+        "eligible_items": 4,
+        "judge_count": 4,
+        "total": {
+          "raw_mean": 92.6875,
+          "normalized": 92.6875,
+          "max_raw": 100
+        },
+        "dimensions": {
+          "terminology_locale": {
+            "raw_mean": 27.375,
+            "normalized": 91.25,
+            "max_raw": 30
+          },
+          "semantic_safety": {
+            "raw_mean": 28.25,
+            "normalized": 94.166667,
+            "max_raw": 30
+          },
+          "fluency": {
+            "raw_mean": 18.25,
+            "normalized": 91.25,
+            "max_raw": 20
+          },
+          "completeness_format": {
+            "raw_mean": 18.8125,
+            "normalized": 94.0625,
+            "max_raw": 20
+          }
+        }
+      }
+    },
+    "gemma4-e4b": {
+      "text": {
+        "eligible_items": 29,
+        "judge_count": 5,
+        "total": {
+          "raw_mean": 95.372414,
+          "normalized": 95.372414,
+          "max_raw": 100
+        },
+        "dimensions": {
+          "terminology_locale": {
+            "raw_mean": 28.117241,
+            "normalized": 93.724137,
+            "max_raw": 30
+          },
+          "semantic_safety": {
+            "raw_mean": 28.655172,
+            "normalized": 95.51724,
+            "max_raw": 30
+          },
+          "fluency": {
+            "raw_mean": 18.931034,
+            "normalized": 94.65517,
+            "max_raw": 20
+          },
+          "completeness_format": {
+            "raw_mean": 19.668966,
+            "normalized": 98.34483,
+            "max_raw": 20
+          }
+        }
+      },
+      "image": {
+        "eligible_items": 4,
+        "judge_count": 4,
+        "total": {
+          "raw_mean": 83.875,
+          "normalized": 83.875,
+          "max_raw": 100
+        },
+        "dimensions": {
+          "terminology_locale": {
+            "raw_mean": 26.25,
+            "normalized": 87.5,
+            "max_raw": 30
+          },
+          "semantic_safety": {
+            "raw_mean": 24.5625,
+            "normalized": 81.875,
+            "max_raw": 30
+          },
+          "fluency": {
+            "raw_mean": 17.125,
+            "normalized": 85.625,
+            "max_raw": 20
+          },
+          "completeness_format": {
+            "raw_mean": 15.9375,
+            "normalized": 79.6875,
+            "max_raw": 20
+          }
+        }
+      }
+    },
+    "translategemma-12b": {
+      "text": {
+        "eligible_items": 29,
+        "judge_count": 5,
+        "total": {
+          "raw_mean": 95.62069,
+          "normalized": 95.62069,
+          "max_raw": 100
+        },
+        "dimensions": {
+          "terminology_locale": {
+            "raw_mean": 28.227586,
+            "normalized": 94.091953,
+            "max_raw": 30
+          },
+          "semantic_safety": {
+            "raw_mean": 28.641379,
+            "normalized": 95.471263,
+            "max_raw": 30
+          },
+          "fluency": {
+            "raw_mean": 19.206897,
+            "normalized": 96.034485,
+            "max_raw": 20
+          },
+          "completeness_format": {
+            "raw_mean": 19.544828,
+            "normalized": 97.72414,
+            "max_raw": 20
+          }
+        }
+      },
+      "image": {
+        "eligible_items": 4,
+        "judge_count": 4,
+        "total": {
+          "raw_mean": 83.75,
+          "normalized": 83.75,
+          "max_raw": 100
+        },
+        "dimensions": {
+          "terminology_locale": {
+            "raw_mean": 27.0,
+            "normalized": 90.0,
+            "max_raw": 30
+          },
+          "semantic_safety": {
+            "raw_mean": 22.0,
+            "normalized": 73.333333,
+            "max_raw": 30
+          },
+          "fluency": {
+            "raw_mean": 18.0625,
+            "normalized": 90.3125,
+            "max_raw": 20
+          },
+          "completeness_format": {
+            "raw_mean": 16.6875,
+            "normalized": 83.4375,
+            "max_raw": 20
+          }
+        }
+      }
+    },
+    "translategemma-27b": {
+      "text": {
+        "eligible_items": 29,
+        "judge_count": 5,
+        "total": {
+          "raw_mean": 96.537931,
+          "normalized": 96.537931,
+          "max_raw": 100
+        },
+        "dimensions": {
+          "terminology_locale": {
+            "raw_mean": 28.772414,
+            "normalized": 95.908047,
+            "max_raw": 30
+          },
+          "semantic_safety": {
+            "raw_mean": 28.544828,
+            "normalized": 95.149427,
+            "max_raw": 30
+          },
+          "fluency": {
+            "raw_mean": 19.572414,
+            "normalized": 97.86207,
+            "max_raw": 20
+          },
+          "completeness_format": {
+            "raw_mean": 19.648276,
+            "normalized": 98.24138,
+            "max_raw": 20
+          }
+        }
+      },
+      "image": {
+        "eligible_items": 4,
+        "judge_count": 4,
+        "total": {
+          "raw_mean": 83.9375,
+          "normalized": 83.9375,
+          "max_raw": 100
+        },
+        "dimensions": {
+          "terminology_locale": {
+            "raw_mean": 26.9375,
+            "normalized": 89.791667,
+            "max_raw": 30
+          },
+          "semantic_safety": {
+            "raw_mean": 22.75,
+            "normalized": 75.833333,
+            "max_raw": 30
+          },
+          "fluency": {
+            "raw_mean": 18.1875,
+            "normalized": 90.9375,
+            "max_raw": 20
+          },
+          "completeness_format": {
+            "raw_mean": 16.0625,
+            "normalized": 80.3125,
+            "max_raw": 20
+          }
+        }
+      }
+    },
+    "translategemma-4b": {
+      "text": {
+        "eligible_items": 29,
+        "judge_count": 5,
+        "total": {
+          "raw_mean": 92.262069,
+          "normalized": 92.262069,
+          "max_raw": 100
+        },
+        "dimensions": {
+          "terminology_locale": {
+            "raw_mean": 27.517241,
+            "normalized": 91.724137,
+            "max_raw": 30
+          },
+          "semantic_safety": {
+            "raw_mean": 26.772414,
+            "normalized": 89.24138,
+            "max_raw": 30
+          },
+          "fluency": {
+            "raw_mean": 18.717241,
+            "normalized": 93.586205,
+            "max_raw": 20
+          },
+          "completeness_format": {
+            "raw_mean": 19.255172,
+            "normalized": 96.27586,
+            "max_raw": 20
+          }
+        }
+      },
+      "image": {
+        "eligible_items": 4,
+        "judge_count": 4,
+        "total": {
+          "raw_mean": 76.625,
+          "normalized": 76.625,
+          "max_raw": 100
+        },
+        "dimensions": {
+          "terminology_locale": {
+            "raw_mean": 24.375,
+            "normalized": 81.25,
+            "max_raw": 30
+          },
+          "semantic_safety": {
+            "raw_mean": 21.5625,
+            "normalized": 71.875,
+            "max_raw": 30
+          },
+          "fluency": {
+            "raw_mean": 16.75,
+            "normalized": 83.75,
+            "max_raw": 20
+          },
+          "completeness_format": {
+            "raw_mean": 13.9375,
+            "normalized": 69.6875,
+            "max_raw": 20
+          }
+        }
+      }
+    }
+  }
+}
