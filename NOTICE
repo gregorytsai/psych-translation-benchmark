@@ -17,7 +17,12 @@ generic /benchmark paths are identified, with original and public SHA-256,
 in docs/data/source_file_provenance.json. Their scoring logic and measured
 translation content were not rewritten for publication.
 
-WHO image materials and their translations are CC BY-NC-SA 3.0 IGO.
-See docs/materials/RIGHTS.md for attribution and the mandatory unofficial
-translation disclaimer. US federal source texts and original synthetic cards
-have separate rights notices. No source institution endorses this project.
+WHO source works img-09 and img-10 are CC BY-NC-SA 3.0 IGO as stated in their
+official PDF copyright pages. This release links the official page-one PDFs and
+does not redistribute the two source PNGs. The 14 model-derived Traditional
+Chinese translations (seven per WHO work) are separate unofficial adaptations
+under CC BY-NC-SA 3.0 Unported. See docs/materials/RIGHTS.md for the complete
+attribution, per-work disclaimer, frozen hashes and license links. No separate
+permission for WHO logos or illustrations is claimed, and no source institution
+endorses this project. Rights note updated 2026-11-24; the measured public
+snapshot remains 2026-10-25.

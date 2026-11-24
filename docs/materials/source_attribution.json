@@ -320,15 +320,19 @@
     "source_url": "https://cdn.who.int/media/docs/default-source/mental-health/9789240078796-eng.pdf?download=true",
     "source_title": "who_policy_dense_page1",
     "source_sha256": "7c51577226a100e72c96c4d649d3b53e7e2e9bfd2457899750d556b2288d2371",
-    "rights": "CC BY-NC-SA 3.0 IGO as stated on the PDF copyright page (page 16); attribution, non-commercial use, and ShareAlike apply; no webpage-license inference",
-    "note": "This translation was not created by the World Health Organization (WHO). WHO is not responsible for the content or accuracy of this translation. The original English edition shall be the binding and authentic edition."
+    "rights": "Original source work: CC BY-NC-SA 3.0 IGO as stated on the PDF copyright page (page 16); attribution, non-commercial use, and ShareAlike apply. This release does not redistribute the PNG. Seven model-derived Traditional Chinese translations are separate unofficial adaptations under CC BY-NC-SA 3.0 Unported; no WHO logo/illustration permission or endorsement is claimed.",
+    "note": "World Health Organization. WHO policy brief on the health aspects of decriminalization of suicide and suicide attempts. Geneva: World Health Organization; 2023. Each of the seven model translations was not created, approved or translated by WHO; WHO is not responsible for its content or accuracy. The original English edition is binding and authentic. Frozen original PNG SHA-256 7c51577226a100e72c96c4d649d3b53e7e2e9bfd2457899750d556b2288d2371; official PDF and release rights are documented in docs/materials/RIGHTS.md.",
+    "source_pdf_page": 1,
+    "source_pdf_sha256": "ea95218d769396ba187282be1e7af1472449d0ad7ef8b4de21c4ae121e933092"
   },
   {
     "material_id": "img-10",
     "source_url": "https://cdn.who.int/media/docs/default-source/searo/mhs/depression-what-you-should-know-what-you-can-do.pdf?sfvrsn=293cb15b_5",
     "source_title": "who_depression_cover",
     "source_sha256": "f21d424d79b8d9ffa7ea5b250e40bd0b81a040d4443301bfd9d595089e54e742",
-    "rights": "CC BY-NC-SA 3.0 IGO as stated on the PDF copyright page (page 1/12); attribution, non-commercial use, and ShareAlike apply; no webpage-license inference",
-    "note": "This translation was not created by the World Health Organization (WHO). WHO is not responsible for the content or accuracy of this translation. The original English edition shall be the binding and authentic edition."
+    "rights": "Original source work: CC BY-NC-SA 3.0 IGO as stated on the PDF copyright page (page 1/12); attribution, non-commercial use, and ShareAlike apply. This release does not redistribute the PNG. Seven model-derived Traditional Chinese translations are separate unofficial adaptations under CC BY-NC-SA 3.0 Unported; no WHO logo/illustration permission or endorsement is claimed.",
+    "note": "World Health Organization, Regional Office for South-East Asia. Depression: What you should know? What you can do? New Delhi: WHO Regional Office for South-East Asia; 2017. Each of the seven model translations was not created, approved or translated by WHO; WHO is not responsible for its content or accuracy. The original English edition is binding and authentic. Frozen original PNG SHA-256 f21d424d79b8d9ffa7ea5b250e40bd0b81a040d4443301bfd9d595089e54e742; official PDF and release rights are documented in docs/materials/RIGHTS.md.",
+    "source_pdf_page": 1,
+    "source_pdf_sha256": "70183a0049237bb27ef4a50fc5ff51a31026fd9cefee401308f3e5adc214a5f3"
   }
 ]

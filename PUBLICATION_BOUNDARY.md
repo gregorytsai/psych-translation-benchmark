@@ -11,7 +11,12 @@ headline results.
 
 Included: all 238 measured translations; all final score/status tables, including
 the invalid score and unsupported-by-design cells; code, templates, public source
-attribution and the explicitly licensed selected materials.
+attribution, 30 frozen text items and the two explicitly identified synthetic
+images (img-01 and img-04). The two WHO source PNGs (img-09 and img-10) are not
+mirrored in this release: official page-one PDF links and frozen SHA-256
+references are provided instead. The 14 WHO-derived model translations remain
+in the measured results as unofficial adaptations under CC BY-NC-SA 3.0
+Unported; the original WHO works retain CC BY-NC-SA 3.0 IGO.
 
 Excluded: credentials, authentication stores, browser profiles, machine-specific
 logs, process identifiers, model weights, the unsanitized full archive and older

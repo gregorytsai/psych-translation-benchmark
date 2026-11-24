@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="七個模型的繁體中文心理健康翻譯基準：品質觀察、生成速度與可追溯方法。">
+  <meta name="description" content="七款地端模型的心理健康英翻中測試，包含評分方法、模型設定、回應時間與逐筆翻譯。">
   <link rel="canonical" href="https://gregorytsai.github.io/psych-translation-benchmark/downloads.html">
   <link rel="alternate" hreflang="zh-Hant" href="https://gregorytsai.github.io/psych-translation-benchmark/downloads.html">
   <link rel="alternate" hreflang="en" href="https://gregorytsai.github.io/psych-translation-benchmark/downloads-en.html">
   <link rel="alternate" hreflang="x-default" href="https://gregorytsai.github.io/psych-translation-benchmark/downloads.html">
   <title>下載 · 心理健康翻譯基準</title>
-  <link rel="stylesheet" href="assets/style.css?v=20261027">
+  <link rel="stylesheet" href="assets/style.css?v=20261124-2">
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要內容</a>
@@ -18,7 +18,7 @@
       <a class="brand" href="index.html"><span class="brand-mark">譯</span><span class="brand-label">地端模型心理領域中文翻譯品質測量<em>Benchmark 2026</em></span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">選單</button>
       <nav id="site-nav" class="site-nav" aria-label="主要導覽"><a class="nav-link" href="index.html">首頁</a>
-<a class="nav-link" href="models/gemma4-26b.html">模型比較</a>
+<a class="nav-link" href="index.html#overview-chart">模型比較</a>
 <a class="nav-link" href="results.html">238 筆翻譯</a>
 <a class="nav-link" href="methods.html">方法與限制</a>
 <a class="nav-link active" href="downloads.html" aria-current="page">下載</a>
@@ -26,7 +26,7 @@
     </div>
   </header>
   <main id="main">
-<section class="section-shell editorial-section"><h1>資料、程式與實際測試素材</h1><p>完整收錄 238 份翻譯及最終有效／無效狀態；下載包不含模型權重、憑證及本機操作紀錄。</p><ul><li><a href="downloads/complete-results.zip">完整翻譯與評分結果</a></li><li><a href="data/translation_comparison.csv">238 份原文與翻譯對照（CSV）</a></li><li><a href="downloads/benchmark-code.zip">完整封存程式、網站產生器與離線驗證</a></li><li><a href="downloads/materials.zip">30 篇文字、4 張測試原圖與出處授權</a></li><li><a href="materials/RIGHTS.md">閱讀素材使用條件</a></li><li><a href="data/publication_audit.json">公開發佈檢查結果</a></li><li><a href="data/source_file_provenance.json">原始與公開檔案雜湊及更動紀錄</a></li></ul><h2>不必呼叫模型，即可重算結果</h2><pre><code>git clone https://github.com/gregorytsai/psych-translation-benchmark.git
+<section class="section-shell editorial-section"><h1>程式碼、完整翻譯與測試素材</h1><p>完整收錄 238 份翻譯及最終有效／無效狀態；下載包不含模型權重、憑證及本機操作紀錄。</p><p>素材包收錄 30 篇英文與 2 張自製 PNG。另 2 張圖片取自 WHO 出版品，可開啟官方 PDF 的第 1 頁，並以 SHA-256 核對實測檔案。<a href="licenses.html">WHO 來源、檔案雜湊與使用條件</a>。</p><ul><li><a href="downloads/complete-results.zip">完整翻譯與評分結果</a></li><li><a href="data/translation_comparison.csv">238 份原文與翻譯對照（CSV）</a></li><li><a href="downloads/benchmark-code.zip">完整封存程式、網站產生器與離線驗證</a></li><li><a href="downloads/materials.zip">30 篇文字、2 張自製測試圖與來源清單（ZIP）</a></li><li><a href="materials/RIGHTS.md">閱讀素材使用條件</a></li><li><a href="data/publication_audit.json">公開發佈檢查結果</a></li><li><a href="data/source_file_provenance.json">原始與公開檔案雜湊及更動紀錄</a></li></ul><h2>從公開資料重算評分</h2><pre><code>git clone https://github.com/gregorytsai/psych-translation-benchmark.git
 cd psych-translation-benchmark
 python scripts/verify_analysis.py --data-dir docs/data --output-dir verification
 python build_site.py
@@ -35,12 +35,12 @@ python scripts/validate_release.py</code></pre><p>網站與公開表格檢查只
   
     <footer class="site-footer">
       <div class="footer-inner">
-        <div><strong>心理健康翻譯基準</strong><br><span class="muted">2026-10-25 凍結檢視版本 · 研究用途</span></div>
+        <div><strong>心理健康翻譯基準</strong><br><span class="muted">評測完成於 2026 年 10 月 25 日</span></div>
         <div class="footer-links"><a href="methods.html">方法與限制</a><a href="downloads.html">下載</a><a href="licenses.html">授權與來源</a></div>
       </div>
-      <p class="footer-note">本網站提供描述性、可追溯的翻譯觀察；不是醫療建議，也不是臨床安全認證。資料頁只包含明確允許公開的欄位。</p>
+      <p class="footer-note">評估部署時，可以逐筆對照英文原文、模型譯文與評審紀錄。</p>
     </footer>
     
-  <script src="assets/site.js?v=20261027" defer></script>
+  <script src="assets/site.js?v=20261124-2" defer></script>
 </body>
 </html>

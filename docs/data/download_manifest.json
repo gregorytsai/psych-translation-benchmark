@@ -1,20 +1,20 @@
 [
   {
     "name": "benchmark-code.zip",
-    "files": 136,
-    "bytes": 725711,
-    "sha256": "f33a1f9bf70ad247162eb31c5e22b49f4815a3126e4ffb601251eb2b0762186c"
+    "files": 139,
+    "bytes": 751788,
+    "sha256": "3b988087d814cb2459d383d4bde5482b40bcfe74e21b882234eea8138b44e034"
   },
   {
     "name": "complete-results.zip",
     "files": 27,
-    "bytes": 585909,
-    "sha256": "c96e6782f360d04143d2b58b674e5f1f80ca94e391e0ef054eddb6b3d269e8d8"
+    "bytes": 589351,
+    "sha256": "08bd335dcf0db1a09fee4b08a085f9fb9f4a8fa13382b2ab8e432b0eb1ffaba9"
   },
   {
     "name": "materials.zip",
-    "files": 10,
-    "bytes": 1044024,
-    "sha256": "2ef3947d6154ed4fa59f859e62fcd0adf7729d127511c60953738e197cca519b"
+    "files": 8,
+    "bytes": 165806,
+    "sha256": "e80b71f9f5e146ba86d39c50bcee0ab846d277432358a09704f2b0c7df81cc43"
   }
 ]

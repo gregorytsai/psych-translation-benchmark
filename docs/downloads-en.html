@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Seven-model psychological health translation benchmark with descriptive quality observations, generation latency and traceable methods.">
+  <meta name="description" content="Scores, response times and source materials for seven local models translating mental health content into Taiwan Traditional Chinese.">
   <link rel="canonical" href="https://gregorytsai.github.io/psych-translation-benchmark/downloads-en.html">
   <link rel="alternate" hreflang="zh-Hant" href="https://gregorytsai.github.io/psych-translation-benchmark/downloads.html">
   <link rel="alternate" hreflang="en" href="https://gregorytsai.github.io/psych-translation-benchmark/downloads-en.html">
   <link rel="alternate" hreflang="x-default" href="https://gregorytsai.github.io/psych-translation-benchmark/downloads.html">
-  <title>Downloads · Psychological Health Translation Benchmark</title>
-  <link rel="stylesheet" href="assets/style.css?v=20261027">
+  <title>Downloads · Mental Health Translation Benchmark</title>
+  <link rel="stylesheet" href="assets/style.css?v=20261124-2">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -18,7 +18,7 @@
       <a class="brand" href="index-en.html"><span class="brand-mark">譯</span><span class="brand-label">Local Model Translation Quality<br>Mental Health · Traditional Chinese<em>Benchmark 2026</em></span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav id="site-nav" class="site-nav" aria-label="Primary navigation"><a class="nav-link" href="index-en.html">Home</a>
-<a class="nav-link" href="models/gemma4-26b-en.html">Models</a>
+<a class="nav-link" href="index-en.html#overview-chart">Compare models</a>
 <a class="nav-link" href="results-en.html">238 translations</a>
 <a class="nav-link" href="methods-en.html">Methods & limits</a>
 <a class="nav-link active" href="downloads-en.html" aria-current="page">Downloads</a>
@@ -26,7 +26,7 @@
     </div>
   </header>
   <main id="main">
-<section class="section-shell editorial-section"><h1>Data, code and exact test materials</h1><p>All 238 translations are included, with the final valid/invalid statuses. Downloads do not contain model weights, credentials or workstation logs.</p><ul><li><a href="downloads/complete-results.zip">Complete translations and score tables</a></li><li><a href="data/translation_comparison.csv">All 238 translations (CSV)</a></li><li><a href="downloads/benchmark-code.zip">Complete archived code + website builder + offline verification</a></li><li><a href="downloads/materials.zip">30 text items + 4 exact test images + attribution</a></li><li><a href="materials/RIGHTS.md">Read the material reuse conditions</a></li><li><a href="data/publication_audit.json">Publication verification results</a></li><li><a href="data/source_file_provenance.json">Source/public file hashes and changes</a></li></ul><h2>Recompute without a model</h2><pre><code>git clone https://github.com/gregorytsai/psych-translation-benchmark.git
+<section class="section-shell editorial-section"><h1>Code, translations and test materials</h1><p>All 238 translations are included, with the final valid/invalid statuses. Downloads do not contain model weights, credentials or workstation logs.</p><p>The archive contains the 30 English passages and the two synthetic PNGs. The other two test images came from WHO publications. Use the official PDFs to inspect page 1 and the recorded checksums to identify the files used in the run. <a href="licenses-en.html">WHO sources, checksums and terms</a>.</p><ul><li><a href="downloads/complete-results.zip">Complete translations and score tables</a></li><li><a href="data/translation_comparison.csv">All 238 translations (CSV)</a></li><li><a href="downloads/benchmark-code.zip">Complete archived code + website builder + offline verification</a></li><li><a href="downloads/materials.zip">30 text passages, two synthetic test images and source records (ZIP)</a></li><li><a href="materials/RIGHTS.md">Read the material reuse conditions</a></li><li><a href="data/publication_audit.json">Publication verification results</a></li><li><a href="data/source_file_provenance.json">Source/public file hashes and changes</a></li></ul><h2>Recompute without a model</h2><pre><code>git clone https://github.com/gregorytsai/psych-translation-benchmark.git
 cd psych-translation-benchmark
 python scripts/verify_analysis.py --data-dir docs/data --output-dir verification
 python build_site.py
@@ -35,12 +35,12 @@ python scripts/validate_release.py</code></pre><p>Python standard library only f
   
     <footer class="site-footer">
       <div class="footer-inner">
-        <div><strong>Psychological Health Translation Benchmark</strong><br><span class="muted">2026-10-25 frozen review · research use</span></div>
+        <div><strong>Mental Health Translation Benchmark</strong><br><span class="muted">Evaluation completed 25 October 2026</span></div>
         <div class="footer-links"><a href="methods-en.html">Methods & limits</a><a href="downloads-en.html">Downloads</a><a href="licenses-en.html">Licensing & sources</a></div>
       </div>
-      <p class="footer-note">This site provides descriptive, traceable translation observations; it is not medical advice or clinical-safety certification. Data pages contain only explicitly allow-listed public fields.</p>
+      <p class="footer-note">Review the source text, machine translations and judge records together when evaluating a model for your own deployment.</p>
     </footer>
     
-  <script src="assets/site.js?v=20261027" defer></script>
+  <script src="assets/site.js?v=20261124-2" defer></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
     "html_files": 24,
     "failures": 0,
     "warnings": 0,
-    "notes": 6
+    "notes": 8
   },
   "failures": [],
   "warnings": [],
@@ -20,6 +20,10 @@
       "message": "validated 24 exact public-base page URLs"
     },
     {
+      "code": "image_source_policy",
+      "message": "validated 30 frozen text materials, two downloadable synthetic PNGs, four image records, WHO page-1 PDF links/hashes, and no WHO PNG redistribution"
+    },
+    {
       "code": "json_csv_translation_parity",
       "message": "238 JSON rows exactly match CSV source/target/status/elapsed fields"
     },
@@ -29,7 +33,11 @@
     },
     {
       "code": "numeric_chart_fields",
-      "message": "validated single-card bars, 7-row overview total/criterion data and times, generation medians, and 238 result rows"
+      "message": "validated annual-report overview controls, chart/table parity, raw/normalized criterion values, denominators, generation medians, model pages, and 238 result rows"
+    },
+    {
+      "code": "reliability_display",
+      "message": "validated ICC values at two displayed decimals; this is reviewer agreement, not translation accuracy"
     },
     {
       "code": "allowlisted_fixtures",

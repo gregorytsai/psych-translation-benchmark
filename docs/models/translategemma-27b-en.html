@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Seven-model psychological health translation benchmark with descriptive quality observations, generation latency and traceable methods.">
+  <meta name="description" content="Scores, response times and source materials for seven local models translating mental health content into Taiwan Traditional Chinese.">
   <link rel="canonical" href="https://gregorytsai.github.io/psych-translation-benchmark/models/translategemma-27b-en.html">
   <link rel="alternate" hreflang="zh-Hant" href="https://gregorytsai.github.io/psych-translation-benchmark/models/translategemma-27b.html">
   <link rel="alternate" hreflang="en" href="https://gregorytsai.github.io/psych-translation-benchmark/models/translategemma-27b-en.html">
   <link rel="alternate" hreflang="x-default" href="https://gregorytsai.github.io/psych-translation-benchmark/models/translategemma-27b.html">
-  <title>TranslateGemma 27B · Psychological Health Translation Benchmark</title>
-  <link rel="stylesheet" href="../assets/style.css?v=20261027">
+  <title>TranslateGemma 27B · Mental Health Translation Benchmark</title>
+  <link rel="stylesheet" href="../assets/style.css?v=20261124-2">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -18,7 +18,7 @@
       <a class="brand" href="../index-en.html"><span class="brand-mark">譯</span><span class="brand-label">Local Model Translation Quality<br>Mental Health · Traditional Chinese<em>Benchmark 2026</em></span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav id="site-nav" class="site-nav" aria-label="Primary navigation"><a class="nav-link" href="../index-en.html">Home</a>
-<a class="nav-link active" href="../models/gemma4-26b-en.html" aria-current="page">Models</a>
+<a class="nav-link active" href="../index-en.html#overview-chart" aria-current="page">Compare models</a>
 <a class="nav-link" href="../results-en.html">238 translations</a>
 <a class="nav-link" href="../methods-en.html">Methods & limits</a>
 <a class="nav-link" href="../downloads-en.html">Downloads</a>
@@ -26,19 +26,19 @@
     </div>
   </header>
   <main id="main">
-    <section class="section-shell page-hero compact"><div class="eyebrow">Model page · translategemma-27b</div><h1>TranslateGemma 27B</h1><p>Under fixed translation settings, the same materials, and a shared-case panel, this page places auditable outputs beside the limits of the measurement.</p><div class="model-chips" aria-label="Switch model"><a class="model-chip" href="gemma4-12b-en.html">Gemma 4 12B</a> <a class="model-chip" href="gemma4-26b-en.html">Gemma 4 26B</a> <a class="model-chip" href="gemma4-31b-qat-en.html">Gemma 4 31B QAT</a> <a class="model-chip" href="gemma4-e4b-en.html">Gemma 4 E4B</a> <a class="model-chip" href="translategemma-12b-en.html">TranslateGemma 12B</a> <a class="model-chip active" href="translategemma-27b-en.html">TranslateGemma 27B</a> <a class="model-chip" href="translategemma-4b-en.html">TranslateGemma 4B</a></div></section>
-    <section class="section-shell metrics-row"><div class="metric-card teal"><div class="metric-label">Shared text score</div><div class="metric-value">96.538</div><div class="metric-note">29 shared cases; median 98.800</div></div><div class="metric-card coral"><div class="metric-label">Shared image score</div><div class="metric-value">83.938</div><div class="metric-note">4 images; median 84.375</div></div><div class="metric-card purple"><div class="metric-label">Text response median</div><div class="metric-value">3.850 s</div><div class="metric-note">p95 5.668 s; 30 cases</div></div><div class="metric-card amber"><div class="metric-label">Image response median</div><div class="metric-value">5.324 s</div><div class="metric-note">p95 13.524 s; 4 cases</div></div></section>
+    <section class="section-shell page-hero compact"><div class="eyebrow">Measured model summary · translategemma-27b</div><h1>TranslateGemma 27B</h1><p>This page lists the model's scores, response times, measured files, and case-level outputs under the fixed materials and inference settings.</p><div class="model-chips" aria-label="Switch model"><a class="model-chip" href="gemma4-12b-en.html">Gemma 4 12B</a> <a class="model-chip" href="gemma4-26b-en.html">Gemma 4 26B</a> <a class="model-chip" href="gemma4-31b-qat-en.html">Gemma 4 31B QAT</a> <a class="model-chip" href="gemma4-e4b-en.html">Gemma 4 E4B</a> <a class="model-chip" href="translategemma-12b-en.html">TranslateGemma 12B</a> <a class="model-chip active" href="translategemma-27b-en.html">TranslateGemma 27B</a> <a class="model-chip" href="translategemma-4b-en.html">TranslateGemma 4B</a> <a class="model-chip compare-chip" href="../index-en.html#overview-chart">Back to shared comparison</a></div><p class="model-compare-entry"><a class="text-link" href="../index-en.html#overview-chart">Compare all seven models in one tool →</a></p></section>
+    <section class="section-shell metrics-row"><div class="metric-card teal"><div class="metric-label">Text shared-case model mean</div><div class="metric-value">96.54</div><div class="metric-note">29 complete cases; reviewer scores averaged per case; median case score 98.8</div></div><div class="metric-card coral"><div class="metric-label">Image shared-case model mean</div><div class="metric-value">83.94</div><div class="metric-note">4 images; reviewer scores averaged per case; median case score 84.4</div></div><div class="metric-card purple"><div class="metric-label">Text warm-response median</div><div class="metric-value">3.85 s</div><div class="metric-note">sample n=30; p95 5.67 s</div></div><div class="metric-card amber"><div class="metric-label">Image warm-response median</div><div class="metric-value">5.32 s</div><div class="metric-note">sample n=4; p95 13.52 s</div></div></section>
     
-    <section class="section-shell runtime-section"><div class="section-heading"><div><div class="eyebrow">Measured files and settings</div><h2>What was actually loaded?</h2><p class="section-intro">These are the public inventory facts for the measured local artifacts, not a claim about official full-precision weights.</p></div></div><div class="runtime-grid"><div class="runtime-facts"><div><b>Model file</b><code>translategemma-27b-it-q8_0.gguf</code><span>26.736 GiB</span></div><div><b>mmproj file</b><code>translategemma-27b-it.mmproj-Q8_0.gguf</code><span>0.557 GiB</span></div><div><b>Model + mmproj on-disk size</b><strong>27.293 GiB</strong></div><div><b>Template mode</b><span>custom_translategemma_adapter</span></div><div><b>Runtime alias</b><span>tg27-new-translation</span></div></div><div class="runtime-settings"><b>Measured translation configuration</b><p>ctx 8192 · max tokens 4096 · temperature 0 · seed 20261023 · reasoning off</p><p class="runtime-note">On-disk file size is not a RAM requirement; runtime memory also depends on context, projector, buffers and settings.</p><p><a class="text-link" href="https://ai.google.dev/gemma/docs/releases">Official model documentation：TranslateGemma release page ↗</a></p></div></div><details class="sha-details"><summary>SHA-256 checksums</summary><div><code>model: 8cad711b2893c27b79d8a46f99b63881a7e38b6c578e846d9efea8e832e33114</code><code>mmproj: e55f77e0644a33a8430d342e0bc5164a31ecf428bc01e3a4ed89cddcae8f903b</code></div></details></section>
+    <section class="section-shell runtime-section"><div class="section-heading"><div><div class="eyebrow">Measured files and settings</div><h2>Model files, vision projector, and inference settings</h2><p class="section-intro">The run used the GGUF weights, vision projector and chat template listed here. Match the filenames and SHA-256 checksums when reproducing this configuration.</p></div></div><div class="runtime-grid"><div class="runtime-facts"><div><b>GGUF model file</b><code>translategemma-27b-it-q8_0.gguf</code><span>26.7 GiB</span></div><div><b>Vision projector (mmproj)</b><code>translategemma-27b-it.mmproj-Q8_0.gguf</code><span>0.6 GiB</span></div><div><b>Model + mmproj on-disk total</b><strong>27.3 GiB</strong></div><div><b>Chat/template mode</b><span>custom_translategemma_adapter</span></div><div><b>Runtime alias</b><span>tg27-new-translation</span></div></div><div class="runtime-settings"><b>Measured translation inference settings</b><p>context 8192 · max output 4096 · temperature 0 · seed 20261023 · thinking off</p><p class="runtime-note">These are on-disk GGUF file sizes, not a RAM requirement; runtime memory also depends on context, projector, buffers and settings.</p><p><a class="text-link" href="https://ai.google.dev/gemma/docs/releases">Official model documentation：TranslateGemma release page ↗</a></p></div></div><details class="sha-details"><summary>SHA-256 checksums</summary><div><code>model: 8cad711b2893c27b79d8a46f99b63881a7e38b6c578e846d9efea8e832e33114</code><code>mmproj: e55f77e0644a33a8430d342e0bc5164a31ecf428bc01e3a4ed89cddcae8f903b</code></div></details></section>
     
-    <section class="section-shell split-panel model-reading"><div><div class="eyebrow">How to read this model</div><h2>Start with shared cases, then inspect outputs.</h2><p>The text score uses 29 shared cases and five fixed reviewers; the image score uses four images and four fixed reviewers. These are observations, not a gold accuracy score, and incomplete panels are not filled with zeros.</p><p>The response medians come from the frozen translation run. They answer how long this configuration took after loading, not how fast every machine will be.</p></div><div class="accent-note"><strong>Diagnostics</strong><span>Text critical flag cells: 8</span><span>Text shared-case exclusions: 1</span><small>Critical flags and exclusions are separate diagnostics, not clinical-risk estimates.</small></div></section>
-    <section class="section-shell"><div class="section-heading"><div><div class="eyebrow">Exact examples</div><h2>Source and output, side by side.</h2><p class="section-intro">These text fields are taken directly from the allow-listed results; they were not regenerated or invented for this page.</p></div><a class="text-link" href="../results-en.html">See all 238 →</a></div><div class="examples-grid">
-    <article class="example-card curated-example"><div class="example-header"><span class="case-label">Better example 01 · text-01</span><span class="pill">100.000 score</span></div><div class="example-source"><div class="label">English source excerpt</div><p>Everyone feels sad or low sometimes, but these feelings usually pass. </p></div><div class="example-arrow" aria-hidden="true">↓</div><div class="example-target"><div class="label">Traditional Chinese output excerpt</div><p>每個人有時都會感到悲傷或情緒低落，但這些感覺通常會過去。</p></div><div class="curated-evidence"><div class="label">Why it matters</div><p>The five text judges scored this case highly and retained no error annotation. The excerpt preserves the basic source meaning, but this is not a human-certified perfect translation.</p></div></article>
+    <section class="section-shell split-panel model-reading"><div><div class="eyebrow">Scores, time, and sample size</div><h2>How to read this model's measured numbers</h2><p>The text model mean uses 29 complete shared cases: five AI reviewer scores are averaged within each case, then the case means are averaged. The image model mean uses 4 images with four reviewers per case. These are descriptive observations, not a human gold accuracy score; incomplete reviewer cells are not filled with zeros.</p><p>Warm-response medians measure response time after the model was loaded in the frozen translation run. They describe this sample and configuration, not the speed of every machine. P95 and sample size are shown above.</p></div><div class="accent-note"><strong>Reviewer diagnostics</strong><span>Text critical flag cells: 8</span><span>Text shared-case exclusions: 1</span><small>Critical flags and exclusions are separate diagnostics, not clinical-risk estimates.</small></div></section>
+    <section class="section-shell"><div class="section-heading"><div><div class="eyebrow">Case-level outputs</div><h2>Source, model output, and reviewer notes</h2><p class="section-intro">These fields come directly from the public allow-listed results. Curated notes explain why a case merits a human check; nothing was regenerated or invented for this page.</p></div><a class="text-link" href="../results-en.html">See all 238 →</a></div><div class="examples-grid">
+    <article class="example-card curated-example"><div class="example-header"><span class="case-label">Better example 01 · text-01</span><span class="pill">100 score</span></div><div class="example-source"><div class="label">English source excerpt</div><p>Everyone feels sad or low sometimes, but these feelings usually pass. </p></div><div class="example-arrow" aria-hidden="true">↓</div><div class="example-target"><div class="label">Traditional Chinese output excerpt</div><p>每個人有時都會感到悲傷或情緒低落，但這些感覺通常會過去。</p></div><div class="curated-evidence"><div class="label">Why it matters</div><p>The five text judges scored this case highly and retained no error annotation. The excerpt preserves the basic source meaning, but this is not a human-certified perfect translation.</p></div></article>
     
 
-    <article class="example-card curated-example"><div class="example-header"><span class="case-label">Risk example 02 · text-28</span><span class="pill">75.200 score</span></div><div class="example-source"><div class="label">English source excerpt</div><p>Contact the 988 Suicide and Crisis Lifeline if you are experiencing mental health-related distress or are worried about a loved one who may need crisis support. Call or text 988. Chat at 988lifeline.org. Connect with a trained crisis counselor. 988 is confidential, free, and available 24/7/365.</p></div><div class="example-arrow" aria-hidden="true">↓</div><div class="example-target"><div class="label">Traditional Chinese output excerpt</div><p>如果您正經歷與心理健康相關的困擾，或擔心您所愛的人可能需要心理危機支援，請聯絡 988 心理健康危機專線。您可以撥打 988 或發送簡訊。您也可以在 988lifeline.org 網站上進行線上對話。我們會為您提供由受過專業訓練的心理危機輔導員提供的協助。988 專線提供保密、免費且全天候（24 小時、每周 7 天、全年 365 天）的服務。</p></div><div class="curated-evidence"><div class="label">Why it matters</div><p>A judge questioned the omission of “suicide” from the service name, while the number and help-seeking meaning remain. This is a naming/meaning concern for review, not an established safety failure solely because one judge marked it critical.</p></div></article>
+    <article class="example-card curated-example"><div class="example-header"><span class="case-label">Risk example 02 · text-28</span><span class="pill">75.2 score</span></div><div class="example-source"><div class="label">English source excerpt</div><p>Contact the 988 Suicide and Crisis Lifeline if you are experiencing mental health-related distress or are worried about a loved one who may need crisis support. Call or text 988. Chat at 988lifeline.org. Connect with a trained crisis counselor. 988 is confidential, free, and available 24/7/365.</p></div><div class="example-arrow" aria-hidden="true">↓</div><div class="example-target"><div class="label">Traditional Chinese output excerpt</div><p>如果您正經歷與心理健康相關的困擾，或擔心您所愛的人可能需要心理危機支援，請聯絡 988 心理健康危機專線。您可以撥打 988 或發送簡訊。您也可以在 988lifeline.org 網站上進行線上對話。我們會為您提供由受過專業訓練的心理危機輔導員提供的協助。988 專線提供保密、免費且全天候（24 小時、每周 7 天、全年 365 天）的服務。</p></div><div class="curated-evidence"><div class="label">Why it matters</div><p>A judge questioned the omission of “suicide” from the service name, while the number and help-seeking meaning remain. This is a naming/meaning concern for review, not an established safety failure solely because one judge marked it critical.</p></div></article>
     </div></section>
-    <section class="section-shell"><article id="img-04-example" class="image-example-card"><div class="case-label">Image case img-04</div><h3>Traditional Chinese output for the visual input</h3><p>藥品標籤範例
+    <section class="section-shell"><article id="img-04-example" class="image-example-card"><div class="case-label">Image case img-04</div><h3>Model output for the image case</h3><p>藥品標籤範例
 
 合成評估圖像 – 非處方藥
 
@@ -50,52 +50,52 @@
 
 來源提示：藥品安全措辭由基準作者撰寫。
 
-合成圖像，用於翻譯/OCR 評估，不含真實患者資料，不構成背書。</p><div class="mini-facts"><span>4-image mean <b>83.938</b></span><span>Response median <b>5.324 s</b></span></div><small>Image quality scores are not OCR character accuracy; the frozen source link is shown below.</small><div class="source-links"><a class="text-link" href="../materials/images/img04_synthetic_medication_label.png">Open frozen PNG ↗</a><small class="source-condition">Project-authored synthetic render; not a patient record or prescription.</small></div></article></section>
-    <section class="section-shell table-section"><div class="section-heading"><div><div class="eyebrow">Detailed data</div><h2>All case summaries for this model</h2></div></div><div class="table-wrap"><table><thead><tr><th>Case</th><th>Track</th><th>Panel score</th><th>Generation seconds</th><th>Valid / required</th></tr></thead><tbody><tr><td>text-01</td><td>Text</td><td>100.000</td><td>3.890</td><td>5/5</td></tr>
-<tr><td>text-02</td><td>Text</td><td>98.800</td><td>2.970</td><td>5/5</td></tr>
-<tr><td>text-03</td><td>Text</td><td>98.800</td><td>2.421</td><td>5/5</td></tr>
-<tr><td>text-04</td><td>Text</td><td>95.200</td><td>3.974</td><td>5/5</td></tr>
-<tr><td>text-05</td><td>Text</td><td>99.600</td><td>3.809</td><td>5/5</td></tr>
-<tr><td>text-06</td><td>Text</td><td>88.400</td><td>3.590</td><td>5/5</td></tr>
-<tr><td>text-07</td><td>Text</td><td>97.200</td><td>2.114</td><td>5/5</td></tr>
-<tr><td>text-08</td><td>Text</td><td>90.200</td><td>5.245</td><td>5/5</td></tr>
-<tr><td>text-09</td><td>Text</td><td>99.200</td><td>3.372</td><td>5/5</td></tr>
-<tr><td>text-10</td><td>Text</td><td>98.200</td><td>3.945</td><td>5/5</td></tr>
-<tr><td>text-11</td><td>Text</td><td>97.000</td><td>4.681</td><td>5/5</td></tr>
-<tr><td>text-12</td><td>Text</td><td>98.000</td><td>4.728</td><td>5/5</td></tr>
-<tr><td>text-13</td><td>Text</td><td>100.000</td><td>3.246</td><td>5/5</td></tr>
-<tr><td>text-14</td><td>Text</td><td>100.000</td><td>2.624</td><td>5/5</td></tr>
-<tr><td>text-15</td><td>Text</td><td>96.600</td><td>3.374</td><td>5/5</td></tr>
-<tr><td>text-16</td><td>Text</td><td>92.600</td><td>7.029</td><td>5/5</td></tr>
-<tr><td>text-17</td><td>Text</td><td>99.200</td><td>3.739</td><td>5/5</td></tr>
-<tr><td>text-18</td><td>Text</td><td>100.000</td><td>4.612</td><td>5/5</td></tr>
-<tr><td>text-19</td><td>Text</td><td>99.200</td><td>4.485</td><td>5/5</td></tr>
-<tr><td>text-20</td><td>Text</td><td>90.600</td><td>1.768</td><td>5/5</td></tr>
-<tr><td>text-21</td><td>Text</td><td>99.000</td><td>4.543</td><td>5/5</td></tr>
-<tr><td>text-22</td><td>Text</td><td>100.000</td><td>4.282</td><td>5/5</td></tr>
-<tr><td>text-23</td><td>Text</td><td>100.000</td><td>3.952</td><td>5/5</td></tr>
-<tr><td>text-24</td><td>Text</td><td>98.400</td><td>3.162</td><td>5/5</td></tr>
-<tr><td>text-25</td><td>Text</td><td>97.800</td><td>1.857</td><td>5/5</td></tr>
-<tr><td>text-26</td><td>Text</td><td>89.200</td><td>4.190</td><td>5/5</td></tr>
-<tr><td>text-27</td><td>Text</td><td>99.200</td><td>3.118</td><td>5/5</td></tr>
-<tr><td>text-28</td><td>Text</td><td>75.200</td><td>6.014</td><td>5/5</td></tr>
-<tr><td>text-29</td><td>Text</td><td>100.000</td><td>4.745</td><td>5/5</td></tr>
-<tr><td>text-30</td><td>Text</td><td>98.600</td><td>2.722</td><td>5/5</td></tr>
-<tr><td>img-01</td><td>Image</td><td>87.750</td><td>4.642</td><td>4/4</td></tr>
-<tr><td>img-04</td><td>Image</td><td>81.000</td><td>6.007</td><td>4/4</td></tr>
-<tr><td>img-09</td><td>Image</td><td>78.500</td><td>14.850</td><td>4/4</td></tr>
-<tr><td>img-10</td><td>Image</td><td>88.500</td><td>2.159</td><td>4/4</td></tr></tbody></table></div></section>
-    <section class="section-shell callout caution"><div class="callout-icon">!</div><div><strong>Read the limits with the score</strong><p>There are only 30 text cases and 4 images; five reviewers are not a human gold standard, and images are not OCR CER. A model page is not a ranking or clinical-safety conclusion.</p></div></section>
+合成圖像，用於翻譯/OCR 評估，不含真實患者資料，不構成背書。</p><div class="mini-facts"><span>Four-image model mean <b>83.94</b></span><span>Warm-response median <b>5.32 s</b></span></div><small>Image scores are not OCR character accuracy; the frozen image and source links are shown below.</small><div class="source-links"><a class="text-link" href="../materials/images/img04_synthetic_medication_label.png">Open the tested PNG</a></div></article></section>
+    <section class="section-shell table-section"><div class="section-heading"><div><div class="eyebrow">Case-level summary</div><h2>Scores and translation time for every case</h2></div></div><div class="table-wrap"><table><thead><tr><th>Case ID</th><th>Type</th><th>Within-case reviewer mean</th><th>Translation time (s)</th><th>Valid reviewers / required</th></tr></thead><tbody><tr><td>text-01</td><td>Text</td><td>100</td><td>3.89</td><td>5/5</td></tr>
+<tr><td>text-02</td><td>Text</td><td>98.8</td><td>2.97</td><td>5/5</td></tr>
+<tr><td>text-03</td><td>Text</td><td>98.8</td><td>2.42</td><td>5/5</td></tr>
+<tr><td>text-04</td><td>Text</td><td>95.2</td><td>3.97</td><td>5/5</td></tr>
+<tr><td>text-05</td><td>Text</td><td>99.6</td><td>3.81</td><td>5/5</td></tr>
+<tr><td>text-06</td><td>Text</td><td>88.4</td><td>3.59</td><td>5/5</td></tr>
+<tr><td>text-07</td><td>Text</td><td>97.2</td><td>2.11</td><td>5/5</td></tr>
+<tr><td>text-08</td><td>Text</td><td>90.2</td><td>5.25</td><td>5/5</td></tr>
+<tr><td>text-09</td><td>Text</td><td>99.2</td><td>3.37</td><td>5/5</td></tr>
+<tr><td>text-10</td><td>Text</td><td>98.2</td><td>3.94</td><td>5/5</td></tr>
+<tr><td>text-11</td><td>Text</td><td>97</td><td>4.68</td><td>5/5</td></tr>
+<tr><td>text-12</td><td>Text</td><td>98</td><td>4.73</td><td>5/5</td></tr>
+<tr><td>text-13</td><td>Text</td><td>100</td><td>3.25</td><td>5/5</td></tr>
+<tr><td>text-14</td><td>Text</td><td>100</td><td>2.62</td><td>5/5</td></tr>
+<tr><td>text-15</td><td>Text</td><td>96.6</td><td>3.37</td><td>5/5</td></tr>
+<tr><td>text-16</td><td>Text</td><td>92.6</td><td>7.03</td><td>5/5</td></tr>
+<tr><td>text-17</td><td>Text</td><td>99.2</td><td>3.74</td><td>5/5</td></tr>
+<tr><td>text-18</td><td>Text</td><td>100</td><td>4.61</td><td>5/5</td></tr>
+<tr><td>text-19</td><td>Text</td><td>99.2</td><td>4.48</td><td>5/5</td></tr>
+<tr><td>text-20</td><td>Text</td><td>90.6</td><td>1.77</td><td>5/5</td></tr>
+<tr><td>text-21</td><td>Text</td><td>99</td><td>4.54</td><td>5/5</td></tr>
+<tr><td>text-22</td><td>Text</td><td>100</td><td>4.28</td><td>5/5</td></tr>
+<tr><td>text-23</td><td>Text</td><td>100</td><td>3.95</td><td>5/5</td></tr>
+<tr><td>text-24</td><td>Text</td><td>98.4</td><td>3.16</td><td>5/5</td></tr>
+<tr><td>text-25</td><td>Text</td><td>97.8</td><td>1.86</td><td>5/5</td></tr>
+<tr><td>text-26</td><td>Text</td><td>89.2</td><td>4.19</td><td>5/5</td></tr>
+<tr><td>text-27</td><td>Text</td><td>99.2</td><td>3.12</td><td>5/5</td></tr>
+<tr><td>text-28</td><td>Text</td><td>75.2</td><td>6.01</td><td>5/5</td></tr>
+<tr><td>text-29</td><td>Text</td><td>100</td><td>4.74</td><td>5/5</td></tr>
+<tr><td>text-30</td><td>Text</td><td>98.6</td><td>2.72</td><td>5/5</td></tr>
+<tr><td>img-01</td><td>Image</td><td>87.75</td><td>4.64</td><td>4/4</td></tr>
+<tr><td>img-04</td><td>Image</td><td>81</td><td>6.01</td><td>4/4</td></tr>
+<tr><td>img-09</td><td>Image</td><td>78.5</td><td>14.85</td><td>4/4</td></tr>
+<tr><td>img-10</td><td>Image</td><td>88.5</td><td>2.16</td><td>4/4</td></tr></tbody></table></div></section>
+    <section class="section-shell callout caution"><div class="callout-icon">!</div><div><strong>Analysis limits</strong><p>The translation sample has 30 text cases and 4 images; text model means use 29 shared cases because one review cell was invalid. Five text reviewers and four image reviewers are not a human gold standard, and image scores are not character-level OCR error rates. This model page supports inspection; it is not a universal ranking or a clinical-safety conclusion.</p></div></section>
     </main>
   
     <footer class="site-footer">
       <div class="footer-inner">
-        <div><strong>Psychological Health Translation Benchmark</strong><br><span class="muted">2026-10-25 frozen review · research use</span></div>
+        <div><strong>Mental Health Translation Benchmark</strong><br><span class="muted">Evaluation completed 25 October 2026</span></div>
         <div class="footer-links"><a href="../methods-en.html">Methods & limits</a><a href="../downloads-en.html">Downloads</a><a href="../licenses-en.html">Licensing & sources</a></div>
       </div>
-      <p class="footer-note">This site provides descriptive, traceable translation observations; it is not medical advice or clinical-safety certification. Data pages contain only explicitly allow-listed public fields.</p>
+      <p class="footer-note">Review the source text, machine translations and judge records together when evaluating a model for your own deployment.</p>
     </footer>
     
-  <script src="../assets/site.js?v=20261027" defer></script>
+  <script src="../assets/site.js?v=20261124-2" defer></script>
 </body>
 </html>

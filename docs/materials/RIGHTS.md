@@ -1,71 +1,100 @@
 # Materials and translation rights / 素材與翻譯的權利
 
-This is a non-commercial research release. Frozen model translations are
-unreviewed experimental outputs, not official agency translations or medical
-guidance. No source agency endorses this project. Source statistics and support
-information reflect the captured source and its original jurisdiction/date;
-they are not current local guidance.
+Release rights were checked on 2026-11-24. This is a non-commercial research
+release. Frozen model translations are unreviewed experimental outputs, not
+official agency translations or medical guidance. No source agency endorses this
+project. Source statistics and support information reflect the captured source
+and its original jurisdiction/date; they are not current local guidance.
 
 ## US federal text / 美國政府文字
 
-- NIMH: public-domain text, credited to National Institute of Mental Health.
+- NIMH: public-domain text, credited to the National Institute of Mental Health;
+  NIMH page and publication images are not included or licensed by this release.
   https://www.nimh.nih.gov/site-info/policies
-- MedlinePlus: public-domain health-topic summaries only. Source: MedlinePlus,
-  National Library of Medicine. Third-party encyclopedia, drug monographs and
-  images are excluded. https://medlineplus.gov/about/using/usingcontent/
-- CDC: Source: Centers for Disease Control and Prevention. Original material
-  is available from CDC at no charge. This use does not imply endorsement by
-  CDC, ATSDR, HHS or the United States Government. Source text is preserved;
-  machine translations may contain errors and must not be treated as CDC advice.
+- MedlinePlus: only the public-domain MedlinePlus health-topic summaries are
+  used. Credit MedlinePlus/National Library of Medicine. A.D.A.M., other marked
+  third-party content, drug monographs and images are excluded.
+  https://medlineplus.gov/about/using/usingcontent/
+- CDC: credit the Centers for Disease Control and Prevention, state that the
+  original material is available from CDC at no charge, and do not imply CDC,
+  ATSDR, HHS or United States Government endorsement. Source wording is
+  preserved; machine translations may contain errors and are not CDC advice.
   https://www.cdc.gov/other/agencymaterials.html
 - VA: government-produced text, credited to the U.S. Department of Veterans
-  Affairs, National Center for PTSD. Not an official VA translation and no VA
-  endorsement. https://department.va.gov/copyright-policy/
+  Affairs, National Center for PTSD. These are not official VA translations and
+  do not imply VA endorsement. https://department.va.gov/copyright-policy/
 
 Every frozen text record includes its source URL, title, capture date and rights
 note. The public source_attribution.json adds these notices to each item. No
-agency photos, website illustrations or logos have been collected with the text.
+agency photos, website illustrations or logos are collected with the 30 text
+items.
 
 ## Synthetic images / 自製模擬圖
 
 img-01 and img-04 are original benchmark renderings, with their Swift renderer
 included in benchmark_code. They contain no real patient data. Preserve the
-SYNTHETIC / NOT A CLINICAL RECORD / NOT A PRESCRIPTION notices. They are supplied
-for inspection and reproduction of this research; no additional blanket reuse
-license is asserted. Source cues are not agency endorsements.
+SYNTHETIC / NOT A CLINICAL RECORD / NOT A PRESCRIPTION notices. These two PNGs
+are supplied directly for inspection and reproduction of this research; no
+additional blanket reuse license is asserted. Source cues are not agency
+endorsements.
 
-## WHO materials / WHO 素材
+## WHO source works and the 14 unofficial translations / WHO 原著與 14 筆非官方翻譯
 
-img-09: World Health Organization. WHO policy brief on the health aspects of
-decriminalization of suicide and suicide attempts. Geneva: WHO; 2023.
-https://cdn.who.int/media/docs/default-source/mental-health/9789240078796-eng.pdf?download=true
-Copyright © World Health Organization 2023. Some rights reserved.
+The two WHO source works are not mirrored as PNGs in this website or its ZIP
+packages. The official page-one PDFs are linked below, and the frozen original
+PNG hashes are recorded for provenance only. The 14 model outputs in the public
+results comprise seven translations of img-09 and seven of img-10. They are
+separate, unofficial machine translations/adaptations: the original works retain
+CC BY-NC-SA 3.0 IGO, while these derivative translations are released under the
+corresponding CC BY-NC-SA 3.0 Unported license. No broader license is asserted.
 
-img-10: World Health Organization, Regional Office for South-East Asia.
-Depression: What you should know? What you can do? 2017.
-https://cdn.who.int/media/docs/default-source/searo/mhs/depression-what-you-should-know-what-you-can-do.pdf?sfvrsn=293cb15b_5
-Copyright © World Health Organization 2017. Some rights reserved.
+### img-09
 
-Both PDFs state CC BY-NC-SA 3.0 IGO:
-https://creativecommons.org/licenses/by-nc-sa/3.0/igo/
-WHO copyright policy: https://www.who.int/about/policies/publishing/copyright
+World Health Organization. *WHO policy brief on the health aspects of
+decriminalization of suicide and suicide attempts*. Geneva: World Health
+Organization; 2023. Copyright © World Health Organization 2023. Original
+license: [CC BY-NC-SA 3.0 IGO](https://creativecommons.org/licenses/by-nc-sa/3.0/igo/).
+[Official PDF, page 1](https://cdn.who.int/media/docs/default-source/mental-health/9789240078796-eng.pdf?download=true).
+Frozen original PNG SHA-256:
+`7c51577226a100e72c96c4d649d3b53e7e2e9bfd2457899750d556b2288d2371`.
+Frozen source PDF SHA-256:
+`ea95218d769396ba187282be1e7af1472449d0ad7ef8b4de21c4ae121e933092`.
 
-The PNGs are unchanged page-one renders from the frozen experiment; the
-original PDFs are linked, not included. Page rendering and machine-generated
-Traditional Chinese translations are the modifications. The WHO material and
-all translations/adaptations of it in this release are provided under CC
-BY-NC-SA 3.0 IGO. Attribution, non-commercial use and ShareAlike apply. Keep WHO
-branding only as part of the unchanged source image; do not use it as this
-project's branding or imply endorsement. Text translations appear separately
-and do not overwrite the original branded artwork. No third-party credits were
-identified on the selected first pages; other pages/assets are outside scope.
+The seven img-09 model translations are unofficial Traditional Chinese machine
+translations created for this benchmark. They are released as adaptations under
+[CC BY-NC-SA 3.0 Unported](https://creativecommons.org/licenses/by-nc-sa/3.0/).
+They were not created, approved or translated by WHO. WHO is not responsible for
+their content or accuracy. The original English edition named above is the
+binding and authentic edition. This release does not claim separate permission
+to reuse the WHO logo or illustrations and does not imply WHO endorsement.
 
-This translation was not created by the World Health Organization (WHO). WHO is not responsible for the content or accuracy of this translation. The original English edition shall be the binding and authentic edition.
+### img-10
 
-本翻譯並非由世界衛生組織（WHO）製作。WHO 不對翻譯內容或準確性負責。英文原版為具約束力的正式版本。
+World Health Organization, Regional Office for South-East Asia. *Depression:
+What you should know? What you can do?* New Delhi: WHO Regional Office for
+South-East Asia; 2017. Copyright © World Health Organization 2017. Original
+license: [CC BY-NC-SA 3.0 IGO](https://creativecommons.org/licenses/by-nc-sa/3.0/igo/).
+[Official PDF, page 1](https://cdn.who.int/media/docs/default-source/searo/mhs/depression-what-you-should-know-what-you-can-do.pdf?sfvrsn=293cb15b_5).
+Frozen original PNG SHA-256:
+`f21d424d79b8d9ffa7ea5b250e40bd0b81a040d4443301bfd9d595089e54e742`.
+Frozen source PDF SHA-256:
+`70183a0049237bb27ef4a50fc5ff51a31026fd9cefee401308f3e5adc214a5f3`.
 
-WHO reference text was extracted by machine and checked by AI; it is not a
+The seven img-10 model translations are unofficial Traditional Chinese machine
+translations created for this benchmark. They are released as adaptations under
+[CC BY-NC-SA 3.0 Unported](https://creativecommons.org/licenses/by-nc-sa/3.0/).
+They were not created, approved or translated by WHO. WHO is not responsible for
+their content or accuracy. The original English edition named above is the
+binding and authentic edition. This release does not claim separate permission
+to reuse the WHO logo or illustrations and does not imply WHO endorsement.
+
+The WHO copyright policy is at
+https://www.who.int/about/policies/publishing/copyright. WHO source pages and
+third-party credited material remain subject to their own terms. The WHO
+reference text was extracted by machine and checked by AI; it is not a
 human-reviewed gold standard. Do not relabel it as one.
+
+以下是同一授權邊界的中文摘要：兩份 WHO 原著維持 CC BY-NC-SA 3.0 IGO；本版 14 筆模型衍生翻譯採 CC BY-NC-SA 3.0 Unported。兩張 WHO 原圖只以官方 PDF 連結與凍結雜湊供溯源，未隨網站或 ZIP 提供，也未宣稱取得標誌或插畫的另行許可。上述兩份個別聲明適用於各自作品。
 
 ## Code and model terms / 程式與模型條款
 

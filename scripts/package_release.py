@@ -19,7 +19,13 @@ def main():
     code += [ROOT/n for n in ('build_site.py','README.md','LICENSE','NOTICE','PUBLICATION_BOUNDARY.md')]
     data=[p for p in (DOCS/'data').glob('*') if p.name not in ('download_manifest.json','publication_audit.json')]
     notices=[DOCS/'materials/RIGHTS.md',DOCS/'materials/source_attribution.json',ROOT/'LICENSE',ROOT/'NOTICE']
-    results=[package('benchmark-code.zip',code),package('complete-results.zip',data+notices),package('materials.zip',list((DOCS/'materials').rglob('*'))+notices)]
+    materials = [DOCS / 'materials' / name for name in (
+        'frozen_text_materials.jsonl',
+        'image_selection.json',
+        'images/img01_synthetic_depression_note.png',
+        'images/img04_synthetic_medication_label.png',
+    )]
+    results=[package('benchmark-code.zip',code),package('complete-results.zip',data+notices),package('materials.zip',materials+notices)]
     (DOCS/'data/download_manifest.json').write_text(json.dumps(results,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(results,indent=2))
 if __name__=='__main__':main()

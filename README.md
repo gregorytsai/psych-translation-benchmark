@@ -25,8 +25,8 @@ Mistral image scores are unsupported by design, never filled with zero.
 
 Scores are AI-panel ratings out of 100, not accuracy percentages. No human gold
 standard or clinical safety validation is claimed. Warm request times are
-specific to this configuration. The top text means (26B 98.614; 31B 98.531) differ
-by only 0.083 points. High averages can coexist with local errors; judges can
+specific to this configuration. The top text means (26B 98.61, 31B 98.53) differ
+by only 0.08 points. High averages can coexist with local errors; judges can
 also make questionable criticisms. All original scores are preserved.
 
 ## Offline reproduction / 離線重現
@@ -40,6 +40,8 @@ python scripts/package_release.py
 python scripts/validate_release.py
 python -m http.server 8766 --directory docs
 ```
+
+The comparison uses the minimum precision needed to distinguish the models on each metric. Sorting uses the scores before display rounding. The exploratory source-level tests for differences across criteria can be reproduced with NumPy and `python scripts/criterion_analysis.py --data-dir docs/data --output-dir verification/criteria`.
 
 `benchmark_code/` contains all 114 archived Python, Jinja, Swift, shell and MJS
 files, including historical tools. Latest translation entry:
@@ -62,12 +64,15 @@ not asserted without evidence.
 - `docs/downloads/complete-results.zip`: complete final public tables and notices.
 - `docs/downloads/benchmark-code.zip`: all archived code, website builder,
   offline verifier and licenses.
-- `docs/downloads/materials.zip`: 30 frozen texts, 4 exact PNGs and attribution.
-  Original WHO PDFs are linked, not redistributed as PDF binaries.
+- `docs/downloads/materials.zip`: 30 frozen texts, two synthetic PNGs and
+  attribution. The two WHO source PNGs are not mirrored; their official
+  page-one PDFs and frozen SHA-256 references are linked in the rights page.
 
 ZIP paths are repository-relative. A Git clone obtains the complete project.
 Read [material rights](docs/materials/RIGHTS.md), [license scope](LICENSE) and
-[public boundary](PUBLICATION_BOUNDARY.md). WHO-derived content and translations
-are CC BY-NC-SA 3.0 IGO. The site's MIT license does not override source material,
-archived code or third-party templates. This non-commercial benchmark is not
-an official agency translation or medical recommendation.
+[public boundary](PUBLICATION_BOUNDARY.md). WHO source works are CC BY-NC-SA
+3.0 IGO. The 14 WHO-derived model translations are separate unofficial
+adaptations under CC BY-NC-SA 3.0 Unported. The site's MIT license does not
+override source material, archived code or third-party templates. No separate WHO
+logo/illustration permission is claimed. This non-commercial benchmark is not an
+official agency translation or medical recommendation.
